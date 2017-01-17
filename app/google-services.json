@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "806096274631",
+    "firebase_url": "https://tpdam2016.firebaseio.com",
+    "project_id": "tpdam2016",
+    "storage_bucket": "tpdam2016.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806096274631:android:aae488abdfd2792b",
+        "android_client_info": {
+          "package_name": "ccv.dam.isi.frsf.utn.edu.ar.tpdam2016"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806096274631-jshmgpcuo0g9s9kacieq306ls4bdlv6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [{ "current_key": "" }],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
