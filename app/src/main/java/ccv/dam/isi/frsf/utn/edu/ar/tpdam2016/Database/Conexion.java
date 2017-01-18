@@ -49,23 +49,23 @@ public class Conexion {
 
         posicionBD = database.getReference("bd");
         ArrayList<Equipo> listaEquipos = new ArrayList<>();
-        listaEquipos.add(new Equipo("Aldosivi","R.drawable.aldosivi"));
-        listaEquipos.add(new Equipo("Arsenal","R.drawable.arsenal"));
-        listaEquipos.add(new Equipo("Banfield","R.drawable.banfield"));
-        listaEquipos.add(new Equipo("Belgrano","R.drawable.belgrano"));
-        listaEquipos.add(new Equipo("Boca","R.drawable.boca"));
-        listaEquipos.add(new Equipo("Central","R.drawable.central"));
-        listaEquipos.add(new Equipo("Colon","R.drawable.colon"));
-        listaEquipos.add(new Equipo("Defensa","R.drawable.defensa"));
-        listaEquipos.add(new Equipo("Estudiantes","R.drawable.estudiantes"));
-        listaEquipos.add(new Equipo("Gimnasia de la Plata","R.drawable.gimnasia"));
-        listaEquipos.add(new Equipo("Godoy Cruz","R.drawable.godoy"));
-        listaEquipos.add(new Equipo("Huracan","R.drawable.huracan"));
-        listaEquipos.add(new Equipo("Independiente","R.drawable.independiente"));
-        listaEquipos.add(new Equipo("Lanus","R.drawable.lanus"));
-        listaEquipos.add(new Equipo("Newells","R.drawable.newells"));
-        listaEquipos.add(new Equipo("River","R.drawable.river"));
-        listaEquipos.add(new Equipo("San Lorenzo","R.drawable.sanlorenzo"));
+        listaEquipos.add(new Equipo("Aldosivi","R.drawable.escudos.aldosivi"));
+        listaEquipos.add(new Equipo("Arsenal","R.drawable.escudos.arsenal"));
+        listaEquipos.add(new Equipo("Banfield","R.drawable.escudos.banfield"));
+        listaEquipos.add(new Equipo("Belgrano","R.drawable.escudos.belgrano"));
+        listaEquipos.add(new Equipo("Boca","R.drawable.escudos.boca"));
+        listaEquipos.add(new Equipo("Central","R.drawable.escudos.central"));
+        listaEquipos.add(new Equipo("Colon","R.drawable.escudos.colon"));
+        listaEquipos.add(new Equipo("Defensa","R.drawable.escudos.defensa"));
+        listaEquipos.add(new Equipo("Estudiantes","R.drawable.escudos.estudiantes"));
+        listaEquipos.add(new Equipo("Gimnasia de la Plata","R.drawable.escudos.gimnasia"));
+        listaEquipos.add(new Equipo("Godoy Cruz","R.drawable.escudos.godoy"));
+        listaEquipos.add(new Equipo("Huracan","R.drawable.escudos.huracan"));
+        listaEquipos.add(new Equipo("Independiente","R.drawable.escudos.independiente"));
+        listaEquipos.add(new Equipo("Lanus","R.drawable.escudos.lanus"));
+        listaEquipos.add(new Equipo("Newells","R.drawable.escudos.newells"));
+        listaEquipos.add(new Equipo("River","R.drawable.escudos.river"));
+        listaEquipos.add(new Equipo("San Lorenzo","R.drawable.escudos.sanlorenzo"));
 
         for(int i = 0; i < listaEquipos.size(); i++){
 

@@ -1,6 +1,8 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -36,20 +38,9 @@ public class Adapter extends ArrayAdapter<Equipo> {
         TextView nombreDelEquipo = (TextView) row.findViewById(R.id.textViewNombreFila);
         nombreDelEquipo.setText(getItem(position).getNombre().toString());
         final ImageView imageView =(ImageView) row.findViewById(R.id.imageFotoEquipo);
-        imageView.setImageResource(getResources().getIdentifier(getItem(position).getEscudo().toString()), "drawable", "package.name");
+        String string = getItem(position).getEscudo().toString();
+        imageView.setImageResource(this.getContext().getResources().getIdentifier(string, "drawable", "ccv.dam.isi.frsf.utn.edu.ar.tpdam2016"));
 
-        /*FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://tpdam2016.appspot.com/escudos").child("talleres.png");
-
-        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Log.e("Tuts+", "uri: " + uri.toString());
-                //Handle whatever you're going to do with the URL here
-                imageView.setImageURI(uri);
-            }
-        });
-*/
         final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageVerDetalle);
         verDetalle.setImageResource(R.drawable.editar);
         final ImageView borrar =(ImageView) row.findViewById(R.id.imageEliminar);

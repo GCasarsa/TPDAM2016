@@ -1,5 +1,6 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,9 @@ public class MenuPrincipal extends AppCompatActivity {
         final Button cargarEquipos = (Button) findViewById(R.id.buttonCargarEquipos);
         final ListView listView = (ListView) findViewById(R.id.listaEquipos);
         final ArrayList<Equipo> listaEquipos = new ArrayList<>();
+
+        Intent intent = new Intent(getApplicationContext(), Inicio.class);
+        startActivity(intent);
 
         Conexion.buscarEquipos(listaEquipos);
 
