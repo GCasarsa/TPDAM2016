@@ -18,5 +18,4 @@
         <activity android:name=".Actividades.VerEquiposActivity">
         </activity>
     </application>
-
 </manifest>

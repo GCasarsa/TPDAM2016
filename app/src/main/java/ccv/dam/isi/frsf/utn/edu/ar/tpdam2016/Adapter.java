@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,10 +33,11 @@ public class Adapter extends ArrayAdapter<Equipo> {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         View row = inflater.inflate(R.layout.fila_equipo, parent, false);
-        TextView nombre = (TextView) row.findViewById(R.id.textViewNombre);
-        nombre.setText(this.getItem(position).getNombre().toString());
+        TextView nombreDelEquipo = (TextView) row.findViewById(R.id.textViewNombreFila);
+        nombreDelEquipo.setText(getItem(position).getNombre().toString());
         final ImageView imageView =(ImageView) row.findViewById(R.id.imageFotoEquipo);
-        imageView.setImageResource(R.drawable.editar);
+        imageView.setImageResource(getResources().getIdentifier(getItem(position).getEscudo().toString()), "drawable", "package.name");
+
         /*FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReferenceFromUrl("gs://tpdam2016.appspot.com/escudos").child("talleres.png");
 
@@ -48,9 +50,9 @@ public class Adapter extends ArrayAdapter<Equipo> {
             }
         });
 */
-        ImageView verDetalle =(ImageView) row.findViewById(R.id.imageVerDetalle);
+        final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageVerDetalle);
         verDetalle.setImageResource(R.drawable.editar);
-        ImageView borrar =(ImageView) row.findViewById(R.id.imageEliminar);
+        final ImageView borrar =(ImageView) row.findViewById(R.id.imageEliminar);
         borrar.setImageResource(R.drawable.borrar);
         return(row);
     }

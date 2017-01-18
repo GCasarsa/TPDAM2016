@@ -55,6 +55,15 @@ public class Conexion {
         listaEquipos.add(new Equipo("Belgrano","R.drawable.belgrano"));
         listaEquipos.add(new Equipo("Boca","R.drawable.boca"));
         listaEquipos.add(new Equipo("Central","R.drawable.central"));
+        listaEquipos.add(new Equipo("Colon","R.drawable.colon"));
+        listaEquipos.add(new Equipo("Defensa","R.drawable.defensa"));
+        listaEquipos.add(new Equipo("Estudiantes","R.drawable.estudiantes"));
+        listaEquipos.add(new Equipo("Gimnasia de la Plata","R.drawable.gimnasia"));
+        listaEquipos.add(new Equipo("Godoy Cruz","R.drawable.godoy"));
+        listaEquipos.add(new Equipo("Huracan","R.drawable.huracan"));
+        listaEquipos.add(new Equipo("Independiente","R.drawable.independiente"));
+        listaEquipos.add(new Equipo("Lanus","R.drawable.lanus"));
+        listaEquipos.add(new Equipo("Newells","R.drawable.newells"));
         listaEquipos.add(new Equipo("River","R.drawable.river"));
         listaEquipos.add(new Equipo("San Lorenzo","R.drawable.sanlorenzo"));
 

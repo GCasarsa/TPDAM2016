@@ -2,24 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
         android:id="@+id/imageFotoEquipo" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="230sp"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewNombre" />
+        android:id="@+id/textViewNombreFila"
+        android:paddingLeft="20sp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"/>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="30sp"
+        android:layout_height="30sp"
         android:id="@+id/imageVerDetalle" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="30sp"
+        android:layout_height="30sp"
         android:id="@+id/imageEliminar" />
 </LinearLayout>

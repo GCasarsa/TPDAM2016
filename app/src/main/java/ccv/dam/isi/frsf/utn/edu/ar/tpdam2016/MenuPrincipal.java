@@ -21,11 +21,9 @@ public class MenuPrincipal extends AppCompatActivity {
         final Button verEquipos = (Button) findViewById(R.id.buttonVerEquipos);
         final Button cargarEquipos = (Button) findViewById(R.id.buttonCargarEquipos);
         final ListView listView = (ListView) findViewById(R.id.listaEquipos);
-
         final ArrayList<Equipo> listaEquipos = new ArrayList<>();
 
         Conexion.buscarEquipos(listaEquipos);
-
 
         verEquipos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +32,6 @@ public class MenuPrincipal extends AppCompatActivity {
                 listView.setAdapter(adapter);
                 /*Intent intent = new Intent(getApplicationContext(), VerEquiposActivity.class);
                 startActivity(intent);*/
-
             }
         });
         cargarEquipos.setOnClickListener(new View.OnClickListener() {
