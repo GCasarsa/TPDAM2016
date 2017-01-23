@@ -35,10 +35,16 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         tabHost.setup(this,
                 getSupportFragmentManager(), android.R.id.tabcontent);
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("POSICIONES"),
+        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("PARTIDOS"),
                 Tab1.class, null);
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("GOLEADORES"),
                 Tab2.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("POSICIONES"),
+                Tab3.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("TARJETAS"),
+                Tab4.class, null);
+        //tabHost.canScrollHorizontally(0);
+
 
 
 
