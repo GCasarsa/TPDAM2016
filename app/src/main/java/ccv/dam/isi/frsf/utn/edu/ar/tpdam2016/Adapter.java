@@ -47,6 +47,8 @@ public class Adapter extends ArrayAdapter<Equipo> {
         //escudoL.setImageResource(foto);
         escudoL.setImageResource(R.drawable.logo);
 
+        //escudoL.setImageResource(this.getContext().getResources().getIdentifier(string, "drawable", "ccv.dam.isi.frsf.utn.edu.ar.tpdam2016");
+
         final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageVerDetalle);
         verDetalle.setImageResource(R.drawable.editar);
         final ImageView borrar =(ImageView) row.findViewById(R.id.imageEliminar);
