@@ -31,11 +31,17 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         TextView nombreVisita = (TextView) row.findViewById(R.id.textViewNombreVisita);
         nombreVisita.setText(getItem(position).getEquipoVisitante().toString());
         TextView resultado = (TextView) row.findViewById(R.id.textViewResultado);
-        resultado.setText(getItem(position).getResultado().toString());
+        resultado.setText(getItem(position).getResultadoLocal().toString()+" - "+getItem(position).getResultadoVisitante().toString());
         TextView fecha = (TextView) row.findViewById(R.id.textViewFecha);
-        fecha.setText(getItem(position).getFecha().toString());
+        fecha.setText("Fecha: nº "+getItem(position).getFecha().toString());
         final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageViewEscudoLocal);
         verDetalle.setImageResource(R.drawable.editar);
+        TextView arbitro = (TextView) row.findViewById(R.id.textViewArbitro);
+        arbitro.setText(getItem(position).getArbitro().toString());
+        TextView dia = (TextView) row.findViewById(R.id.textViewDia);
+        dia.setText(getItem(position).getDia().toString());
+        TextView lugar = (TextView) row.findViewById(R.id.textViewLugar);
+        lugar.setText(getItem(position).getLugar().toString());
 
         return(row);
     }

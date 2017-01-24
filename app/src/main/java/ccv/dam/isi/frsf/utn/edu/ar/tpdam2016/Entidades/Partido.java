@@ -6,7 +6,8 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
 public class Partido {
     String imagenLocal;
     String equipoLocal;
-    String resultado;
+    String resultadoLocal;
+    String resultadoVisitante;
     String equipoVisitante;
     String imagenVisitante;
     String arbitro;
@@ -14,11 +15,33 @@ public class Partido {
     String fecha;
     String lugar;
 
-    public Partido(String equipoLocal, String resultado, String equipoVisitante, String fecha) {
+    public Partido (String equipoLocal, String equipoVisitante, String resultadoLocal, String resultadoVisitante, String arbitro, String dia, String fecha, String lugar){
         this.equipoLocal = equipoLocal;
-        this.resultado = resultado;
+        this.resultadoLocal = resultadoLocal;
+        this.resultadoVisitante = resultadoVisitante;
         this.equipoVisitante = equipoVisitante;
         this.fecha = fecha;
+        this.dia = dia;
+        this.lugar = lugar;
+        this.arbitro=arbitro;
+    }
+
+
+
+    public String getResultadoLocal() {
+        return resultadoLocal;
+    }
+
+    public void setResultadoLocal(String resultadoLocal) {
+        this.resultadoLocal = resultadoLocal;
+    }
+
+    public String getResultadoVisitante() {
+        return resultadoVisitante;
+    }
+
+    public void setResultadoVisitante(String resultadoVisitante) {
+        this.resultadoVisitante = resultadoVisitante;
     }
 
     public String getImagenLocal() {
@@ -38,11 +61,11 @@ public class Partido {
     }
 
     public String getResultado() {
-        return resultado;
+        return resultadoLocal;
     }
 
     public void setResultado(String resultado) {
-        this.resultado = resultado;
+        this.resultadoLocal = resultado;
     }
 
     public String getEquipoVisitante() {
