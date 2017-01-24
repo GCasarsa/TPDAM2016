@@ -67,6 +67,30 @@ public class Conexion {
         });
     }
 
+    public static void buscarPartidosPorFecha(final ArrayList<Partido> listaPartidos, final int fecha){
+        posicionBD = database.getReference("partidos");
+        posicionBD.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+                System.out.println("HOLA: "+fecha+" - "+Integer.parseInt(newPost.get("jornadaTorneo").toString()));
+                if(Integer.parseInt(newPost.get("jornadaTorneo").toString())==fecha) {
+                    Partido partido = new Partido(newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("marcadorLocal").toString(), newPost.get("marcadorVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("fechaCronologica").toString(), newPost.get("jornadaTorneo").toString(), newPost.get("estadio").toString());
+                    listaPartidos.add(partido);
+                }
+                System.out.println(listaPartidos.size());
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
+
     public static void cargarEquipos(){
 
         posicionBD = database.getReference("bd");
