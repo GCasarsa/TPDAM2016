@@ -42,6 +42,10 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         dia.setText(getItem(position).getDia().toString());
         TextView lugar = (TextView) row.findViewById(R.id.textViewLugar);
         lugar.setText(getItem(position).getLugar().toString());
+        ImageView escudoL = (ImageView) row.findViewById(R.id.imageViewEscudoLocal);
+        escudoL.setImageResource(R.drawable.logo);
+        ImageView escudoV = (ImageView) row.findViewById(R.id.imageViewEscudoVisita);
+        escudoV.setImageResource(R.drawable.logo);
 
         return(row);
     }
