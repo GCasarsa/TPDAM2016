@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,9 +38,14 @@ public class Adapter extends ArrayAdapter<Equipo> {
         View row = inflater.inflate(R.layout.fila_equipo, parent, false);
         TextView nombreDelEquipo = (TextView) row.findViewById(R.id.textViewNombreFila);
         nombreDelEquipo.setText(getItem(position).getNombre().toString());
-        final ImageView imageView =(ImageView) row.findViewById(R.id.imageFotoEquipo);
-        String string = getItem(position).getEscudo().toString();
-        imageView.setImageResource(this.getContext().getResources().getIdentifier(string, "drawable", "ccv.dam.isi.frsf.utn.edu.ar.tpdam2016"));
+        //final ImageView imageView =(ImageView) row.findViewById(R.id.imageFotoEquipo);
+        //String string = getItem(position).getEscudo().toString();
+        //imageView.setImageResource(this.getContext().getResources().getIdentifier(string, "drawable", "ccv.dam.isi.frsf.utn.edu.ar.tpdam2016"));
+        ImageView escudoL = (ImageView) row.findViewById(R.id.imageFotoEquipo);
+        //int foto= Integer.parseInt(getItem(position).getEscudo());
+        //escudoL.setImageResource(R.drawable.river);
+        //escudoL.setImageResource(foto);
+        escudoL.setImageResource(R.drawable.logo);
 
         final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageVerDetalle);
         verDetalle.setImageResource(R.drawable.editar);
