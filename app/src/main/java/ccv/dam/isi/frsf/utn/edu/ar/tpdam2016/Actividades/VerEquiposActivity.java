@@ -27,7 +27,7 @@ public class VerEquiposActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-/*        listView = (ListView) findViewById(R.id.listaEquipos);
+        listView = (ListView) findViewById(R.id.listaEquipos);
 
         buscar = (Button) findViewById(R.id.buttonAhora);
         listaEquipos = new ArrayList<>();
@@ -41,7 +41,7 @@ public class VerEquiposActivity extends AppCompatActivity {
                 listView.setAdapter(adapter);
 
             }
-        });*/
+        });
     }
 
 }

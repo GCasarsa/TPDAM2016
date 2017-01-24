@@ -18,7 +18,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 public class AdapterPartido extends ArrayAdapter<Partido> {
     LayoutInflater inflater;
 
-    AdapterPartido(Context context, List<Partido> items) {
+    public AdapterPartido(Context context, List<Partido> items) {
         super(context, R.layout.layout_fila_partido, items);
         inflater= LayoutInflater.from(context);
     }

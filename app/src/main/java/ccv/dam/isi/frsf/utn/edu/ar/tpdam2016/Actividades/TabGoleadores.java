@@ -1,4 +1,4 @@
-package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
+package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -9,14 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 
 /**
  * Created by Administrador on 18/01/2017.
  */
-public class Tab2 extends Fragment{
+public class TabGoleadores extends Fragment{
     ListView listaGoleadores;
     ArrayAdapter adapter;
     ArrayList goleadores;
@@ -27,7 +26,7 @@ public class Tab2 extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.tab2, container, false);
+        View rootView = inflater.inflate(R.layout.tab_goleadores, container, false);
         goleadores = new ArrayList<String>();
         goleadores.add("Casarsa   - 10 goles");
         goleadores.add("Valinotti - 6 goles");

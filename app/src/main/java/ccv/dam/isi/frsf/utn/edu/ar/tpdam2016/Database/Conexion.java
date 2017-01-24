@@ -71,23 +71,23 @@ public class Conexion {
 
         posicionBD = database.getReference("bd");
         ArrayList<Equipo> listaEquipos = new ArrayList<>();
-        listaEquipos.add(new Equipo("Aldosivi","R.drawable.escudos.aldosivi"));
-        listaEquipos.add(new Equipo("Arsenal","R.drawable.escudos.arsenal"));
-        listaEquipos.add(new Equipo("Banfield","R.drawable.escudos.banfield"));
-        listaEquipos.add(new Equipo("Belgrano","R.drawable.escudos.belgrano"));
-        listaEquipos.add(new Equipo("Boca","R.drawable.escudos.boca"));
-        listaEquipos.add(new Equipo("Central","R.drawable.escudos.central"));
-        listaEquipos.add(new Equipo("Colon","R.drawable.escudos.colon"));
-        listaEquipos.add(new Equipo("Defensa","R.drawable.escudos.defensa"));
-        listaEquipos.add(new Equipo("Estudiantes","R.drawable.escudos.estudiantes"));
-        listaEquipos.add(new Equipo("Gimnasia de la Plata","R.drawable.escudos.gimnasia"));
-        listaEquipos.add(new Equipo("Godoy Cruz","R.drawable.escudos.godoy"));
-        listaEquipos.add(new Equipo("Huracan","R.drawable.escudos.huracan"));
-        listaEquipos.add(new Equipo("Independiente","R.drawable.escudos.independiente"));
-        listaEquipos.add(new Equipo("Lanus","R.drawable.escudos.lanus"));
-        listaEquipos.add(new Equipo("Newells","R.drawable.escudos.newells"));
-        listaEquipos.add(new Equipo("River","R.drawable.escudos.river"));
-        listaEquipos.add(new Equipo("San Lorenzo","R.drawable.escudos.sanlorenzo"));
+        listaEquipos.add(new Equipo("Aldosivi","/img/escudos/aldosivi.png"));
+        listaEquipos.add(new Equipo("Arsenal","/img/escudos/arsenal.png"));
+        listaEquipos.add(new Equipo("Banfield","/img/escudos/banfield.png"));
+        listaEquipos.add(new Equipo("Belgrano","/img/escudos/belgrano.png"));
+        listaEquipos.add(new Equipo("Boca","/img/escudos/boca.png"));
+        listaEquipos.add(new Equipo("Central","/img/escudos/central.png"));
+        listaEquipos.add(new Equipo("Colon","/img/escudos/colon.png"));
+        listaEquipos.add(new Equipo("Defensa","/img/escudos/defensa.png"));
+        listaEquipos.add(new Equipo("Estudiantes","/img/escudos/estudiantes.png"));
+        listaEquipos.add(new Equipo("Gimnasia de la Plata","/img/escudos/gimnasia.png"));
+        listaEquipos.add(new Equipo("Godoy Cruz","/img/escudos/godoy.png"));
+        listaEquipos.add(new Equipo("Huracan","/img/escudos/huracan.png"));
+        listaEquipos.add(new Equipo("Independiente","/img/escudos/independiente.png"));
+        listaEquipos.add(new Equipo("Lanus","/img/escudos/lanus.png"));
+        listaEquipos.add(new Equipo("Newells","/img/escudos/newells.png"));
+        listaEquipos.add(new Equipo("River","/img/escudos/river.png"));
+        listaEquipos.add(new Equipo("San Lorenzo","/img/escudos/sanlorenzo.png"));
 
         for(int i = 0; i < listaEquipos.size(); i++){
 

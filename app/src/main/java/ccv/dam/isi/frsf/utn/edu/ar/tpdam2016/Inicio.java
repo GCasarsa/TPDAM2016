@@ -3,7 +3,6 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.View;
@@ -11,11 +10,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabFixture;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabGoleadores;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabPosiciones;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabTarjetas;
 
 public class Inicio extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentTabHost tabHost;
@@ -24,25 +26,17 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        /*TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
 
-        tabs.addTab(tabs.newTab().setText("PARTIDOS"));
-        tabs.addTab(tabs.newTab().setText("POSICIONES"));
-        tabs.addTab(tabs.newTab().setText("GOLEADORES"));
-        tabs.addTab(tabs.newTab().setText("TARJETAS"));
-        tabs.addTab(tabs.newTab().setText("DESCENSO"));
-        tabs.setTabMode(TabLayout.MODE_SCROLLABLE);*/
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
-        tabHost.setup(this,
-                getSupportFragmentManager(), android.R.id.tabcontent);
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("PARTIDOS"),
-                Tab1.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("GOLEADORES"),
-                Tab2.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("POSICIONES"),
-                Tab3.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("TARJETAS"),
-                Tab4.class, null);
+        tabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
+        tabHost.addTab(tabHost.newTabSpec("tab_fixture").setIndicator("PARTIDOS"),
+                TabFixture.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab_goleadores").setIndicator("GOLEADORES"),
+                TabGoleadores.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab_posiciones").setIndicator("POSICIONES"),
+                TabPosiciones.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab_tarjetas").setIndicator("TARJETAS"),
+                TabTarjetas.class, null);
         //tabHost.canScrollHorizontally(0);
 
 
