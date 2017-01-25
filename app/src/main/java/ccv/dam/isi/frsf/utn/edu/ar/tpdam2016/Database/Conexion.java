@@ -33,7 +33,6 @@ public class Conexion {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 Equipo equipo = new Equipo(newPost.get("nombre").toString(), newPost.get("escudo").toString());
                 listaEquipos.add(equipo);
-                System.out.println(listaEquipos.size());
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
@@ -73,12 +72,12 @@ public class Conexion {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                System.out.println("HOLA: "+fecha+" - "+Integer.parseInt(newPost.get("jornadaTorneo").toString()));
+                //System.out.println("FECHA 1: " + fecha + " - FECHA 2: "+Integer.parseInt(newPost.get("jornadaTorneo").toString()));
                 if(Integer.parseInt(newPost.get("jornadaTorneo").toString())==fecha) {
                     Partido partido = new Partido(newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("marcadorLocal").toString(), newPost.get("marcadorVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("fechaCronologica").toString(), newPost.get("jornadaTorneo").toString(), newPost.get("estadio").toString());
                     listaPartidos.add(partido);
                 }
-                System.out.println(listaPartidos.size());
+                //System.out.println("PARTIDOS: " + listaPartidos.size());
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}

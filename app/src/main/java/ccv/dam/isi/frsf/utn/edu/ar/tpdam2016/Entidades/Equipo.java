@@ -7,6 +7,7 @@ public class Equipo {
     String id;
     String nombre;
     String escudo;
+    String foto;
 
     public Equipo(String nombre, String escudo) {
         this.nombre = nombre;

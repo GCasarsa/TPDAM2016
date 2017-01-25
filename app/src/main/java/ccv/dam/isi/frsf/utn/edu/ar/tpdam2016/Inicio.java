@@ -1,5 +1,6 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabFixture;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabGoleadores;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabPosiciones;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabTarjetas;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
 
 public class Inicio extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentTabHost tabHost;
@@ -38,22 +40,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         tabHost.addTab(tabHost.newTabSpec("tab_tarjetas").setIndicator("TARJETAS"),
                 TabTarjetas.class, null);
         //tabHost.canScrollHorizontally(0);
-
-
-
-
-
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -84,13 +70,10 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menuOpcionEquipos) {
+            Intent intent = new Intent(this, VerEquiposActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -103,17 +86,18 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.menuOpcionInicio) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.menuOpcionCompetencias) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.menuOpcionEquipos) {
+            Intent intent = new Intent(this, VerEquiposActivity.class);
+            startActivity(intent);
+            return true;
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.menuOpcionContacto) {
 
         }
 

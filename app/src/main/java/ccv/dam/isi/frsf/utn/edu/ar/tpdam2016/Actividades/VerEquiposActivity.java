@@ -26,7 +26,7 @@ public class VerEquiposActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_principal);
+        setContentView(R.layout.activity_ver_equipos);
         listView = (ListView) findViewById(R.id.listaEquipos);
 
         buscar = (Button) findViewById(R.id.buttonAhora);
@@ -37,8 +37,12 @@ public class VerEquiposActivity extends AppCompatActivity {
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter= new Adapter(getApplicationContext(), listaEquipos);
-                listView.setAdapter(adapter);
+                System.out.println(listaEquipos.size());
+                if(!listaEquipos.isEmpty()){
+                    adapter= new Adapter(getApplicationContext(), listaEquipos);
+                    listView.setAdapter(adapter);
+                }
+
 
             }
         });
