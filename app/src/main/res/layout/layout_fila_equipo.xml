@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
         android:layout_width="30sp"
         android:layout_height="30sp"
-        android:id="@+id/imageFotoEquipo" />
-
-    <TextView
-        android:layout_width="230sp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewNombreFila"
-        android:paddingLeft="20sp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"/>
+        android:layout_gravity="start"
+        android:layout_marginStart="10dp"
+        android:id="@+id/ivVerEquiposEscudo"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvVerEquiposNombre"
+            android:paddingStart="20sp"
+            android:textColor="@color/fuente"
+            android:text="RIVER PLATE"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvVerEquiposLiga"
+            android:paddingStart="20sp"
+            android:textColor="@color/fuente"
+            android:text="PRIMERA DIVISIÓN"
+            android:textSize="12sp"/>
+    </LinearLayout>
 
     <ImageView
         android:layout_width="30sp"
         android:layout_height="30sp"
-        android:id="@+id/imageVerDetalle" />
+        android:id="@+id/ivVerEquiposDetalle"
+        android:src="@drawable/siguiente"
+        />
 
-    <ImageView
-        android:layout_width="30sp"
-        android:layout_height="30sp"
-        android:id="@+id/imageEliminar" />
 </LinearLayout>

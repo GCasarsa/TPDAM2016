@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -33,28 +35,31 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
 public class Adapter extends ArrayAdapter<Equipo> {
     LayoutInflater inflater;
+    FirebaseAuth autenticacion;
+    Context contexto;
+    private static final String TAG = "Storage#MainActivity";
 
     public Adapter(Context context, List<Equipo> items) {
         super(context, R.layout.layout_fila_equipo, items);
         inflater= LayoutInflater.from(context);
+        autenticacion = FirebaseAuth.getInstance();
+        contexto = context;
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         View row = inflater.inflate(R.layout.layout_fila_equipo, parent, false);
-        TextView nombreDelEquipo = (TextView) row.findViewById(R.id.textViewNombreFila);
+        TextView nombreDelEquipo = (TextView) row.findViewById(R.id.tvVerEquiposNombre);
         nombreDelEquipo.setText(getItem(position).getNombre().toString());
-        final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageVerDetalle);
-        verDetalle.setImageResource(R.drawable.editar);
-        final ImageView borrar =(ImageView) row.findViewById(R.id.imageEliminar);
-        borrar.setImageResource(R.drawable.borrar);
 
-/*
-        final ImageView imageView =(ImageView) row.findViewById(R.id.imageFotoEquipo);
+
+
+        final ImageView imageView =(ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
         String escudo = "gs://tpdam2016.appspot.com" + getItem(position).getEscudo().toString();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         System.out.println(escudo);
-        StorageReference storageRef = storage.getReferenceFromUrl(escudo);
+        //StorageReference storageRef = storage.getReferenceFromUrl(escudo);
+        StorageReference storageRef = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/img%2Fescudos%2Friver.png?alt=media&token=492d656f-fb51-4231-9406-486d8d8474e5");
 
         File localFile = null;
         try {
@@ -79,7 +84,8 @@ public class Adapter extends ArrayAdapter<Equipo> {
                 exception.printStackTrace();
             }
         });
-        /*StorageReference storageRef = storage.getReferenceFromUrl("gs://tpdam2016.appspot.com/img/escudos/");
+/*
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://tpdam2016.appspot.com");
 
         StorageReference imagen = storageRef.child(getItem(position).getEscudo().toString());
 
@@ -98,6 +104,5 @@ public class Adapter extends ArrayAdapter<Equipo> {
         });*/
         return(row);
     }
-
 
 }

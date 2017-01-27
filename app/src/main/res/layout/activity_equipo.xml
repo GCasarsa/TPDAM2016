@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        >
+        <ImageView
+            android:id="@+id/imageViewAtras"
+            android:src="@drawable/atras"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="start"
+            android:layout_marginLeft="10dp"
+            android:contentDescription="Volver Atrás" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="EQUIPOS"
+            android:textColor="@color/colorBlanco"
+
+            />
+
+        <ImageView
+            android:id="@+id/imageViewLupa"
+            android:src="@drawable/lupa"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:contentDescription="buscar" />
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            android:id="@+id/ivEquipoBandera"
+            android:src="@drawable/santafe"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SANTA FE - PRIMERA DIVISIÓN"
+            android:id="@+id/tvEquipoLugar"
+            android:textColor="@color/fuente"
+            android:textSize="10dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/ivEquipoEscudo"
+            android:src="@drawable/talleres"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Talleres de Córdoba"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/fuente"
+            android:textSize="20dp"
+            android:id="@+id/tvEquipoNombre" />
+    </LinearLayout>
+</LinearLayout>
