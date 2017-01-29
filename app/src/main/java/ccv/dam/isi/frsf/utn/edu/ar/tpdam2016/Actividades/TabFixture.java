@@ -1,5 +1,7 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterPartido;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
@@ -36,29 +39,29 @@ public class TabFixture extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.tab_fixture, container, false);
-        listaPartidos = (ListView)  rootView.findViewById(R.id.listaPartidos);
+        listaPartidos = (ListView) rootView.findViewById(R.id.listaPartidos);
         partidos = new ArrayList<>();
         //Conexion.buscarPartidos(partidos);
 
         final Spinner spinnerFechas = (Spinner) rootView.findViewById(R.id.spinnerFechas);
-        final String[] fechas = new String[] {"1", "2", "3", "4","5","6"};
+        final String[] fechas = new String[]{"1", "2", "3", "4", "5", "6"};
         ArrayList<String> arregloFechas = new ArrayList<>();
         arregloFechas.addAll(Arrays.asList(fechas));
-        listAdapter1 = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,arregloFechas);
+        listAdapter1 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arregloFechas);
         listAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFechas.setAdapter(listAdapter1);
-        adapter= new AdapterPartido(getActivity(), partidos); //getActivity() or getContext()
+        adapter = new AdapterPartido(getActivity(), partidos); //getActivity() or getContext()
         listaPartidos.setAdapter(adapter);
 
-        spinnerFechas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        spinnerFechas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // partidos.clear(); Cuando este la tarea asyncronica, sacar comentario.
-                Conexion.buscarPartidosPorFecha(partidos,Integer.parseInt(spinnerFechas.getItemAtPosition(position).toString()));
 
-                adapter.notifyDataSetChanged();
-                rootView.refreshDrawableState();
+                //Creo y Ejecuto la tarea asincrónica que consulta los partidos de una fecha;
+                new BuscarPorFechaAsyncTask().execute(position);
+
             }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -68,6 +71,52 @@ public class TabFixture extends Fragment{
 
         return rootView;
     }
+
+    private class BuscarPorFechaAsyncTask  extends AsyncTask<Integer, Integer, Integer> {
+
+        ProgressDialog dialog = new ProgressDialog(getActivity());
+
+        public BuscarPorFechaAsyncTask(){
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            dialog = ProgressDialog.show(getActivity(), "Recopilando partidos", "aguarde unos instantes...");
+            dialog.setCanceledOnTouchOutside(true);
+
+        }
+
+
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            dialog.setMessage(String.valueOf(values[0]));
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... fecha) {
+
+            partidos.clear();
+            int fechaConsultada = fecha[0]+1;
+            Conexion.buscarPartidosPorFecha(partidos,fechaConsultada);
+
+            return 1;
+
+        }
+
+        //@Override
+        protected void onPostExecute(Integer r) {
+
+            adapter = new AdapterPartido(getActivity(), partidos);
+            listaPartidos.setAdapter(adapter);
+            if (dialog.isShowing()) dialog.dismiss();
+
+        }
+    }
+
+
 
 
 }
