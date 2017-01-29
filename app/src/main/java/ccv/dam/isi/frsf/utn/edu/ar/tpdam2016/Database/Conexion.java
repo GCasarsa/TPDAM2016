@@ -1,13 +1,10 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database;
 
-import android.util.Log;
-
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +14,6 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 
 public class Conexion {
-    private static String TAG;
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static DatabaseReference posicionBD;
 
@@ -31,8 +27,30 @@ public class Conexion {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Equipo equipo = new Equipo(newPost.get("nombre").toString(), newPost.get("escudo").toString());
+                Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
                 listaEquipos.add(equipo);
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
+
+    public static void buscarEquipo(final String idEquipo){
+        posicionBD = database.getReference("bd/equipos");
+        posicionBD.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+                if(newPost.get("id") == idEquipo){
+                    Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
+                }
+
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
@@ -94,30 +112,32 @@ public class Conexion {
 
         posicionBD = database.getReference("bd");
         ArrayList<Equipo> listaEquipos = new ArrayList<>();
-        listaEquipos.add(new Equipo("Aldosivi","/img/escudos/aldosivi.png"));
-        listaEquipos.add(new Equipo("Arsenal","/img/escudos/arsenal.png"));
-        listaEquipos.add(new Equipo("Banfield","/img/escudos/banfield.png"));
-        listaEquipos.add(new Equipo("Belgrano","/img/escudos/belgrano.png"));
-        listaEquipos.add(new Equipo("Boca","/img/escudos/boca.png"));
-        listaEquipos.add(new Equipo("Central","/img/escudos/central.png"));
-        listaEquipos.add(new Equipo("Colon","/img/escudos/colon.png"));
-        listaEquipos.add(new Equipo("Defensa","/img/escudos/defensa.png"));
-        listaEquipos.add(new Equipo("Estudiantes","/img/escudos/estudiantes.png"));
-        listaEquipos.add(new Equipo("Gimnasia de la Plata","/img/escudos/gimnasia.png"));
-        listaEquipos.add(new Equipo("Godoy Cruz","/img/escudos/godoy.png"));
-        listaEquipos.add(new Equipo("Huracan","/img/escudos/huracan.png"));
-        listaEquipos.add(new Equipo("Independiente","/img/escudos/independiente.png"));
-        listaEquipos.add(new Equipo("Lanus","/img/escudos/lanus.png"));
-        listaEquipos.add(new Equipo("Newells","/img/escudos/newells.png"));
-        listaEquipos.add(new Equipo("River","/img/escudos/river.png"));
-        listaEquipos.add(new Equipo("San Lorenzo","/img/escudos/sanlorenzo.png"));
+        listaEquipos.add(new Equipo("1","Aldosivi","aldosivi.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("2","Arsenal","arsenal.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("3","Banfield","banfield.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("4","Belgrano","belgrano.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("5","Boca","boca.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("6","Central","central.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("7","Colon","colon.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("8","Defensa","defensa.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("9","Estudiantes","estudiantes.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("10","Gimnasia de la Plata","gimnasia.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("11","Godoy Cruz","godoy.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("12","Huracan","huracan.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("13","Independiente","independiente.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("14","Lanus","lanus.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("15","Newells","newells.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("16","River","river.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("17","San Lorenzo","sanlorenzo.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("18","Union","union.png","PRIMERA DIVISIÓN"));
+        listaEquipos.add(new Equipo("19","Velez","velez.png","PRIMERA DIVISIÓN"));
 
         for(int i = 0; i < listaEquipos.size(); i++){
 
-            String key = posicionBD.child("posts").push().getKey();
+            //String key = posicionBD.child("posts").push().getKey();
             Map<String, Object> postValues = toMap(listaEquipos.get((i)));
             Map<String, Object> childUpdates = new HashMap<>();
-            childUpdates.put("/equipos/" + key, postValues);
+            childUpdates.put("/equipos/" + listaEquipos.get((i)).getId(), postValues);
 
             posicionBD.updateChildren(childUpdates);
         }
@@ -125,8 +145,10 @@ public class Conexion {
 
     public static Map<String, Object> toMap(Equipo equipo) {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("nombre", equipo.getNombre());
+        result.put("id", equipo.getId());
+        result.put("nombre", equipo.getNombre().toUpperCase());
         result.put("escudo", equipo.getEscudo());
+        result.put("division",equipo.getDivision());
         return result;
     }
 

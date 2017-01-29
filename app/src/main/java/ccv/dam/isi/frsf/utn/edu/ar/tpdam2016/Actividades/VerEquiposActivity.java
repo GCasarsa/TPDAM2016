@@ -11,10 +11,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoDetalle;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Adapter;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Inicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 
@@ -22,7 +21,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
  * Created by Gabriel on 16/01/2017.
  */
 public class VerEquiposActivity extends AppCompatActivity {
-    private ArrayList<Equipo> listaEquipos;
+    private ArrayList<ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo> listaEquipos;
     private Adapter adapter;
     private ListView listView;
     private Button buscar;
@@ -62,7 +61,9 @@ public class VerEquiposActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getApplicationContext(),EquipoDetalle.class));
+                Intent intent = new Intent(getApplicationContext(),EquipoInicio.class);
+                intent.putExtra("equipo", listView.getItemIdAtPosition(position)+1);
+                startActivity(intent);
             }
         });
 

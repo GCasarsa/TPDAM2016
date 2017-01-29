@@ -7,17 +7,26 @@ public class Equipo {
     String id;
     String nombre;
     String escudo;
+    String division;
+    String ciudad;
+    String pais;
     String foto;
 
-    public Equipo(String nombre, String escudo) {
-        this.nombre = nombre;
-        this.escudo = escudo;
-    }
-
-    public Equipo(String id, String nombre, String escudo) {
+    public Equipo(String id, String nombre, String escudo, String division) {
         this.id = id;
         this.nombre = nombre;
         this.escudo = escudo;
+        this.division = division;
+    }
+
+    public Equipo(String id, String nombre, String escudo, String division, String ciudad, String pais, String foto) {
+        this.id = id;
+        this.nombre = nombre;
+        this.escudo = escudo;
+        this.division = division;
+        this.ciudad = ciudad;
+        this.pais = pais;
+        this.foto = foto;
     }
 
     public String getId() {
@@ -42,5 +51,37 @@ public class Equipo {
 
     public void setEscudo(String escudo) {
         this.escudo = escudo;
+    }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

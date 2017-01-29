@@ -50,12 +50,33 @@ public class Adapter extends ArrayAdapter<Equipo> {
 
         View row = inflater.inflate(R.layout.layout_fila_equipo, parent, false);
         TextView nombreDelEquipo = (TextView) row.findViewById(R.id.tvVerEquiposNombre);
-        nombreDelEquipo.setText(getItem(position).getNombre().toString());
-
-
-
+        TextView division = (TextView) row.findViewById(R.id.tvVerEquiposLiga);
         final ImageView imageView =(ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
-        String escudo = "gs://tpdam2016.appspot.com" + getItem(position).getEscudo().toString();
+        nombreDelEquipo.setText(getItem(position).getNombre().toString());
+        division.setText(getItem(position).getDivision());
+        if(getItem(position).getNombre().toString().equals("ALDOSIVI")) imageView.setImageResource(R.drawable.escudo_aldosivi);
+        else if(getItem(position).getNombre().toString().equals("ARSENAL")) imageView.setImageResource(R.drawable.escudo_arsenal);
+        else if(getItem(position).getNombre().toString().equals("BANFIELD")) imageView.setImageResource(R.drawable.escudo_banfield);
+        else if(getItem(position).getNombre().toString().equals("BELGRANO")) imageView.setImageResource(R.drawable.escudo_belgrano);
+        else if(getItem(position).getNombre().toString().equals("BOCA")) imageView.setImageResource(R.drawable.escudo_boca);
+        else if(getItem(position).getNombre().toString().equals("CENTRAL")) imageView.setImageResource(R.drawable.escudo_central);
+        else if(getItem(position).getNombre().toString().equals("COLON")) imageView.setImageResource(R.drawable.escudo_colon);
+        else if(getItem(position).getNombre().toString().equals("DEFENSA")) imageView.setImageResource(R.drawable.escudo_defensa);
+        else if(getItem(position).getNombre().toString().equals("ESTUDIANTES")) imageView.setImageResource(R.drawable.escudo_estudiantes);
+        else if(getItem(position).getNombre().toString().equals("GIMNASIA DE LA PLATA")) imageView.setImageResource(R.drawable.escudo_gimnasia);
+        else if(getItem(position).getNombre().toString().equals("GODOY CRUZ")) imageView.setImageResource(R.drawable.escudo_godoy);
+        else if(getItem(position).getNombre().toString().equals("HURACAN")) imageView.setImageResource(R.drawable.escudo_huracan);
+        else if(getItem(position).getNombre().toString().equals("INDEPENDIENTE")) imageView.setImageResource(R.drawable.escudo_independiente);
+        else if(getItem(position).getNombre().toString().equals("LANUS")) imageView.setImageResource(R.drawable.escudo_lanus);
+        else if(getItem(position).getNombre().toString().equals("NEWELLS")) imageView.setImageResource(R.drawable.escudo_newells);
+        else if(getItem(position).getNombre().toString().equals("RIVER")) imageView.setImageResource(R.drawable.escudo_river);
+        else if(getItem(position).getNombre().toString().equals("SAN LORENZO")) imageView.setImageResource(R.drawable.escudo_sanlorenzo);
+        else if(getItem(position).getNombre().toString().equals("UNION")) imageView.setImageResource(R.drawable.escudo_union);
+        else if(getItem(position).getNombre().toString().equals("VELEZ")) imageView.setImageResource(R.drawable.escudo_velez);
+
+/*
+
+        String escudo = "gs://tpdam2016.appspot.com/img/escudos/" + getItem(position).getEscudo().toString();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         System.out.println(escudo);
         //StorageReference storageRef = storage.getReferenceFromUrl(escudo);

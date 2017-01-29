@@ -16,7 +16,7 @@
         </activity>
         <activity android:name=".Actividades.VerEquiposActivity"
             ></activity>
-        <activity android:name=".Actividades.equipo.EquipoDetalle"
+        <activity android:name=".Actividades.equipo.EquipoInicio"
             ></activity>
     </application>
 

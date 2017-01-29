@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:paddingTop="5dp"
         android:layout_width="30sp"
         android:layout_height="30sp"
         android:layout_gravity="start"
@@ -17,9 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvVerEquiposNombre"
-            android:paddingStart="20sp"
+            android:paddingStart="10dp"
             android:textColor="@color/fuente"
-            android:text="RIVER PLATE"
             android:textSize="14sp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -27,7 +27,6 @@
             android:id="@+id/tvVerEquiposLiga"
             android:paddingStart="20sp"
             android:textColor="@color/fuente"
-            android:text="PRIMERA DIVISIÓN"
             android:textSize="12sp"/>
     </LinearLayout>
 
