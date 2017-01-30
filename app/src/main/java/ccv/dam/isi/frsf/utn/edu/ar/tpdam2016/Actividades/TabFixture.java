@@ -38,10 +38,10 @@ public class TabFixture extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         final View rootView = inflater.inflate(R.layout.tab_fixture, container, false);
         listaPartidos = (ListView) rootView.findViewById(R.id.listaPartidos);
         partidos = new ArrayList<>();
-        //Conexion.buscarPartidos(partidos);
 
         final Spinner spinnerFechas = (Spinner) rootView.findViewById(R.id.spinnerFechas);
         final String[] fechas = new String[]{"1", "2", "3", "4", "5", "6"};
@@ -50,15 +50,15 @@ public class TabFixture extends Fragment{
         listAdapter1 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arregloFechas);
         listAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFechas.setAdapter(listAdapter1);
-        adapter = new AdapterPartido(getActivity(), partidos); //getActivity() or getContext()
-        listaPartidos.setAdapter(adapter);
+
+        new BuscarPorFechaAsyncTask().execute(0);
 
         spinnerFechas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 //Creo y Ejecuto la tarea asincrónica que consulta los partidos de una fecha;
-                new BuscarPorFechaAsyncTask().execute(position);
+                new BuscarPorFechaAsyncTask().execute(position+1);
 
             }
 
@@ -72,7 +72,12 @@ public class TabFixture extends Fragment{
         return rootView;
     }
 
-    private class BuscarPorFechaAsyncTask  extends AsyncTask<Integer, Integer, Integer> {
+    /**
+     * Tarea asincronica que consulta los partidos de una determinada fecha y los setea en el adaptador de la lista de partidos
+     * de una fecha
+     * @param: Integer, numero de fecha consultada
+     */
+    private class BuscarPorFechaAsyncTask extends AsyncTask<Integer, Integer, Integer> {
 
         ProgressDialog dialog = new ProgressDialog(getActivity());
 
@@ -99,7 +104,7 @@ public class TabFixture extends Fragment{
         protected Integer doInBackground(Integer... fecha) {
 
             partidos.clear();
-            int fechaConsultada = fecha[0]+1;
+            int fechaConsultada = fecha[0];
             Conexion.buscarPartidosPorFecha(partidos,fechaConsultada);
 
             return 1;

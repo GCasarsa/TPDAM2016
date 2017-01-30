@@ -12,16 +12,16 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDJkWfey8X32YvJtXMs-Za4twPXgouDMZ0" />
 
-        <activity android:name=".Inicio">
+        <activity android:name=".Actividades.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Actividades.VerEquiposActivity"
-            ></activity>
-        <activity android:name=".Actividades.equipo.EquipoInicio"
-            ></activity>
+        <activity android:name=".Actividades.VerEquiposActivity" />
+        <activity android:name=".Actividades.equipo.EquipoInicio" />
+        <activity android:name=".Inicio"></activity>
     </application>
 
 </manifest>
