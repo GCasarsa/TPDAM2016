@@ -33,7 +33,7 @@ public class VerEquiposActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_ver_equipos);
         listView = (ListView) findViewById(R.id.listaEquipos);
-        atras = (ImageView) findViewById(R.id.imageViewAtras);
+        atras = (ImageView) findViewById(R.id.ivVerEquiposAtras);
         buscar = (Button) findViewById(R.id.buttonAhora);
         listaEquipos = new ArrayList<>();
         Conexion.buscarEquipos(listaEquipos);
@@ -46,8 +46,6 @@ public class VerEquiposActivity extends AppCompatActivity {
                     adapter= new Adapter(getApplicationContext(), listaEquipos);
                     listView.setAdapter(adapter);
                 }
-
-
             }
         });
         atras.setOnClickListener(new View.OnClickListener() {

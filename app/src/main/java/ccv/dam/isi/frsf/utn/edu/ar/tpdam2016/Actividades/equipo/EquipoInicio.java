@@ -44,4 +44,5 @@ public class EquipoInicio extends FragmentActivity {
         mViewPager.setAdapter(adapterTabs);
 
     }
+
 }

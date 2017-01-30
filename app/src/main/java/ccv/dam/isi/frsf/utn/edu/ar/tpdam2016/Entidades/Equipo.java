@@ -11,6 +11,8 @@ public class Equipo {
     String ciudad;
     String pais;
     String foto;
+    Double latitud;
+    Double longitud;
 
     public Equipo(String id, String nombre, String escudo, String division) {
         this.id = id;
@@ -83,5 +85,21 @@ public class Equipo {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public Double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
     }
 }

@@ -8,12 +8,14 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoTabDetalle;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoTabUbicacion;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
 /**
  * Created by Gabriel on 29/01/2017.
  */
 public class AdapterTabs extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 2;
+
 
     public AdapterTabs(FragmentManager fragmentManager) {
         super(fragmentManager);

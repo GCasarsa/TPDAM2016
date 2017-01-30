@@ -151,5 +151,4 @@ public class Conexion {
         result.put("division",equipo.getDivision());
         return result;
     }
-
 }

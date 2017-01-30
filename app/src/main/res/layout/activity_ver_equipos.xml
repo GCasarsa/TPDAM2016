@@ -17,8 +17,8 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         >
         <ImageView
-            android:id="@+id/imageViewAtras"
-            android:src="@drawable/atras"
+            android:id="@+id/ivVerEquiposAtras"
+            android:src="@drawable/ic_arrow_back_white_24dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="start"
@@ -32,15 +32,23 @@
             android:textColor="@color/colorBlanco"
 
             />
-
         <ImageView
-            android:id="@+id/imageViewLupa"
-            android:src="@drawable/lupa"
+            android:id="@+id/ivVerEquiposBuscar"
+            android:src="@drawable/ic_search_white_24dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
             android:contentDescription="buscar" />
+        <ImageView
+            android:id="@+id/ivVerEquiposCompartir"
+            android:src="@drawable/ic_share_white_24dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:contentDescription="buscar" />
+
     </android.support.v7.widget.Toolbar>
     <LinearLayout
         android:orientation="vertical"
