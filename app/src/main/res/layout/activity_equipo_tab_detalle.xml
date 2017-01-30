@@ -41,10 +41,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Talleres de Córdoba"
+            android:text="Nombre de Equipo"
             android:layout_marginTop="10dp"
             android:textColor="@color/fuente"
             android:textSize="20dp"
             android:id="@+id/tvEquipoNombre" />
     </LinearLayout>
+
+    <ImageButton
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivEquipoFoto"
+        android:src="@drawable/formacion"/>
 </LinearLayout>

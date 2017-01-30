@@ -34,7 +34,7 @@
         android:layout_width="30sp"
         android:layout_height="30sp"
         android:id="@+id/ivVerEquiposDetalle"
-        android:src="@drawable/siguiente"
+        android:src="@drawable/ic_navigate_next_white_24dp"
         />
 
 </LinearLayout>

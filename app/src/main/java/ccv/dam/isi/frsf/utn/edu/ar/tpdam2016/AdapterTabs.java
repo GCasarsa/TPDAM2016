@@ -4,17 +4,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoTabDetalle;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoTabResultados;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoTabUbicacion;
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
 /**
  * Created by Gabriel on 29/01/2017.
  */
 public class AdapterTabs extends FragmentPagerAdapter {
-    private static int NUM_ITEMS = 2;
+    private static int NUM_ITEMS = 3;
 
 
     public AdapterTabs(FragmentManager fragmentManager) {
@@ -31,16 +30,15 @@ public class AdapterTabs extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0: // Fragment # 0 - This will show FirstFragment
-                return EquipoTabDetalle.newInstance(0, "Detalle");
-            case 1: // Fragment # 1 - This will show FirstFragment different title
-                return EquipoTabUbicacion.newInstance(1, "Page # 2");
+            case 0: return EquipoTabDetalle.newInstance(0, "Detalle");
+            case 1: return EquipoTabResultados.newInstance(1, "Resultados");
+            case 2: return EquipoTabUbicacion.newInstance(2, "Estadio");
 
             default:
                 return null;
         }
     }
-    String[] titulos = { "INFORMACIÓN", "UBICACIÓN"};
+    String[] titulos = { "INFORMACIÓN", "RESULTADOS", "UBICACIÓN"};
 
     // Returns the page title for the top indicator
     @Override
