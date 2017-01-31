@@ -13,6 +13,7 @@ public class Equipo {
     String foto;
     Double latitud;
     Double longitud;
+    String descripcionEstadio;
 
     public Equipo(String id, String nombre, String escudo, String division) {
         this.id = id;
@@ -21,7 +22,7 @@ public class Equipo {
         this.division = division;
     }
 
-    public Equipo(String id, String nombre, String escudo, String division, String ciudad, String pais, String foto) {
+    public Equipo(String id, String nombre, String escudo, String division, String ciudad, String pais, String foto, Double latitud, Double longitud, String descripcionEstadio) {
         this.id = id;
         this.nombre = nombre;
         this.escudo = escudo;
@@ -29,6 +30,9 @@ public class Equipo {
         this.ciudad = ciudad;
         this.pais = pais;
         this.foto = foto;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.descripcionEstadio = descripcionEstadio;
     }
 
     public String getId() {
@@ -101,5 +105,13 @@ public class Equipo {
 
     public void setLongitud(Double longitud) {
         this.longitud = longitud;
+    }
+
+    public String getDescripcionEstadio() {
+        return descripcionEstadio;
+    }
+
+    public void setDescripcionEstadio(String descripcionEstadio) {
+        this.descripcionEstadio = descripcionEstadio;
     }
 }

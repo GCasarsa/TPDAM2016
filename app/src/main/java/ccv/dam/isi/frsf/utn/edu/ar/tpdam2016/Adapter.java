@@ -55,23 +55,24 @@ public class Adapter extends ArrayAdapter<Equipo> {
         nombreDelEquipo.setText(getItem(position).getNombre().toString());
         division.setText(getItem(position).getDivision());
         if(getItem(position).getNombre().toString().equals("ALDOSIVI")) imageView.setImageResource(R.drawable.escudo_aldosivi);
-        else if(getItem(position).getNombre().toString().equals("ARSENAL")) imageView.setImageResource(R.drawable.escudo_arsenal);
+        else if(getItem(position).getNombre().toString().equals("ARSENAL DE SARANDÍ")) imageView.setImageResource(R.drawable.escudo_arsenal);
         else if(getItem(position).getNombre().toString().equals("BANFIELD")) imageView.setImageResource(R.drawable.escudo_banfield);
         else if(getItem(position).getNombre().toString().equals("BELGRANO")) imageView.setImageResource(R.drawable.escudo_belgrano);
-        else if(getItem(position).getNombre().toString().equals("BOCA")) imageView.setImageResource(R.drawable.escudo_boca);
-        else if(getItem(position).getNombre().toString().equals("CENTRAL")) imageView.setImageResource(R.drawable.escudo_central);
-        else if(getItem(position).getNombre().toString().equals("COLON")) imageView.setImageResource(R.drawable.escudo_colon);
-        else if(getItem(position).getNombre().toString().equals("DEFENSA")) imageView.setImageResource(R.drawable.escudo_defensa);
-        else if(getItem(position).getNombre().toString().equals("ESTUDIANTES")) imageView.setImageResource(R.drawable.escudo_estudiantes);
+        else if(getItem(position).getNombre().toString().equals("BOCA JUNIORS")) imageView.setImageResource(R.drawable.escudo_boca);
+        else if(getItem(position).getNombre().toString().equals("ROSARIO CENTRAL")) imageView.setImageResource(R.drawable.escudo_central);
+        else if(getItem(position).getNombre().toString().equals("COLON DE SANTA FE")) imageView.setImageResource(R.drawable.escudo_colon);
+        else if(getItem(position).getNombre().toString().equals("DEFENSA Y JUSTICIA")) imageView.setImageResource(R.drawable.escudo_defensa);
+        else if(getItem(position).getNombre().toString().equals("ESTUDIANTES DE LA PLATA")) imageView.setImageResource(R.drawable.escudo_estudiantes);
         else if(getItem(position).getNombre().toString().equals("GIMNASIA DE LA PLATA")) imageView.setImageResource(R.drawable.escudo_gimnasia);
         else if(getItem(position).getNombre().toString().equals("GODOY CRUZ")) imageView.setImageResource(R.drawable.escudo_godoy);
         else if(getItem(position).getNombre().toString().equals("HURACAN")) imageView.setImageResource(R.drawable.escudo_huracan);
         else if(getItem(position).getNombre().toString().equals("INDEPENDIENTE")) imageView.setImageResource(R.drawable.escudo_independiente);
         else if(getItem(position).getNombre().toString().equals("LANUS")) imageView.setImageResource(R.drawable.escudo_lanus);
-        else if(getItem(position).getNombre().toString().equals("NEWELLS")) imageView.setImageResource(R.drawable.escudo_newells);
-        else if(getItem(position).getNombre().toString().equals("RIVER")) imageView.setImageResource(R.drawable.escudo_river);
+        else if(getItem(position).getNombre().toString().equals("NEWELLS OLD BOYS")) imageView.setImageResource(R.drawable.escudo_newells);
+        else if(getItem(position).getNombre().toString().equals("RACING CLUB")) imageView.setImageResource(R.drawable.escudo_racing);
+        else if(getItem(position).getNombre().toString().equals("RIVER PLATE")) imageView.setImageResource(R.drawable.escudo_river);
         else if(getItem(position).getNombre().toString().equals("SAN LORENZO")) imageView.setImageResource(R.drawable.escudo_sanlorenzo);
-        else if(getItem(position).getNombre().toString().equals("UNION")) imageView.setImageResource(R.drawable.escudo_union);
+        else if(getItem(position).getNombre().toString().equals("UNION DE SANTA FE")) imageView.setImageResource(R.drawable.escudo_union);
         else if(getItem(position).getNombre().toString().equals("VELEZ")) imageView.setImageResource(R.drawable.escudo_velez);
 
 /*
