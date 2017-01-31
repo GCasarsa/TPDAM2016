@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 
 public class Conexion {
@@ -72,6 +73,28 @@ public class Conexion {
                 listaPartidos.add(partido);
                 System.out.println(listaPartidos.size());
             }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
+
+    public static void buscarJugadores(final ArrayList<Jugador> listaJugadores){
+        posicionBD = database.getReference("jugadores");
+        posicionBD.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+                Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(),(long)newPost.get("goles"), (long)newPost.get("Amarillas"),(long)newPost.get("Rojas"),(long)newPost.get("equipoID"));
+                listaJugadores.add(jugador);
+                System.out.println(listaJugadores.size());
+            }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
             @Override

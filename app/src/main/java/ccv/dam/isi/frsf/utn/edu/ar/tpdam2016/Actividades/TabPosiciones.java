@@ -6,6 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 
 /**
@@ -21,6 +25,11 @@ public class TabPosiciones extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.tab_posiciones, container, false);
+        ArrayList<Partido> listaPartidos = new ArrayList<Partido>();
+        ArrayList posicionesLista = new ArrayList();
+        //Conexion.buscarPartidos(listaPartidos);
+
+
 
         return rootView;
 
