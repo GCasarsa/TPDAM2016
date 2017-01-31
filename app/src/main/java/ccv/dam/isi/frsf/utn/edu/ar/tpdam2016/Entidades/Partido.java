@@ -4,6 +4,7 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
  * Created by Administrador on 18/01/2017.
  */
 public class Partido {
+    String idPartido;
     String imagenLocal;
     String equipoLocal;
     String resultadoLocal;
@@ -15,7 +16,8 @@ public class Partido {
     String fecha;
     String lugar;
 
-    public Partido (String equipoLocal, String equipoVisitante, String resultadoLocal, String resultadoVisitante, String arbitro, String dia, String fecha, String lugar){
+    public Partido (String idPartido, String equipoLocal, String equipoVisitante, String resultadoLocal, String resultadoVisitante, String arbitro, String dia, String fecha, String lugar){
+        this.idPartido = idPartido;
         this.equipoLocal = equipoLocal;
         this.resultadoLocal = resultadoLocal;
         this.resultadoVisitante = resultadoVisitante;
@@ -26,7 +28,13 @@ public class Partido {
         this.arbitro=arbitro;
     }
 
+    public String getIdPartido() {
+        return idPartido;
+    }
 
+    public void setIdPartido(String idPartido) {
+        this.idPartido = idPartido;
+    }
 
     public String getResultadoLocal() {
         return resultadoLocal;

@@ -35,7 +35,6 @@ public class AdapterTabs extends FragmentPagerAdapter {
             case 0: return EquipoTabDetalle.newInstance(0, "Detalle", equipoAPasar);
             case 1: return EquipoTabResultados.newInstance(1, "Resultados", equipoAPasar);
             case 2: return EquipoTabUbicacion.newInstance(2, "Estadio", equipoAPasar);
-
             default:
                 return null;
         }

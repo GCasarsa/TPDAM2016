@@ -24,7 +24,7 @@ public class AdapterResultado extends ArrayAdapter<Partido> {
 
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        View row = inflater.inflate(R.layout.layout_fila_partido, parent, false);
+        View row = inflater.inflate(R.layout.layout_fila_resultado, parent, false);
         TextView nombreLocal = (TextView) row.findViewById(R.id.tvEquiposResultadoNombreLocal);
         nombreLocal.setText(getItem(position).getEquipoLocal().toString());
         TextView nombreVisita = (TextView) row.findViewById(R.id.tvEquiposResultadoNombreVisitante);
@@ -32,9 +32,9 @@ public class AdapterResultado extends ArrayAdapter<Partido> {
         TextView golesLocal = (TextView) row.findViewById(R.id.tvEquiposResultadoGolesLocal);
         golesLocal.setText(getItem(position).getResultadoLocal().toString()+":");
         TextView golesVisitante = (TextView) row.findViewById(R.id.tvEquiposResultadoGolesVisitante);
-        golesVisitante.setText(getItem(position).getResultadoLocal().toString()+":");
+        golesVisitante.setText(getItem(position).getResultadoVisitante().toString()+":");
         TextView fecha = (TextView) row.findViewById(R.id.tvEquiposResultadoFecha);
-        fecha.setText("Fecha: nº "+getItem(position).getFecha().toString());
+        fecha.setText(getItem(position).getDia().toString());
 
         return(row);
     }

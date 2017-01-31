@@ -69,7 +69,7 @@ public class Conexion {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Partido partido = new Partido(newPost.get("equipoLocal").toString(),newPost.get("equipoVisitante").toString(), newPost.get("marcadorLocal").toString(),newPost.get("marcadorVisitante").toString(),newPost.get("arbitro").toString(),newPost.get("fechaCronologica").toString(),newPost.get("jornadaTorneo").toString(),newPost.get("estadio").toString());
+                Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
                 listaPartidos.add(partido);
                 System.out.println(listaPartidos.size());
             }
@@ -107,39 +107,17 @@ public class Conexion {
     }
 
     public static void buscarPartidosPorFecha(final ArrayList<Partido> listaPartidos, final int fecha){
-        posicionBD = database.getReference("partidos");
+        posicionBD = database.getReference("bd/partidos");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 //System.out.println("FECHA 1: " + fecha + " - FECHA 2: "+Integer.parseInt(newPost.get("jornadaTorneo").toString()));
-                if(Integer.parseInt(newPost.get("jornadaTorneo").toString())==fecha) {
-                    Partido partido = new Partido(newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("marcadorLocal").toString(), newPost.get("marcadorVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("fechaCronologica").toString(), newPost.get("jornadaTorneo").toString(), newPost.get("estadio").toString());
+                if(Integer.parseInt(newPost.get("fecha").toString())==fecha) {
+                    Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
                     listaPartidos.add(partido);
                 }
                 //System.out.println("PARTIDOS: " + listaPartidos.size());
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-    }
-
-    public static void buscarPartidosPorEquipo(final ArrayList<Partido> listaPartidos, final String nombre){
-        posicionBD = database.getReference("partidos");
-        posicionBD.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                if(newPost.get("equipoLocal").toString().equals(nombre) || newPost.get("equipoVisitante").toString().equals(nombre)) {
-                    Partido partido = new Partido(newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("marcadorLocal").toString(), newPost.get("marcadorVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("fechaCronologica").toString(), newPost.get("jornadaTorneo").toString(), newPost.get("estadio").toString());
-                    listaPartidos.add(partido);
-                }
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
@@ -195,6 +173,46 @@ public class Conexion {
         result.put("latitud",equipo.getLatitud());
         result.put("longitud",equipo.getLongitud());
         result.put("descripcion", equipo.getDescripcionEstadio().toUpperCase());
+        return result;
+    }
+
+    public static void cargarPartidos(){
+        posicionBD = database.getReference("bd");
+        ArrayList<Partido> listaPartidos = new ArrayList<>();
+        listaPartidos.add(new Partido("1","Aldosivi","Racing Club","1", "0", "Lunati","31/01/2017","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("2","River Plate","Gimnasia de la plata","3", "2", "Lunati","31/01/2017","1", "Monumental"));
+        listaPartidos.add(new Partido("3","Boca juniors","velez","0", "7", "Lunati","31/01/2017","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("4","Union de santa fe","estudiantes de la plata","4", "1", "Lunati","01/02/2017","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("5","colon de santa fe","independiente","2", "0", "Lunati","01/02/2017","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("6","defensa y justicia","san lorenzo","1", "3", "Lunati","01/02/2017","1", "Jose Maria Minella"));
+
+        listaPartidos.add(new Partido("7","independiente","Racing Club","1", "2", "Lunati","31/01/2017","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("8","River Plate","Gimnasia de la plata","3", "2", "Lunati","31/01/2017","2", "Monumental"));
+        listaPartidos.add(new Partido("9","estudiantes de la plata","velez","2", "4", "Lunati","31/01/2017","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("10","Union de santa fe","boca juniors","6", "3", "Lunati","01/02/2017","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("11","san lorenzo","Aldosivi","2", "0", "Lunati","01/02/2017","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("12","defensa y justicia","colon de santa fe","1", "3", "Lunati","01/02/2017","2", "Jose Maria Minella"));
+
+
+        for(int i = 0; i < listaPartidos.size(); i++){
+            Map<String, Object> postValues = toMap(listaPartidos.get((i)));
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/partidos/" + listaPartidos.get((i)).getIdPartido(), postValues);
+            posicionBD.updateChildren(childUpdates);
+        }
+    }
+
+    public static Map<String, Object> toMap(Partido partido) {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("id", partido.getIdPartido());
+        result.put("equipoLocal", partido.getEquipoLocal().toUpperCase());
+        result.put("resultadoLocal", partido.getResultadoLocal());
+        result.put("resultadoVisitante",partido.getResultadoVisitante());
+        result.put("equipoVisitante", partido.getEquipoVisitante().toUpperCase());
+        result.put("fecha", partido.getFecha());
+        result.put("dia",partido.getDia());
+        result.put("estadio",partido.getLugar().toUpperCase());
+        result.put("arbitro", partido.getArbitro().toUpperCase());
         return result;
     }
 }
