@@ -9,7 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.Map;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterPartido;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterResultado;
@@ -27,6 +34,9 @@ public class EquipoTabResultados  extends Fragment {
     ArrayList<Partido> listaPartidos;
     AdapterResultado adapter;
 
+    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private static DatabaseReference posicionBD;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +47,9 @@ public class EquipoTabResultados  extends Fragment {
         final View rootView = inflater.inflate(R.layout.activity_equipo_tab_resultados, container, false);
         listViewPartidos = (ListView) rootView.findViewById(R.id.lvEquipoResultado);
         listaPartidos = new ArrayList<>();
-        if(equipo!=null)
-        new BuscarPorFechaAsyncTask().execute(equipo.getNombre());
+
+        buscarPartidosPorEquipo(listaPartidos,equipo.getNombre());
+
 
         return rootView;
     }
@@ -53,30 +64,30 @@ public class EquipoTabResultados  extends Fragment {
         return fragmento;
     }
 
-
-    private class BuscarPorFechaAsyncTask  extends AsyncTask<String, String, String> {
-        ProgressDialog dialog = new ProgressDialog(getActivity());
-        @Override
-        protected void onPreExecute() {
-            dialog = ProgressDialog.show(getActivity(), "Recopilando partidos", "aguarde unos instantes...");
-            dialog.setCanceledOnTouchOutside(true);
-        }
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-            dialog.setMessage(String.valueOf(values[0]));
-        }
-        @Override
-        protected String doInBackground(String... fecha) {
-            Conexion.buscarPartidosPorEquipo(listaPartidos,equipo.getNombre());
-            return "";
-        }
-        @Override
-        protected void onPostExecute(String r) {
-            adapter = new AdapterResultado(getActivity(), listaPartidos);
-            listViewPartidos.setAdapter(adapter);
-            if (dialog.isShowing()) dialog.dismiss();
-
-        }
+    public void buscarPartidosPorEquipo(final ArrayList<Partido> listaPartidos, final String nombre){
+        posicionBD = database.getReference("bd/partidos");
+        posicionBD.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+                if(newPost.get("equipoLocal").toString().equals(nombre) || newPost.get("equipoVisitante").toString().equals(nombre)) {
+                    Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
+                    listaPartidos.add(partido);
+                    adapter = new AdapterResultado(getActivity(), listaPartidos);
+                    listViewPartidos.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
     }
+
+
 }

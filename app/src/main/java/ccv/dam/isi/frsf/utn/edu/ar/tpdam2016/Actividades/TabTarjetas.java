@@ -30,6 +30,7 @@ public class TabTarjetas extends Fragment {
             @Override
             public void onClick(View v) {
                 Conexion.cargarEquipos();
+                Conexion.cargarPartidos();
             }
         });
         return rootView;

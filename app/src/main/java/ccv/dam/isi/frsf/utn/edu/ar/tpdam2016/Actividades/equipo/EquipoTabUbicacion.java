@@ -27,11 +27,10 @@ public class EquipoTabUbicacion  extends Fragment implements OnMapReadyCallback 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.activity_equipo_tab_ubicacion, container, false);
-
         ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMapAsync(this);
-
         return rootView;
     }
+
 
     public static EquipoTabUbicacion newInstance(int pagina, String titulo, Equipo equipoRecibido) {
         EquipoTabUbicacion fragmento = new EquipoTabUbicacion();

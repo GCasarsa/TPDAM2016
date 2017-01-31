@@ -81,7 +81,8 @@ public class TabGoleadores extends Fragment{
 
                 for (k = i+1; k < listaJugadores.size(); k++)
                     if (listaJugadores.get(k).getGoles() > listaJugadores.get(k-1).getGoles() )
-                    { intercambiar (listaJugadores, i);
+                    {
+                        intercambiar (listaJugadores, i);
                     }
         }
         return listaJugadores;
