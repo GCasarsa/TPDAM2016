@@ -179,19 +179,19 @@ public class Conexion {
     public static void cargarPartidos(){
         posicionBD = database.getReference("bd");
         ArrayList<Partido> listaPartidos = new ArrayList<>();
-        listaPartidos.add(new Partido("1","Aldosivi","Racing Club","1", "0", "Lunati","31/01/2017","1", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("2","River Plate","Gimnasia de la plata","3", "2", "Lunati","31/01/2017","1", "Monumental"));
-        listaPartidos.add(new Partido("3","Boca juniors","velez","0", "7", "Lunati","31/01/2017","1", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("4","Union de santa fe","estudiantes de la plata","4", "1", "Lunati","01/02/2017","1", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("5","colon de santa fe","independiente","2", "0", "Lunati","01/02/2017","1", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("6","defensa y justicia","san lorenzo","1", "3", "Lunati","01/02/2017","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("1","Aldosivi","Racing Club","1", "0", "Lunati","31/01","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("2","River Plate","Gimnasia de la plata","3", "2", "Lunati","31/01","1", "Monumental"));
+        listaPartidos.add(new Partido("3","Boca juniors","velez","0", "7", "Lunati","31/01","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("4","Union de santa fe","estudiantes de la plata","4", "1", "Lunati","01/02","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("5","colon de santa fe","independiente","2", "0", "Lunati","01/02","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("6","defensa y justicia","san lorenzo","1", "3", "Lunati","01/02","1", "Jose Maria Minella"));
 
-        listaPartidos.add(new Partido("7","independiente","Racing Club","1", "2", "Lunati","31/01/2017","2", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("8","River Plate","Gimnasia de la plata","3", "2", "Lunati","31/01/2017","2", "Monumental"));
-        listaPartidos.add(new Partido("9","estudiantes de la plata","velez","2", "4", "Lunati","31/01/2017","2", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("10","Union de santa fe","boca juniors","6", "3", "Lunati","01/02/2017","2", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("11","san lorenzo","Aldosivi","2", "0", "Lunati","01/02/2017","2", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("12","defensa y justicia","colon de santa fe","1", "3", "Lunati","01/02/2017","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("7","independiente","Racing Club","1", "2", "Lunati","31/01","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("8","River Plate","Gimnasia de la plata","3", "2", "Lunati","31/01","2", "Monumental"));
+        listaPartidos.add(new Partido("9","estudiantes de la plata","velez","2", "4", "Lunati","31/01","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("10","Union de santa fe","boca juniors","6", "3", "Lunati","01/02","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("11","san lorenzo","Aldosivi","2", "0", "Lunati","01/02","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("12","defensa y justicia","colon de santa fe","1", "3", "Lunati","01/02","2", "Jose Maria Minella"));
 
 
         for(int i = 0; i < listaPartidos.size(); i++){

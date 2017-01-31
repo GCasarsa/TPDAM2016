@@ -3,44 +3,44 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoFecha"
-        android:paddingStart="10dp"
+        android:paddingStart="7dp"
         android:textColor="@color/fuente"
         android:text="23.01"
-        android:textSize="12sp"/>
+        android:textSize="11dp"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoNombreLocal"
-        android:paddingStart="30sp"
+        android:paddingStart="2dp"
         android:textColor="@color/fuente"
-        android:text="Racing Club"
-        android:textSize="12sp"/>
+        android:text="ESTUDIANTES DE LA PLATA"
+        android:textSize="11dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoGolesLocal"
-        android:paddingStart="20sp"
+        android:paddingStart="2dp"
         android:textColor="@color/fuente"
         android:textStyle="bold"
-        android:text="1:"
-        android:textSize="12sp"/>
+        android:text="10:"
+        android:textSize="11dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoGolesVisitante"
         android:textColor="@color/fuente"
         android:textStyle="bold"
-        android:text="2"
-        android:textSize="12sp"/>
+        android:text="20"
+        android:textSize="11dp"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoNombreVisitante"
-        android:paddingStart="20sp"
+        android:paddingStart="10dp"
         android:textColor="@color/fuente"
-        android:text="Independiente"
-        android:textSize="12sp"/>
+        android:text="ESTUDIANTES DE LA PLATA"
+        android:textSize="11dp"/>
 </LinearLayout>

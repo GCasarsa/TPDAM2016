@@ -121,7 +121,7 @@ public class TabFixture extends Fragment{
                 @Override
                 public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                     Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                    if (Integer.parseInt(newPost.get("jornadaTorneo").toString()) == fechaConsultada) {
+                    if (Integer.parseInt(newPost.get("fecha").toString()) == fechaConsultada) {
                         Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(),
                                 newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(),
                                 newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(),

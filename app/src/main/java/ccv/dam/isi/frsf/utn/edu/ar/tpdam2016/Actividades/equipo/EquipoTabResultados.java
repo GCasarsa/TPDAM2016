@@ -1,7 +1,5 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo;
 
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,9 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.Map;
 
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterPartido;
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterResultado;
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
