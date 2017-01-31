@@ -12,9 +12,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterPartido;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
@@ -25,6 +32,9 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
  * Created by Administrador on 18/01/2017.
  */
 public class TabFixture extends Fragment{
+
+    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private static DatabaseReference posicionBD;
 
     private ArrayAdapter<String> listAdapter1;
     ListView listaPartidos;
@@ -55,15 +65,15 @@ public class TabFixture extends Fragment{
 
         new BuscarPorFechaAsyncTask().execute(1);
 
+
         spinnerFechas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 //Creo y Ejecuto la tarea asincrónica que consulta los partidos de una fecha;
-                new BuscarPorFechaAsyncTask().execute(position+1);
+                new BuscarPorFechaAsyncTask().execute(position);
 
             }
-
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -95,33 +105,59 @@ public class TabFixture extends Fragment{
 
         }
 
-
-
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            dialog.setMessage(String.valueOf(values[0]));
         }
 
         @Override
         protected Integer doInBackground(Integer... fecha) {
 
+            final int fechaConsultada =  fecha[0]+1;
             partidos.clear();
-            int fechaConsultada = fecha[0];
-            Conexion.buscarPartidosPorFecha(partidos,fechaConsultada);
 
-            return 1;
+            posicionBD = database.getReference("bd/partidos");
+            posicionBD.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                    Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+                    if (Integer.parseInt(newPost.get("jornadaTorneo").toString()) == fechaConsultada) {
+                        Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(),
+                                newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(),
+                                newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(),
+                                newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
+                        partidos.add(partido);
+                    }
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+            return partidos.size();
 
         }
 
         @Override
         protected void onPostExecute(Integer r) {
+            if(dialog.isShowing()) dialog.dismiss();
             adapter.notifyDataSetChanged();
-            if (dialog.isShowing()) dialog.dismiss();
 
         }
     }
-
 
 
 
