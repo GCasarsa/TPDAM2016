@@ -58,13 +58,19 @@ public class TabFixture extends Fragment{
         spinnerFechas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 //Creo y Ejecuto la tarea asincrónica que consulta los partidos de una fecha;
                 new BuscarPorFechaAsyncTask().execute(position+1);
+
             }
+
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
+
         return rootView;
     }
 
@@ -81,27 +87,38 @@ public class TabFixture extends Fragment{
         public BuscarPorFechaAsyncTask(){
 
         }
+
         @Override
         protected void onPreExecute() {
             dialog = ProgressDialog.show(getActivity(), "Recopilando partidos", "aguarde unos instantes...");
             dialog.setCanceledOnTouchOutside(true);
+
         }
+
+
+
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             dialog.setMessage(String.valueOf(values[0]));
         }
+
         @Override
         protected Integer doInBackground(Integer... fecha) {
+
             partidos.clear();
             int fechaConsultada = fecha[0];
             Conexion.buscarPartidosPorFecha(partidos,fechaConsultada);
+
             return 1;
+
         }
-        @Override
+
+        //@Override
         protected void onPostExecute(Integer r) {
             adapter.notifyDataSetChanged();
             if (dialog.isShowing()) dialog.dismiss();
+
         }
     }
 

@@ -12,7 +12,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 public class SplashScreen extends AppCompatActivity {
 
 
-    private final int SPLASH_DISPLAY_LENGTH = 4000;
+    private final int SPLASH_DISPLAY_LENGTH = 5000;
 
     /** Called when the activity is first created. */
     @Override
