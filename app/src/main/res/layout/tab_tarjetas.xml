@@ -17,8 +17,9 @@
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tarjetas"
-            android:id="@+id/SwitchTarjetas" />
+            android:id="@+id/SwitchTarjetas"
+
+             />
 
     </LinearLayout>
 

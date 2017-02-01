@@ -46,106 +46,114 @@ public class TabTarjetas extends Fragment  {
             listaJugadores = new ArrayList<Jugador>();
             posicionBD = database.getReference("jugadores");
 
-            Switch botonSwitch = (Switch) rootView.findViewById(R.id.SwitchTarjetas);
+            final Switch botonSwitch = (Switch) rootView.findViewById(R.id.SwitchTarjetas);
 
             botonSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    // do something, the isChecked will be
-                    // true if the switch is in the On position
+
+                        if (botonSwitch.isChecked()){
+
+                        //TARJETAS ROJAS
+                        Query myTopPostsQuery = database.getReference("jugadores").orderByChild("Rojas");
+                        myTopPostsQuery.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+
+                                Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(), (long) newPost.get("goles"), (long) newPost.get("Amarillas"), (long) newPost.get("Rojas"), (long) newPost.get("equipoID"));
+                                listaJugadores.add(jugador);
+
+                                ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
+                                for (int i = listaJugadores.size() - 1; i >= 0; i--)
+                                    listaOrdenada.add(listaJugadores.get(i));
+
+                                ArrayList<String> tarjetas = new ArrayList<String>(); //Arreglo de string para mostrarlo en el ArrayAdapter
+
+                                for (int i = 0; i < listaOrdenada.size(); i++) {
+                                    if (listaOrdenada.get(i).getRojas() != 0)
+                                        tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getRojas() + " Tarjetas rojas"));
+                                }
+                                //listaOrdenada.clear();
+                                //listaJugadores.clear();
+                                listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
+                                adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
+                                listaTarjetas.setAdapter(adapter);
+                                //tarjetas.clear();
+                            }
+
+                            @Override
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                            }
+
+                            @Override
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                            }
+
+                            @Override
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+
                 }
-            });
-            if (botonSwitch.isChecked())
+                    else{
 
-            {
-                //TARJETAS ROJAS
-                Query myTopPostsQuery = database.getReference("jugadores").orderByChild("Rojas");
-                myTopPostsQuery.addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                        Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
 
-                        Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(), (long) newPost.get("goles"), (long) newPost.get("Amarillas"), (long) newPost.get("Rojas"), (long) newPost.get("equipoID"));
-                        listaJugadores.add(jugador);
 
-                        ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
-                        for (int i = listaJugadores.size() - 1; i >= 0; i--)
-                            listaOrdenada.add(listaJugadores.get(i));
+                        //TARJETAS AMARILLAS
+                        Query myTopPostsQuery = database.getReference("jugadores").orderByChild("Amarillas");
+                        myTopPostsQuery.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
 
-                        ArrayList<String> tarjetas = new ArrayList<String>(); //Arreglo de string para mostrarlo en el ArrayAdapter
+                                Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(), (long) newPost.get("goles"), (long) newPost.get("Amarillas"), (long) newPost.get("Rojas"), (long) newPost.get("equipoID"));
+                                listaJugadores.add(jugador);
 
-                        for (int i = 0; i < listaOrdenada.size(); i++) {
-                            if (listaOrdenada.get(i).getRojas() != 0)
-                                tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getRojas() + " Tarjetas rojas"));
-                        }
-                        listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
-                        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
-                        listaTarjetas.setAdapter(adapter);
-                    }
+                                ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
+                                for (int i = listaJugadores.size() - 1; i >= 0; i--)
+                                    listaOrdenada.add(listaJugadores.get(i));
 
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    }
+                                ArrayList<String> tarjetas = new ArrayList<String>(); //Arreglo de string para mostrarlo en el ArrayAdapter
 
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-                    }
+                                for (int i = 0; i < listaOrdenada.size(); i++) {
+                                    if (listaOrdenada.get(i).getAmarillas() != 0)
+                                        tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getAmarillas() + " Tarjetas amarillas"));
+                                }
+                                //listaOrdenada.clear();
+                                //listaJugadores.clear();
+                                listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
+                                adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
+                                listaTarjetas.setAdapter(adapter);
+                                //tarjetas.clear();
 
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                    }
+                            }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
-                return rootView;
+                            @Override
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                            }
+
+                            @Override
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                            }
+
+                            @Override
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+                        //return rootView;
+                }
             }
-            else
-            {
-                //TARJETAS AMARILLAS
-                Query myTopPostsQuery = database.getReference("jugadores").orderByChild("Amarillas");
-                myTopPostsQuery.addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                        Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
 
-                        Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(), (long) newPost.get("goles"), (long) newPost.get("Amarillas"), (long) newPost.get("Rojas"), (long) newPost.get("equipoID"));
-                        listaJugadores.add(jugador);
+            });
 
-                        ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
-                        for (int i = listaJugadores.size() - 1; i >= 0; i--)
-                            listaOrdenada.add(listaJugadores.get(i));
-
-                        ArrayList<String> tarjetas = new ArrayList<String>(); //Arreglo de string para mostrarlo en el ArrayAdapter
-
-                        for (int i = 0; i < listaOrdenada.size(); i++) {
-                            if (listaOrdenada.get(i).getAmarillas() != 0)
-                                tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getAmarillas() + " Tarjetas amarillas"));
-                        }
-                        listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
-                        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
-                        listaTarjetas.setAdapter(adapter);
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
-                return rootView;
+            return rootView;
             }
         }
-
-
-}
