@@ -18,6 +18,7 @@ public class Jugador {
         this.goles= goles;
         this.apellido = apellido;
         this.amarillas= amarillas;
+        this.rojas=rojas;
         this.idEquipo= idEquipo;
     }
 
