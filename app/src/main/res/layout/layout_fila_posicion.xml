@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="#"
+        android:id="@+id/POSnumeroOrden" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:id="@+id/POSimageView"
+        android:layout_weight="0.06" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="equipo"
+        android:id="@+id/POSnombreEquipo" />
+
+    <TextView
+        android:layout_width="33dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PTS"
+        android:layout_marginEnd="1dp"
+
+        android:id="@+id/POSpts" />
+
+    <TextView
+        android:layout_width="33dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PJ"
+        android:layout_marginEnd="1dp"
+        android:id="@+id/POSpj" />
+
+    <TextView
+        android:layout_width="33dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PG"
+        android:layout_marginEnd="1dp"
+        android:id="@+id/POSpg" />
+
+    <TextView
+        android:layout_width="33dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PE"
+        android:layout_marginEnd="1dp"
+        android:id="@+id/POSpe" />
+
+    <TextView
+        android:layout_width="33dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PP"
+        android:layout_marginEnd="1dp"
+        android:id="@+id/POSpp" />
+
+    <TextView
+        android:layout_width="33dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="GF"
+        android:layout_marginEnd="1dp"
+        android:id="@+id/POSgf" />
+
+    <TextView
+        android:layout_width="21dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="/c"
+        android:layout_marginEnd="0dp"
+        android:id="@+id/POSgc" />
+
+    <TextView
+        android:layout_width="21dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="DIF"
+        android:layout_marginEnd="1dp"
+        android:id="@+id/POSdif" />
+</LinearLayout>
