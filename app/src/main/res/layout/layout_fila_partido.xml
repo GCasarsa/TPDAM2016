@@ -38,15 +38,17 @@
             android:layout_marginLeft="2dp"
             android:layout_marginTop="8dp"
             android:textColor="@color/fuente"
+            android:gravity="end"
             android:text="GIMNASIA DE LA PLATA"
             android:textSize="11dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:id="@+id/textViewResultado"
             android:textColor="@color/fuente"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp"
             android:gravity="center"
             android:textStyle="bold"
             android:text="10:20"

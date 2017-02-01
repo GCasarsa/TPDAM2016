@@ -90,6 +90,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         else if (id == R.id.menuCargarDatos) {
             Conexion.cargarEquipos();
             Conexion.cargarPartidos();
+            Conexion.cargarFixture();
             return true;
         }
 
@@ -115,6 +116,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         } else if (id == R.id.menuCargarDatos) {
             Conexion.cargarEquipos();
             Conexion.cargarPartidos();
+            Conexion.cargarFixture();
             return true;
 
         }else if (id == R.id.menuOpcionContacto) {
