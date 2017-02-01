@@ -52,10 +52,9 @@ public class TabTarjetas extends Fragment  {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                         if (botonSwitch.isChecked()){
-
-                        //TARJETAS ROJAS
-                        Query myTopPostsQuery = database.getReference("jugadores").orderByChild("Rojas");
-                        myTopPostsQuery.addChildEventListener(new ChildEventListener() {
+                            //TARJETAS ROJAS
+                            Query myTopPostsQuery = database.getReference("jugadores").orderByChild("Rojas");
+                            myTopPostsQuery.addChildEventListener(new ChildEventListener() {
                             @Override
                             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
@@ -73,12 +72,11 @@ public class TabTarjetas extends Fragment  {
                                     if (listaOrdenada.get(i).getRojas() != 0)
                                         tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getRojas() + " Tarjetas rojas"));
                                 }
-                                //listaOrdenada.clear();
-                                //listaJugadores.clear();
+
                                 listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
                                 adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
                                 listaTarjetas.setAdapter(adapter);
-                                //tarjetas.clear();
+
                             }
 
                             @Override
@@ -97,15 +95,12 @@ public class TabTarjetas extends Fragment  {
                             public void onCancelled(DatabaseError databaseError) {
                             }
                         });
-
-                }
-                    else{
-
-
-
-                        //TARJETAS AMARILLAS
-                        Query myTopPostsQuery = database.getReference("jugadores").orderByChild("Amarillas");
-                        myTopPostsQuery.addChildEventListener(new ChildEventListener() {
+                            listaJugadores.clear();
+                        }
+                        else{
+                            //TARJETAS AMARILLAS
+                            Query myTopPostsQuery = database.getReference("jugadores").orderByChild("Amarillas");
+                            myTopPostsQuery.addChildEventListener(new ChildEventListener() {
                             @Override
                             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
@@ -123,13 +118,9 @@ public class TabTarjetas extends Fragment  {
                                     if (listaOrdenada.get(i).getAmarillas() != 0)
                                         tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getAmarillas() + " Tarjetas amarillas"));
                                 }
-                                //listaOrdenada.clear();
-                                //listaJugadores.clear();
                                 listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
                                 adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
                                 listaTarjetas.setAdapter(adapter);
-                                //tarjetas.clear();
-
                             }
 
                             @Override
@@ -148,8 +139,8 @@ public class TabTarjetas extends Fragment  {
                             public void onCancelled(DatabaseError databaseError) {
                             }
                         });
-                        //return rootView;
-                }
+                        listaJugadores.clear();
+                        }
             }
 
             });
