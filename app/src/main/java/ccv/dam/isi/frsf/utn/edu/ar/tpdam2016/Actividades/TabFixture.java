@@ -63,9 +63,6 @@ public class TabFixture extends Fragment{
         listAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFechas.setAdapter(listAdapter1);
 
-        new BuscarPorFechaAsyncTask().execute(1);
-
-
         spinnerFechas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -154,6 +151,7 @@ public class TabFixture extends Fragment{
         @Override
         protected void onPostExecute(Integer r) {
             if(dialog.isShowing()) dialog.dismiss();
+            adapter.notifyDataSetChanged();
         }
     }
 

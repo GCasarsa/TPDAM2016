@@ -16,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Map;
 
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterTabs;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Inicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;

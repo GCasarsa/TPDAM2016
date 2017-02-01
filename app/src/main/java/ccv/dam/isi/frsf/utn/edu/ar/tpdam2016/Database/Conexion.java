@@ -202,6 +202,27 @@ public class Conexion {
         }
     }
 
+    public static void cargarFixture(){
+        posicionBD = database.getReference("bd");
+        ArrayList<Partido> listaPartidos = new ArrayList<>();
+        listaPartidos.add(new Partido("1","Aldosivi","Racing Club","1", "0", "Lunati","31/01","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("2","Aldosivi","Independiente","1", "0", "Lunati","07/02","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("3","River plate","Aldosivi","1", "0", "Lunati","14/02","3", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("4","Aldosivi","estudiantes","1", "0", "Lunati","20/02","4", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("5","union de santa fe","Aldosivi","1", "0", "Lunati","28/02","5", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("6","Aldosivi","Colon de santa fe","1", "0", "Lunati","05/03","6", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("7","Boca Juniors","Aldosivi","1", "0", "Lunati","12/03","7", "Jose Maria Minella"));
+
+
+
+        for(int i = 0; i < listaPartidos.size(); i++){
+            Map<String, Object> postValues = toMap(listaPartidos.get((i)));
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/fixture/" + listaPartidos.get((i)).getIdPartido(), postValues);
+            posicionBD.updateChildren(childUpdates);
+        }
+    }
+
     public static Map<String, Object> toMap(Partido partido) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("id", partido.getIdPartido());
