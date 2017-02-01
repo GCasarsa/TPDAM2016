@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Map;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Inicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
@@ -25,11 +26,11 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
  */
 public class EquipoInicio extends FragmentActivity {
 
-    private static ImageView atras, escudo;
-    private static TextView titulo, nombre;
-    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private static DatabaseReference posicionBD;
-    private static Equipo equipo;
+        private static ImageView atras, escudo;
+        private static TextView titulo, nombre;
+        private static FirebaseDatabase database = FirebaseDatabase.getInstance();
+        private static DatabaseReference posicionBD;
+        private static Equipo equipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class EquipoInicio extends FragmentActivity {
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Inicio.class);
+                Intent intent = new Intent(getApplicationContext(), VerEquiposActivity.class);
                 startActivity(intent);
             }
         });

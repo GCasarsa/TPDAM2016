@@ -32,7 +32,13 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         TextView nombreVisita = (TextView) row.findViewById(R.id.textViewNombreVisita);
         nombreVisita.setText(getItem(position).getEquipoVisitante().toString());
         TextView resultado = (TextView) row.findViewById(R.id.textViewResultado);
-        resultado.setText(getItem(position).getResultadoLocal().toString()+" - "+getItem(position).getResultadoVisitante().toString());
+        if(getItem(position).getResultadoLocal().toString().equals("")){
+            resultado.setText("-");
+        }
+        else{
+            resultado.setText(getItem(position).getResultadoLocal().toString()+":"+getItem(position).getResultadoVisitante().toString());
+        }
+
         final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageViewEscudoLocal);
         verDetalle.setImageResource(R.drawable.editar);
         TextView arbitro = (TextView) row.findViewById(R.id.textViewArbitro);
@@ -40,7 +46,7 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         TextView dia = (TextView) row.findViewById(R.id.textViewDia);
         dia.setText("Día: " + getItem(position).getDia().toString());
         TextView lugar = (TextView) row.findViewById(R.id.textViewLugar);
-        lugar.setText("Estadio: " + getItem(position).getLugar().toString());
+        lugar.setText(getItem(position).getLugar().toString());
         escudoL = (ImageView) row.findViewById(R.id.imageViewEscudoLocal);
         agregarEscudoL(getItem(position).getEquipoLocal().toString());
         escudoV = (ImageView) row.findViewById(R.id.imageViewEscudoVisita);

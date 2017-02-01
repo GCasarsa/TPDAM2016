@@ -1,6 +1,7 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.partidos.PartidoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterPartido;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
@@ -75,6 +78,14 @@ public class TabFixture extends Fragment{
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+        listaPartidos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(),PartidoInicio.class);
+                intent.putExtra("partido", listaPartidos.getItemIdAtPosition(position)+1);
+                startActivity(intent);
             }
         });
 
