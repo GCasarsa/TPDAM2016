@@ -36,11 +36,11 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageViewEscudoLocal);
         verDetalle.setImageResource(R.drawable.editar);
         TextView arbitro = (TextView) row.findViewById(R.id.textViewArbitro);
-        arbitro.setText(getItem(position).getArbitro().toString());
+        arbitro.setText("Árbitro: " + getItem(position).getArbitro().toString());
         TextView dia = (TextView) row.findViewById(R.id.textViewDia);
-        dia.setText(getItem(position).getDia().toString());
+        dia.setText("Día: " + getItem(position).getDia().toString());
         TextView lugar = (TextView) row.findViewById(R.id.textViewLugar);
-        lugar.setText(getItem(position).getLugar().toString());
+        lugar.setText("Estadio: " + getItem(position).getLugar().toString());
         escudoL = (ImageView) row.findViewById(R.id.imageViewEscudoLocal);
         agregarEscudoL(getItem(position).getEquipoLocal().toString());
         escudoV = (ImageView) row.findViewById(R.id.imageViewEscudoVisita);
@@ -57,7 +57,7 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         else if(local.equals("ROSARIO CENTRAL")) escudoL.setImageResource(R.drawable.escudo_central);
         else if(local.equals("COLON DE SANTA FE")) escudoL.setImageResource(R.drawable.escudo_colon);
         else if(local.equals("DEFENSA Y JUSTICIA")) escudoL.setImageResource(R.drawable.escudo_defensa);
-        else if(local.equals("ESTUDIANTES DE LA PLATA")) escudoL.setImageResource(R.drawable.escudo_estudiantes);
+        else if(local.equals("ESTUDIANTES")) escudoL.setImageResource(R.drawable.escudo_estudiantes);
         else if(local.equals("GIMNASIA DE LA PLATA")) escudoL.setImageResource(R.drawable.escudo_gimnasia);
         else if(local.equals("GODOY CRUZ")) escudoL.setImageResource(R.drawable.escudo_godoy);
         else if(local.equals("HURACAN")) escudoL.setImageResource(R.drawable.escudo_huracan);
@@ -79,7 +79,7 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         else if(visitante.equals("ROSARIO CENTRAL")) escudoV.setImageResource(R.drawable.escudo_central);
         else if(visitante.equals("COLON DE SANTA FE")) escudoV.setImageResource(R.drawable.escudo_colon);
         else if(visitante.equals("DEFENSA Y JUSTICIA")) escudoV.setImageResource(R.drawable.escudo_defensa);
-        else if(visitante.equals("ESTUDIANTES DE LA PLATA")) escudoV.setImageResource(R.drawable.escudo_estudiantes);
+        else if(visitante.equals("ESTUDIANTES")) escudoV.setImageResource(R.drawable.escudo_estudiantes);
         else if(visitante.equals("GIMNASIA DE LA PLATA")) escudoV.setImageResource(R.drawable.escudo_gimnasia);
         else if(visitante.equals("GODOY CRUZ")) escudoV.setImageResource(R.drawable.escudo_godoy);
         else if(visitante.equals("HURACAN")) escudoV.setImageResource(R.drawable.escudo_huracan);

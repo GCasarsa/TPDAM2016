@@ -11,12 +11,12 @@
         android:text="23.01"
         android:textSize="11dp"/>
     <TextView
-        android:layout_width="145dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoNombreLocal"
         android:paddingStart="2dp"
         android:textColor="@color/fuente"
-        android:text="ESTUDIANTES DE LA PLATA"
+        android:text="GIMNASIA DE LA PLATA"
         android:textSize="11dp"/>
     <TextView
         android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
         android:text="10:"
         android:textSize="11dp"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoGolesVisitante"
         android:textColor="@color/fuente"
@@ -36,11 +36,11 @@
         android:text="20"
         android:textSize="11dp"/>
     <TextView
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoNombreVisitante"
         android:paddingStart="10dp"
         android:textColor="@color/fuente"
-        android:text="ESTUDIANTES DE LA PLATA"
+        android:text="GIMNASIA DE LA PLATA"
         android:textSize="11dp"/>
 </LinearLayout>

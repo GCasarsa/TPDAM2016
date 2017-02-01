@@ -141,7 +141,7 @@ public class Conexion {
         listaEquipos.add(new Equipo("6","Rosario Central","central.png","PRIMERA DIVISIÓN", "ROSARIO", "ARGENTINA", "",-32.913997, -60.674567 , "Estadio Gigante de Arroyito"));
         listaEquipos.add(new Equipo("7","Colon de Santa Fe","colon.png","PRIMERA DIVISIÓN", "SANTA FE", "ARGENTINA", "",-31.663217, -60.725394 , "Estadio Brigadier General Estanislao López"));
         listaEquipos.add(new Equipo("8","Defensa y Justicia","defensa.png","PRIMERA DIVISIÓN", "FLORENCIO VARELA", "ARGENTINA", "",-34.821753, -58.286511 , "Estadio Norberto Tomaghello"));
-        listaEquipos.add(new Equipo("9","Estudiantes de la Plata","estudiantes.png","PRIMERA DIVISIÓN", "LA PLATA", "ARGENTINA","",-34.91375, -57.989028,"Estadio Ciudad de la Plata"));
+        listaEquipos.add(new Equipo("9","ESTUDIANTES","estudiantes.png","PRIMERA DIVISIÓN", "LA PLATA", "ARGENTINA","",-34.91375, -57.989028,"Estadio Ciudad de la Plata"));
         listaEquipos.add(new Equipo("10","Gimnasia de la Plata","gimnasia.png","PRIMERA DIVISIÓN", "LA PLATA", "ARGENTINA","",-34.91375, -57.989028,"Estadio Ciudad de la Plata"));
         listaEquipos.add(new Equipo("11","Godoy Cruz","godoy.png","PRIMERA DIVISIÓN", "MENDOZA", "ARGENTINA", "",-32.889564, -68.879994 , "Estadio Malvinas Argentinas"));
         listaEquipos.add(new Equipo("12","Huracan","huracan.png","PRIMERA DIVISIÓN", "CAPITAL FEDERAL", "ARGENTINA", "", -34.643494, -58.396511, "Estadio Tomás Adolfo Ducó"));
@@ -182,13 +182,13 @@ public class Conexion {
         listaPartidos.add(new Partido("1","Aldosivi","Racing Club","1", "0", "Lunati","31/01","1", "Jose Maria Minella"));
         listaPartidos.add(new Partido("2","River Plate","Gimnasia de la plata","3", "2", "Lunati","31/01","1", "Monumental"));
         listaPartidos.add(new Partido("3","Boca juniors","velez","0", "7", "Lunati","31/01","1", "Jose Maria Minella"));
-        listaPartidos.add(new Partido("4","Union de santa fe","estudiantes de la plata","4", "1", "Lunati","01/02","1", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("4","Union de santa fe","ESTUDIANTES","4", "1", "Lunati","01/02","1", "Jose Maria Minella"));
         listaPartidos.add(new Partido("5","colon de santa fe","independiente","2", "0", "Lunati","01/02","1", "Jose Maria Minella"));
         listaPartidos.add(new Partido("6","defensa y justicia","san lorenzo","1", "3", "Lunati","01/02","1", "Jose Maria Minella"));
 
         listaPartidos.add(new Partido("7","independiente","Racing Club","1", "2", "Lunati","31/01","2", "Jose Maria Minella"));
         listaPartidos.add(new Partido("8","River Plate","Gimnasia de la plata","3", "2", "Lunati","31/01","2", "Monumental"));
-        listaPartidos.add(new Partido("9","estudiantes de la plata","velez","2", "4", "Lunati","31/01","2", "Jose Maria Minella"));
+        listaPartidos.add(new Partido("9","ESTUDIANTES","velez","2", "4", "Lunati","31/01","2", "Jose Maria Minella"));
         listaPartidos.add(new Partido("10","Union de santa fe","boca juniors","6", "3", "Lunati","01/02","2", "Jose Maria Minella"));
         listaPartidos.add(new Partido("11","san lorenzo","Aldosivi","2", "0", "Lunati","01/02","2", "Jose Maria Minella"));
         listaPartidos.add(new Partido("12","defensa y justicia","colon de santa fe","1", "3", "Lunati","01/02","2", "Jose Maria Minella"));

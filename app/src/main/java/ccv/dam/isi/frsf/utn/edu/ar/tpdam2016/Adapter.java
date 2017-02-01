@@ -62,7 +62,7 @@ public class Adapter extends ArrayAdapter<Equipo> {
         else if(getItem(position).getNombre().toString().equals("ROSARIO CENTRAL")) imageView.setImageResource(R.drawable.escudo_central);
         else if(getItem(position).getNombre().toString().equals("COLON DE SANTA FE")) imageView.setImageResource(R.drawable.escudo_colon);
         else if(getItem(position).getNombre().toString().equals("DEFENSA Y JUSTICIA")) imageView.setImageResource(R.drawable.escudo_defensa);
-        else if(getItem(position).getNombre().toString().equals("ESTUDIANTES DE LA PLATA")) imageView.setImageResource(R.drawable.escudo_estudiantes);
+        else if(getItem(position).getNombre().toString().equals("ESTUDIANTES")) imageView.setImageResource(R.drawable.escudo_estudiantes);
         else if(getItem(position).getNombre().toString().equals("GIMNASIA DE LA PLATA")) imageView.setImageResource(R.drawable.escudo_gimnasia);
         else if(getItem(position).getNombre().toString().equals("GODOY CRUZ")) imageView.setImageResource(R.drawable.escudo_godoy);
         else if(getItem(position).getNombre().toString().equals("HURACAN")) imageView.setImageResource(R.drawable.escudo_huracan);

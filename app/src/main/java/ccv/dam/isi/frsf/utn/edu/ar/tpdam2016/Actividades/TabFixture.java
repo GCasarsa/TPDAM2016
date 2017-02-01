@@ -127,8 +127,8 @@ public class TabFixture extends Fragment{
                                 newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(),
                                 newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
                         partidos.add(partido);
+                        adapter.notifyDataSetChanged();
                     }
-
                 }
 
                 @Override
@@ -154,8 +154,6 @@ public class TabFixture extends Fragment{
         @Override
         protected void onPostExecute(Integer r) {
             if(dialog.isShowing()) dialog.dismiss();
-            adapter.notifyDataSetChanged();
-
         }
     }
 

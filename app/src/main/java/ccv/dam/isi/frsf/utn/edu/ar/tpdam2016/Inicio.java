@@ -82,6 +82,16 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             startActivity(intent);
             return true;
         }
+        if (id == R.id.menuOpcionEquipos) {
+            Intent intent = new Intent(this, VerEquiposActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id == R.id.menuCargarDatos) {
+            Conexion.cargarEquipos();
+            Conexion.cargarPartidos();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -94,16 +104,20 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
         if (id == R.id.menuOpcionInicio) {
             // Handle the camera action
-        } else if (id == R.id.menuOpcionCompetencias) {
-
-        } else if (id == R.id.menuOpcionEquipos) {
+        }
+        else if (id == R.id.menuOpcionEquipos) {
             Intent intent = new Intent(this, VerEquiposActivity.class);
             startActivity(intent);
             return true;
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.menuOpcionContacto) {
+        } else if (id == R.id.menuCargarDatos) {
+            Conexion.cargarEquipos();
+            Conexion.cargarPartidos();
+            return true;
+
+        }else if (id == R.id.menuOpcionContacto) {
 
         }
 

@@ -103,7 +103,7 @@ public class EquipoInicio extends FragmentActivity {
         else if(equipo.getNombre().equals("ROSARIO CENTRAL")) escudo.setImageResource(R.drawable.escudo_central);
         else if(equipo.getNombre().equals("COLON DE SANTA FE")) escudo.setImageResource(R.drawable.escudo_colon);
         else if(equipo.getNombre().equals("DEFENSA Y JUSTICIA")) escudo.setImageResource(R.drawable.escudo_defensa);
-        else if(equipo.getNombre().equals("ESTUDIANTES DE LA PLATA")) escudo.setImageResource(R.drawable.escudo_estudiantes);
+        else if(equipo.getNombre().equals("ESTUDIANTES")) escudo.setImageResource(R.drawable.escudo_estudiantes);
         else if(equipo.getNombre().equals("GIMNASIA DE LA PLATA")) escudo.setImageResource(R.drawable.escudo_gimnasia);
         else if(equipo.getNombre().equals("GODOY CRUZ")) escudo.setImageResource(R.drawable.escudo_godoy);
         else if(equipo.getNombre().equals("HURACAN")) escudo.setImageResource(R.drawable.escudo_huracan);
