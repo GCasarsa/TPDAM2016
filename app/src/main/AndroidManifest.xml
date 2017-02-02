@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ccv.dam.isi.frsf.utn.edu.ar.tpdam2016">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -22,6 +24,7 @@
         <activity android:name=".Actividades.VerEquiposActivity" />
         <activity android:name=".Actividades.equipo.EquipoInicio" />
         <activity android:name=".Actividades.partidos.PartidoInicio" />
+        <activity android:name=".Actividades.SettingsActivity" />
         <activity android:name=".Inicio" />
     </application>
 

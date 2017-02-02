@@ -1,7 +1,9 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +50,12 @@ public class EquipoTabUbicacion  extends Fragment implements OnMapReadyCallback 
         mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(equipo.getLatitud(), equipo.getLongitud()),16));
         mapa.getUiSettings().setZoomControlsEnabled(true);
         mapa.getUiSettings().setCompassEnabled(true);
-
+        if(ActivityCompat.checkSelfPermission(getActivity(),android.Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},9999);
+            mapa.setMyLocationEnabled(true);
+            return;
+        }
+        mapa.setMyLocationEnabled(true);
     }
 
 }
