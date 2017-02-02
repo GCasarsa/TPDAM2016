@@ -23,6 +23,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Vector;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterGoleador;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
@@ -35,6 +36,7 @@ public class TabGoleadores extends Fragment{
     private static DatabaseReference posicionBD;
     ListView listaGoleadores;
     ArrayAdapter adapter;
+    AdapterGoleador adapterGoleador;
     ArrayList<Jugador> listaJugadores;
 
     @Override
@@ -57,7 +59,7 @@ public class TabGoleadores extends Fragment{
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
 
-                Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(),(long)newPost.get("goles"), (long)newPost.get("Amarillas"),(long)newPost.get("Rojas"),(long)newPost.get("equipoID"));
+                Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(),(long)newPost.get("goles"), (long)newPost.get("Amarillas"),(long)newPost.get("Rojas"),newPost.get("equipoID").toString());
                 listaJugadores.add(jugador);
 
                 ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
@@ -71,8 +73,11 @@ public class TabGoleadores extends Fragment{
                         goleadores.add(listaOrdenada.get(i).getApellido()+" - "+(listaOrdenada.get(i)).getGoles()+" goles");
 
                 listaGoleadores = (ListView)  rootView.findViewById(R.id.listaGoleadores);
-                adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1 , android.R.id.text1, goleadores);
-                listaGoleadores.setAdapter( adapter );
+                //adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1 , android.R.id.text1, goleadores);
+                adapterGoleador = new AdapterGoleador(getActivity(),listaOrdenada);
+                //listaGoleadores.setAdapter( adapter );
+                listaGoleadores.setAdapter(adapterGoleador);
+
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}

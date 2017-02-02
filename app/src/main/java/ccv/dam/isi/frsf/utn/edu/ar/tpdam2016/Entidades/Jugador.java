@@ -4,8 +4,9 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
  * Created by Gabriel on 16/01/2017.
  */
 public class Jugador {
-    String nombre, apellido, posicion;
-    long edad, goles, amarillas, rojas, idEquipo;
+    String nombre, apellido, posicion,equipo;
+    long edad, goles, amarillas, rojas;
+
 
     public Jugador(String nombre, String apellido, String posicion, long edad) {
         this.nombre = nombre;
@@ -14,24 +15,24 @@ public class Jugador {
         this.edad = edad;
     }
 
-    public Jugador(String apellido, long goles, long amarillas, long rojas, long idEquipo) {
+    public Jugador(String apellido, long goles, long amarillas, long rojas, String equipo) {
         this.goles= goles;
         this.apellido = apellido;
         this.amarillas= amarillas;
         this.rojas=rojas;
-        this.idEquipo= idEquipo;
+        this.equipo= equipo;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public long getIdEquipo() {
-        return idEquipo;
+    public String getEquipo() {
+        return equipo;
     }
 
-    public void setIdEquipo(int idEquipo) {
-        this.idEquipo = idEquipo;
+    public void setEquipo(String idEquipo) {
+        this.equipo = idEquipo;
     }
 
     public long getGoles() {
