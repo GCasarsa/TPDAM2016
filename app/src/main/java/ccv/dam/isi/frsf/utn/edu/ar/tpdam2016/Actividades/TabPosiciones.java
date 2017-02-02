@@ -97,6 +97,7 @@ public class TabPosiciones extends Fragment {
                         listaOrdenada.add(posiciones.get(i));
                         listaOrdenada.get(aux2).setPosicion(""+aux2);
                         aux2++;
+                        //System.out.println("POSSSS: "+ listaOrdenada.get(aux2).getPosicion());
                     }
 
 
