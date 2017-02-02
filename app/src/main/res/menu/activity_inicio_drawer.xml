@@ -14,24 +14,25 @@
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Preferencias" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Administrador">
+            <menu>
+                <item
+                    android:id="@+id/menuCargarDatos"
+                    android:icon="@drawable/ic_menu_gallery"
+                    android:title="Cargar Datos" />
+            </menu>
+        </item>
     </group>
 
     <item android:title="Equipos Favoritos">
-
-    </item>
-
-    <item android:title="Communicate">
         <menu>
-            <item
-                android:id="@+id/menuCargarDatos"
-                android:icon="@drawable/ic_menu_gallery"
-                android:title="Cargar Datos" />
-            <item
-                android:id="@+id/menuOpcionContacto"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Contacto" />
+
         </menu>
     </item>
+
 
 </menu>

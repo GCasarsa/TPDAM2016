@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -53,6 +54,7 @@ public class EquipoInicio extends FragmentActivity {
         fav = (CheckBox) findViewById(R.id.checkBoxFav);
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
+        pref.edit().clear();
 
         atras.setOnClickListener(new View.OnClickListener() {
             @Override

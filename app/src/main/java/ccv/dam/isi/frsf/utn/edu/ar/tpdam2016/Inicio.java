@@ -1,6 +1,8 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
@@ -12,6 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.SettingsActivity;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabFixture;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabGoleadores;
@@ -22,12 +27,22 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 
 public class Inicio extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         FragmentTabHost tabHost;
+        SharedPreferences pref;
+
+
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        ArrayList<String> preferencias = new ArrayList<>();
+        for(int i = 1; i <=20; i++){
+            if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
+        }
 
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         tabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
@@ -80,16 +95,18 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             Intent intent = new Intent(this, VerEquiposActivity.class);
             startActivity(intent);
             return true;
+
         } else if (id == R.id.nav_manage) {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
+
         } else if (id == R.id.menuCargarDatos) {
             Conexion.cargarEquipos();
             Conexion.cargarPartidos();
             Conexion.cargarFixture();
             return true;
-        }else if (id == R.id.menuOpcionContacto) {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
