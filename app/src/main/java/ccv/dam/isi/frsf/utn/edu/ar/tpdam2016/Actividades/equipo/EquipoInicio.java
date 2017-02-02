@@ -1,10 +1,14 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +35,8 @@ public class EquipoInicio extends FragmentActivity {
         private static FirebaseDatabase database = FirebaseDatabase.getInstance();
         private static DatabaseReference posicionBD;
         private static Equipo equipo;
+        private static CheckBox fav;
+        SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,9 @@ public class EquipoInicio extends FragmentActivity {
         nombre = (TextView) findViewById(R.id.tvEquipoNombre);
         titulo = (TextView) findViewById(R.id.tvEquipoTitulo);
         atras = (ImageView) findViewById(R.id.ivEquipoAtras);
+        fav = (CheckBox) findViewById(R.id.checkBoxFav);
+
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
 
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +62,29 @@ public class EquipoInicio extends FragmentActivity {
             }
         });
 
+        fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked) {
+
+                    SharedPreferences.Editor edit = pref.edit();
+
+                    edit.putBoolean(equipo.getId(), true);
+
+                    edit.commit();
+
+                }
+                else {
+                    SharedPreferences.Editor edit = pref.edit();
+
+                    edit.putBoolean(equipo.getId(), false);
+
+                    edit.commit();
+                }
+            }
+        });
     }
 
     public void buscarEquipo(final String idEquipo){
@@ -79,6 +111,11 @@ public class EquipoInicio extends FragmentActivity {
                     ViewPager mViewPager;
 
                     adapterTabs = new AdapterTabs(getSupportFragmentManager(), equipo);
+
+                    // Obtengo las preferencias correspondientes a un equipo para ver si fue marcado como favorito
+                    Boolean esFavorito = pref.getBoolean(equipo.getId(),false);
+                    fav.setChecked(esFavorito);
+
                     mViewPager = (ViewPager) findViewById(R.id.pager);
                     mViewPager.setAdapter(adapterTabs);
                 }
