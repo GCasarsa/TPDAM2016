@@ -21,26 +21,6 @@ public class Conexion {
     public Conexion(){
     }
 
-    public static void buscarEquipos(final ArrayList<Equipo> listaEquipos){
-        posicionBD = database.getReference("bd/equipos");
-        posicionBD.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
-                listaEquipos.add(equipo);
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-    }
-
     public static void buscarEquipo(final String idEquipo){
         posicionBD = database.getReference("bd/equipos");
         posicionBD.addChildEventListener(new ChildEventListener() {
@@ -202,6 +182,7 @@ public class Conexion {
         for(int i = 0; i < listaPartidos.size(); i++){
             Map<String, Object> postValues = toMap(listaPartidos.get((i)));
             Map<String, Object> childUpdates = new HashMap<>();
+            //childUpdates.put("/fixture/" +listaPartidos.get(i).getFecha() + "/" + listaPartidos.get((i)).getIdPartido(), postValues);
             childUpdates.put("/partidos/" + listaPartidos.get((i)).getIdPartido(), postValues);
             posicionBD.updateChildren(childUpdates);
         }

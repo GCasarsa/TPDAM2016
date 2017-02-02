@@ -30,7 +30,6 @@
             android:layout_gravity="center"
             android:text="EQUIPOS"
             android:textColor="@color/colorBlanco"
-
             />
         <ImageView
             android:id="@+id/ivVerEquiposBuscar"
@@ -48,24 +47,16 @@
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
             android:contentDescription="buscar" />
-
     </android.support.v7.widget.Toolbar>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/buttonAhora"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Buscar Equipos" />
-
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/listaEquipos"
+            android:layout_marginTop="20dp"
             />
     </LinearLayout>
 </LinearLayout>
