@@ -17,6 +17,10 @@
             android:title="Tools" />
     </group>
 
+    <item android:title="Equipos Favoritos">
+
+    </item>
+
     <item android:title="Communicate">
         <menu>
             <item
