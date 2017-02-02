@@ -38,8 +38,8 @@ public class TabPosiciones extends Fragment {
 
     ListView lvPosiciones;
     AdapterPosicion adapterPos;
-    ArrayList<FilaPosicion> filasPosiciones;
     ArrayList<FilaPosicion> posiciones;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,9 +58,7 @@ public class TabPosiciones extends Fragment {
             adapterPos = new AdapterPosicion(getActivity(), posiciones);
             lvPosiciones.setAdapter(adapterPos);
 
-        //fila_Posicion creada para el scroll horizontal de la tabla Final
-        FilaPosicion filaTitulo = new FilaPosicion("POSICION    ","Pts ", " J ","G ","E ", "P ", "Gf/", "c", "D", "#");
-        posiciones.add(filaTitulo);
+
 
         //partidos.clear();
 
@@ -75,13 +73,32 @@ public class TabPosiciones extends Fragment {
                                 newPost.get("PE").toString(), newPost.get("PP").toString(),
                                 newPost.get("GF").toString(), newPost.get("GC").toString(), newPost.get("DIF").toString(), snapshot.getRef().getKey());
                         posiciones.add(filaPosicion);
+                    FilaPosicion aux;
+                    for(int i=0;i<posiciones.size()-1;i++)
+                        for(int j=i+1;j<posiciones.size();j++)
+                            if((posiciones.get(i).getPts().equals(posiciones.get(j).getPts())&&(Integer.parseInt(posiciones.get(i).getDif())<Integer.parseInt(posiciones.get(i).getDif())))){
+                                //intercambiar
+                                aux=posiciones.get(i);
+                                posiciones.add(i,posiciones.get(j));
+                                posiciones.add(j,aux);
 
-                    //ArrayList<FilaPosicion> listaOrdenada = new ArrayList<FilaPosicion>();
-                    //for(int i=posiciones.size()-1;i>=0;i--)
-                    //    listaOrdenada.add(listaOrdenada.get(i));
+                            }
 
-                    //adapterPos = new AdapterPosicion(getActivity(), listaOrdenada);
-                    //lvPosiciones.setAdapter(adapterPos);
+
+
+                    ArrayList<FilaPosicion> listaOrdenada = new ArrayList<FilaPosicion>();
+
+                    //fila_Posicion creada para el scroll horizontal de la tabla Final
+                    FilaPosicion filaTitulo = new FilaPosicion("POSICION    ","Pts ", " J ","G ","E ", "P ", "Gf/", "c", "D", "#");
+                    listaOrdenada.add(filaTitulo);
+
+                    for(int i=posiciones.size()-1;i>=0;i--)
+                        listaOrdenada.add(posiciones.get(i));
+
+
+
+                    adapterPos = new AdapterPosicion(getActivity(), listaOrdenada);
+                    lvPosiciones.setAdapter(adapterPos);
 
                         adapterPos.notifyDataSetChanged();
 
