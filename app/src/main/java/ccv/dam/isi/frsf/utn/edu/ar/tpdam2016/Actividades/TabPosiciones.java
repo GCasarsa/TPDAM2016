@@ -92,8 +92,12 @@ public class TabPosiciones extends Fragment {
                     FilaPosicion filaTitulo = new FilaPosicion("POSICION    ","Pts ", " J ","G ","E ", "P ", "Gf/", "c", "D", "#");
                     listaOrdenada.add(filaTitulo);
 
-                    for(int i=posiciones.size()-1;i>=0;i--)
+                    int aux2=1;
+                    for(int i=posiciones.size()-1;i>=0;i--) {
                         listaOrdenada.add(posiciones.get(i));
+                        listaOrdenada.get(aux2).setPosicion(""+aux2);
+                        aux2++;
+                    }
 
 
 
