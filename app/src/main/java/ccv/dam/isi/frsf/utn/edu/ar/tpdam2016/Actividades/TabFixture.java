@@ -21,28 +21,22 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.partidos.PartidoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterPartido;
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 
-/**
- * Created by Administrador on 18/01/2017.
- */
 public class TabFixture extends Fragment{
 
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static DatabaseReference posicionBD;
 
-    private ArrayAdapter<String> listAdapter1;
     ListView listaPartidos;
     AdapterPartido adapter;
     ArrayList<Partido> partidos;
+    ProgressDialog progressDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +55,7 @@ public class TabFixture extends Fragment{
         final Spinner spinnerFechas = (Spinner) rootView.findViewById(R.id.spinnerFechas);
         final String[] fechas = new String[]{"1", "2", "3", "4", "5", "6"};
         ArrayList<String> arregloFechas = new ArrayList<>();
+        ArrayAdapter<String> listAdapter1;
         arregloFechas.addAll(Arrays.asList(fechas));
         listAdapter1 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arregloFechas);
         listAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,7 +64,6 @@ public class TabFixture extends Fragment{
         spinnerFechas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 //Creo y Ejecuto la tarea asincrónica que consulta los partidos de una fecha;
                 new BuscarPorFechaAsyncTask().execute(position);
 
@@ -88,7 +82,6 @@ public class TabFixture extends Fragment{
                 startActivity(intent);
             }
         });
-
         return rootView;
     }
 
@@ -100,30 +93,19 @@ public class TabFixture extends Fragment{
 
     private class BuscarPorFechaAsyncTask extends AsyncTask<Integer, Integer, Integer> {
 
-        ProgressDialog dialog = new ProgressDialog(getActivity());
-
-        public BuscarPorFechaAsyncTask(){
-
-        }
 
         @Override
         protected void onPreExecute() {
-            dialog = ProgressDialog.show(getActivity(), "Recopilando partidos", "aguarde unos instantes...");
-            dialog.setCanceledOnTouchOutside(true);
-
+            progressDialog = ProgressDialog.show(getActivity(), "Recopilando partidos", "aguarde unos instantes...");
         }
-
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
         }
-
         @Override
         protected Integer doInBackground(Integer... fecha) {
-
             final int fechaConsultada =  fecha[0]+1;
             partidos.clear();
-
             posicionBD = database.getReference("bd/partidos");
             posicionBD.addChildEventListener(new ChildEventListener() {
                 @Override
@@ -136,32 +118,22 @@ public class TabFixture extends Fragment{
                                 newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
                         partidos.add(partido);
                         adapter.notifyDataSetChanged();
+                        progressDialog.dismiss();
                     }
                 }
-
                 @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                }
-
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
                 @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-                }
-
+                public void onChildRemoved(DataSnapshot dataSnapshot) {}
                 @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                }
-
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
+                public void onCancelled(DatabaseError databaseError) {}
             });
             return partidos.size();
-
         }
-
         @Override
         protected void onPostExecute(Integer r) {
-            if(dialog.isShowing()) dialog.dismiss();
             adapter.notifyDataSetChanged();
         }
     }

@@ -7,17 +7,10 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
-
-
-import java.util.ArrayList;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.SettingsActivity;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabFixture;
@@ -26,15 +19,15 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabPosiciones;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabTarjetas;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
 public class Inicio extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FragmentTabHost tabHost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        FragmentTabHost tabHost;
 
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         tabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
@@ -46,7 +39,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
                 TabPosiciones.class, null);
         tabHost.addTab(tabHost.newTabSpec("tab_tarjetas").setIndicator("TARJETAS"),
                 TabTarjetas.class, null);
-        //tabHost.canScrollHorizontally(0);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -75,29 +67,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.menuOpcionEquipos) {
-            Intent intent = new Intent(this, VerEquiposActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.menuOpcionEquipos) {
-            Intent intent = new Intent(this, VerEquiposActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.menuCargarDatos) {
-            Conexion.cargarEquipos();
-            Conexion.cargarPartidos();
-            Conexion.cargarFixture();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -111,20 +80,16 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             Intent intent = new Intent(this, VerEquiposActivity.class);
             startActivity(intent);
             return true;
-
         } else if (id == R.id.nav_manage) {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
-
         } else if (id == R.id.menuCargarDatos) {
             Conexion.cargarEquipos();
             Conexion.cargarPartidos();
             Conexion.cargarFixture();
             return true;
-
         }else if (id == R.id.menuOpcionContacto) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

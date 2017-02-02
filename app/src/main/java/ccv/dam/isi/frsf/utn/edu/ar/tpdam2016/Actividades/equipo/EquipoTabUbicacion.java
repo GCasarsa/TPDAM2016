@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +33,20 @@ public class EquipoTabUbicacion  extends Fragment implements OnMapReadyCallback 
     private static Equipo equipo;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.activity_equipo_tab_ubicacion, container, false);
-        ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMapAsync(this);
-        return rootView;
+
+        try{
+            final View rootView = inflater.inflate(R.layout.activity_equipo_tab_ubicacion, container, false);
+            ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMapAsync(this);
+            return rootView;
+        }
+        catch(InflateException e){
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
     public static EquipoTabUbicacion newInstance(int pagina, String titulo, Equipo equipoRecibido) {

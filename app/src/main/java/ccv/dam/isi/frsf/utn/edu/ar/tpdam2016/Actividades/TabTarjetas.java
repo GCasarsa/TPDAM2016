@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
@@ -43,7 +42,7 @@ public class TabTarjetas extends Fragment  {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             final View rootView = inflater.inflate(R.layout.tab_tarjetas, container, false);
-            listaJugadores = new ArrayList<Jugador>();
+            listaJugadores = new ArrayList<>();
             posicionBD = database.getReference("jugadores");
 
             final Switch botonSwitch = (Switch) rootView.findViewById(R.id.SwitchTarjetas);
