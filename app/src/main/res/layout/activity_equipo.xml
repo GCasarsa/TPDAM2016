@@ -89,6 +89,12 @@
             android:textColor="@color/fuente"
             android:textSize="20dp"
             android:id="@+id/tvEquipoNombre" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxFav"
+            android:checked="false" />
     </LinearLayout>
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
