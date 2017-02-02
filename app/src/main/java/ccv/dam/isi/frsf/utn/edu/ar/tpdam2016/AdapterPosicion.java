@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.FilaPosicion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 
@@ -37,8 +38,6 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
         pj.setText(getItem(position).getPj());
         TextView pg = (TextView) row.findViewById(R.id.POSpg);
         pg.setText(getItem(position).getPg());
-        final ImageView escudo =(ImageView) row.findViewById(R.id.POSimageView);
-        escudo.setImageResource(R.drawable.escudo_colon);
         TextView pp = (TextView) row.findViewById(R.id.POSpp);
         pp.setText(getItem(position).getPp().toString());
         TextView pe = (TextView) row.findViewById(R.id.POSpe);
@@ -51,6 +50,32 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
         dif.setText(getItem(position).getDif());
         TextView pts = (TextView) row.findViewById(R.id.POSpts);
         pts.setText(getItem(position).getPts());
+        final ImageView escudo =(ImageView) row.findViewById(R.id.POSimageView);
+        //escudo.setImageResource(R.drawable.escudo_colon);
+
+
+        if(getItem(position).getEquipo().equals("aldosivi")) escudo.setImageResource(R.drawable.escudo_aldosivi);
+        else if(getItem(position).getEquipo().equals("arsenal")) escudo.setImageResource(R.drawable.escudo_arsenal);
+        else if(getItem(position).getEquipo().equals("bandfield")) escudo.setImageResource(R.drawable.escudo_banfield);
+        else if(getItem(position).getEquipo().equals("belgrano")) escudo.setImageResource(R.drawable.escudo_belgrano);
+        else if(getItem(position).getEquipo().equals("boca")) escudo.setImageResource(R.drawable.escudo_boca);
+        else if(getItem(position).getEquipo().equals("central")) escudo.setImageResource(R.drawable.escudo_central);
+        else if(getItem(position).getEquipo().equals("colon")) escudo.setImageResource(R.drawable.escudo_colon);
+        else if(getItem(position).getEquipo().equals("defensa y justicia")) escudo.setImageResource(R.drawable.escudo_defensa);
+        else if(getItem(position).getEquipo().equals("estudiantes")) escudo.setImageResource(R.drawable.escudo_estudiantes);
+        else if(getItem(position).getEquipo().equals("gimnasia")) escudo.setImageResource(R.drawable.escudo_gimnasia);
+        else if(getItem(position).getEquipo().equals("godoy Cruz")) escudo.setImageResource(R.drawable.escudo_godoy);
+        else if(getItem(position).getEquipo().equals("huracan")) escudo.setImageResource(R.drawable.escudo_huracan);
+        else if(getItem(position).getEquipo().equals("independiente")) escudo.setImageResource(R.drawable.escudo_independiente);
+        else if(getItem(position).getEquipo().equals("lanus")) escudo.setImageResource(R.drawable.escudo_lanus);
+        else if(getItem(position).getEquipo().equals("racing")) escudo.setImageResource(R.drawable.escudo_racing);
+        else if(getItem(position).getEquipo().equals("river")) escudo.setImageResource(R.drawable.escudo_river);
+        else if(getItem(position).getEquipo().equals("san lorenzo")) escudo.setImageResource(R.drawable.escudo_sanlorenzo);
+        else if(getItem(position).getEquipo().equals("union")) escudo.setImageResource(R.drawable.escudo_union);
+        else if(getItem(position).getEquipo().equals("velez")) escudo.setImageResource(R.drawable.escudo_velez);
+
+
+
 
         //if(getItem(0).getPosicion().equals("#")){
         //    int negro= R.color.colorNegro;
@@ -71,4 +96,8 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
 
         return(row);
     }
+
+
+
+
 }

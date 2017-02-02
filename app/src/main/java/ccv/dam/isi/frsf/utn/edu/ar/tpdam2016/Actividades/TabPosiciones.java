@@ -89,7 +89,7 @@ public class TabPosiciones extends Fragment {
                     ArrayList<FilaPosicion> listaOrdenada = new ArrayList<FilaPosicion>();
 
                     //fila_Posicion creada para el scroll horizontal de la tabla Final
-                    FilaPosicion filaTitulo = new FilaPosicion("POSICION    ","Pts ", " J ","G ","E ", "P ", "Gf/", "c", "D", "#");
+                    FilaPosicion filaTitulo = new FilaPosicion("POSICION   "," Pts", "     J ","    G","     E", "    P", "   Gf", "   /c", "    D", "#   ");
                     listaOrdenada.add(filaTitulo);
 
                     int aux2=1;
