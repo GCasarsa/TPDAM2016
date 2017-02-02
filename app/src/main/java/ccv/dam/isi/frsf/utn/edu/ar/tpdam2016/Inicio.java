@@ -19,6 +19,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.SettingsActivity;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabFixture;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabGoleadores;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabPosiciones;
@@ -112,6 +113,9 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             return true;
 
         } else if (id == R.id.nav_manage) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
 
         } else if (id == R.id.menuCargarDatos) {
             Conexion.cargarEquipos();
