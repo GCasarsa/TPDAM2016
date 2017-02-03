@@ -65,7 +65,8 @@ public class TabTarjetas extends Fragment  {
 
                                 ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
                                 for (int i = listaJugadores.size() - 1; i >= 0; i--)
-                                    listaOrdenada.add(listaJugadores.get(i));
+                                    if(listaJugadores.get(i).getRojas()>0)
+                                        listaOrdenada.add(listaJugadores.get(i));
 
 
                                 listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
@@ -105,7 +106,8 @@ public class TabTarjetas extends Fragment  {
 
                                 ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
                                 for (int i = listaJugadores.size() - 1; i >= 0; i--)
-                                    listaOrdenada.add(listaJugadores.get(i));
+                                    if(listaJugadores.get(i).getAmarillas()>0)
+                                        listaOrdenada.add(listaJugadores.get(i));
 
                                 listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
                                 adapterAmarilla = new AdapterTarjetaA(getActivity(),listaOrdenada);

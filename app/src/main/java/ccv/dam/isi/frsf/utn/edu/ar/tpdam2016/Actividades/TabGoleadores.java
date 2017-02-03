@@ -35,7 +35,7 @@ public class TabGoleadores extends Fragment{
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static DatabaseReference posicionBD;
     ListView listaGoleadores;
-    ArrayAdapter adapter;
+    //ArrayAdapter adapter;
     AdapterGoleador adapterGoleador;
     ArrayList<Jugador> listaJugadores;
 
@@ -64,13 +64,14 @@ public class TabGoleadores extends Fragment{
 
                 ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
                 for(int i=listaJugadores.size()-1;i>=0;i--)
-                    listaOrdenada.add(listaJugadores.get(i));
+                    if(listaJugadores.get(i).getGoles()>0)
+                        listaOrdenada.add(listaJugadores.get(i));
 
-                ArrayList<String> goleadores = new ArrayList<String>(); //Arreglo de string para mostrarlo en el ArrayAdapter
+               // ArrayList<String> goleadores = new ArrayList<String>(); //Arreglo de string para mostrarlo en el ArrayAdapter
 
-                for(int i=0;i<listaOrdenada.size();i++)
-                    if(listaOrdenada.get(i).getGoles()!=0)
-                        goleadores.add(listaOrdenada.get(i).getApellido()+" - "+(listaOrdenada.get(i)).getGoles()+" goles");
+               // for(int i=0;i<listaOrdenada.size();i++)
+               //     if(listaOrdenada.get(i).getGoles()!=0)
+               //         goleadores.add(listaOrdenada.get(i).getApellido()+" - "+(listaOrdenada.get(i)).getGoles()+" goles");
 
                 listaGoleadores = (ListView)  rootView.findViewById(R.id.listaGoleadores);
                 //adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1 , android.R.id.text1, goleadores);
