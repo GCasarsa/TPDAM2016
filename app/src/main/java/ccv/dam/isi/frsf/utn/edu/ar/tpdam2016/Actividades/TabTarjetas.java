@@ -20,7 +20,6 @@ import com.google.firebase.database.Query;
 import java.util.ArrayList;
 import java.util.Map;
 
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 
@@ -118,22 +117,18 @@ public class TabTarjetas extends Fragment  {
                                         tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getAmarillas() + " Tarjetas amarillas"));
                                 }
                                 listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
-                                adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
+                                adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
                                 listaTarjetas.setAdapter(adapter);
                             }
-
                             @Override
                             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                             }
-
                             @Override
                             public void onChildRemoved(DataSnapshot dataSnapshot) {
                             }
-
                             @Override
                             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
                             }
-
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                             }

@@ -52,9 +52,10 @@ public class Conexion {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                if (newPost.get("id") == idEquipo) {
-                        Equipo equipo = new Equipo(newPost.get("id").toString(), newPost.get("nombre").toString(), newPost.get("escudo").toString(), newPost.get("division").toString());
+                if(newPost.get("id") == idEquipo){
+                    Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
                 }
+
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
@@ -65,8 +66,7 @@ public class Conexion {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-
-       }
+    }
 
     public static void buscarPartidos(final ArrayList<Partido> listaPartidos){
         posicionBD = database.getReference("partidos");
@@ -76,9 +76,8 @@ public class Conexion {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
                 listaPartidos.add(partido);
-
+                System.out.println(listaPartidos.size());
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
             @Override
@@ -123,6 +122,7 @@ public class Conexion {
                     Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
                     listaPartidos.add(partido);
                 }
+                //System.out.println("PARTIDOS: " + listaPartidos.size());
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
@@ -207,6 +207,7 @@ public class Conexion {
         for(int i = 0; i < listaPartidos.size(); i++){
             Map<String, Object> postValues = toMap(listaPartidos.get((i)));
             Map<String, Object> childUpdates = new HashMap<>();
+            //childUpdates.put("/fixture/" +listaPartidos.get(i).getFecha() + "/" + listaPartidos.get((i)).getIdPartido(), postValues);
             childUpdates.put("/partidos/" + listaPartidos.get((i)).getIdPartido(), postValues);
             posicionBD.updateChildren(childUpdates);
         }
