@@ -68,21 +68,26 @@ public class TabPosiciones extends Fragment {
                 @Override
                 public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                     Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                        FilaPosicion filaPosicion = new FilaPosicion(newPost.get("EQUIPO").toString(),newPost.get("PTS").toString(),
-                                newPost.get("PJ").toString(), newPost.get("PG").toString(),
-                                newPost.get("PE").toString(), newPost.get("PP").toString(),
-                                newPost.get("GF").toString(), newPost.get("GC").toString(), newPost.get("DIF").toString(), snapshot.getRef().getKey());
-                        posiciones.add(filaPosicion);
+                    FilaPosicion filaPosicion = new FilaPosicion(newPost.get("EQUIPO").toString(), newPost.get("PTS").toString(),
+                            newPost.get("PJ").toString(), newPost.get("PG").toString(),
+                            newPost.get("PE").toString(), newPost.get("PP").toString(),
+                            newPost.get("GF").toString(), newPost.get("GC").toString(), newPost.get("DIF").toString(), snapshot.getRef().getKey());
+                    posiciones.add(filaPosicion);
                     FilaPosicion aux;
-                    for(int i=0;i<posiciones.size()-1;i++)
-                        for(int j=i+1;j<posiciones.size();j++)
-                            if((posiciones.get(i).getPts().equals(posiciones.get(j).getPts())&&(Integer.parseInt(posiciones.get(i).getDif())<Integer.parseInt(posiciones.get(i).getDif())))){
+                    for (int i = 0; i < posiciones.size() - 1; i++){
+                        for (int j = i + 1; j < posiciones.size(); j++) {
+                            System.out.println("PTS IGuales: " + posiciones.get(i).getPts() + " - " + posiciones.get(j).getPts());
+                            System.out.println("HOLAAATabPosciones: " + posiciones.get(i).getDif() + " - " + posiciones.get(j).getDif());
+                            if ((posiciones.get(i).getPts().equals(posiciones.get(j).getPts()) && (Integer.parseInt(posiciones.get(i).getDif()) > Integer.parseInt(posiciones.get(i).getDif())))) {
                                 //intercambiar
-                                aux=posiciones.get(i);
-                                posiciones.add(i,posiciones.get(j));
-                                posiciones.add(j,aux);
+                                aux = posiciones.get(i);
+                                posiciones.add(i, posiciones.get(j));
+                                posiciones.add(j, aux);
+                                System.out.println("HOLAAA: " + posiciones.get(i).getDif() + " - " + posiciones.get(j).getDif());
 
                             }
+                        }
+                }
 
 
 

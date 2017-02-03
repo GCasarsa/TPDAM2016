@@ -76,7 +76,7 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
 
 
 
-
+        //pts.setTextAppearance(R.color.colorNegro);
         //if(getItem(0).getPosicion().equals("#")){
         //    int negro= R.color.colorNegro;
          //   posicion.setHighlightColor(negro);
