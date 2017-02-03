@@ -15,6 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -28,7 +34,12 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
 public class Inicio extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private static DatabaseReference posicionBD;
+    ArrayList<Equipo> busqueda;
+    ArrayList<String> preferencias;
+    NavigationView navigationView;
+    int bandera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +48,20 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         FragmentTabHost tabHost;
         SharedPreferences pref;
-
+        busqueda = new ArrayList<>();
+        bandera = 0;
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
 
         /*
         * Obtengo los equipos que fueron almacenados como favoritos en las SharedPreferences
         * */
-        ArrayList<String> preferencias = new ArrayList<>();
+        preferencias = new ArrayList<>();
         for(int i = 1; i <=20; i++){
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
         }
+
+
 
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         tabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
@@ -67,33 +81,11 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final ArrayList<Equipo> busqueda = new ArrayList<>();
-        Conexion.buscarEquipos(busqueda);
+        buscarEquipos();
 
-        final Menu menu = navigationView.getMenu();
-        final SubMenu subMenu;
-        subMenu = menu.addSubMenu("Equipos favoritos");
-
-        System.out.println("TAMAÑO  SADDDDDDDDASD" + busqueda.size());
-
-        for (int i = 0; i < busqueda.size(); i++) {
-            for(int j=0;j<preferencias.size();j++){
-                if(busqueda.get(i).getId().compareTo(preferencias.get(j))==0){
-                    subMenu.add(busqueda.get(i).getNombre());
-                }
-            }
-        }
-
-
-        //Agregado de submenu con los equipos favoritos.
-
-
-        /*for(int i=0; i <busqueda.size();i++){
-            subMenu.add("Equipo Favorito " + i);
-        }*/
     }
 
     @Override
@@ -137,11 +129,45 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             Conexion.cargarPartidos();
             Conexion.cargarFixture();
             return true;
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void buscarEquipos(){
+        posicionBD = database.getReference("bd/equipos");
+        posicionBD.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+                for(int i = 0; i < preferencias.size(); i++){
+                    if(newPost.get("id").toString().equals(preferencias.get(i))) {
+                        Equipo equipo = new Equipo(newPost.get("id").toString(), newPost.get("nombre").toString(), newPost.get("escudo").toString(), newPost.get("division").toString());
+                        busqueda.add(equipo);
+                    }
+                }
+                if(busqueda.size()==preferencias.size() && bandera == 0){
+                    bandera = 1;
+                    final Menu menu = navigationView.getMenu();
+                    final SubMenu subMenu;
+                    subMenu = menu.addSubMenu("Equipos favoritos");
+
+                    for(int i=0; i <busqueda.size();i++){
+                        subMenu.add("" + busqueda.get(i).getNombre());
+                    }
+                }
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
     }
 }

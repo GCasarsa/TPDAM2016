@@ -64,21 +64,24 @@ public class EquipoTabUbicacion  extends Fragment implements OnMapReadyCallback 
             ActivityCompat.requestPermissions(getActivity(),new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},9999);
             return;
         }
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
+        else{
+            LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
 
-        mapa= googleMap;
-        mapa.setMyLocationEnabled(true);
-        Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-        float[] resultado = new float[1];
-        MarkerOptions marcador = new MarkerOptions().position(new LatLng(equipo.getLatitud(), equipo.getLongitud())).title(equipo.getDescripcionEstadio());
-        android.location.Location.distanceBetween(marcador.getPosition().latitude, marcador.getPosition().longitude, location.getLatitude(), location.getLongitude(), resultado);
-        marcador.title(equipo.getDescripcionEstadio());
-        marcador.snippet("Distancia: " + Math.round(resultado[0]/1000)  +"Km");
-        mapa.addMarker(marcador);
-        mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(equipo.getLatitud(), equipo.getLongitud()),16));
-        mapa.getUiSettings().setZoomControlsEnabled(true);
-        mapa.getUiSettings().setCompassEnabled(true);
+            mapa= googleMap;
+            mapa.setMyLocationEnabled(true);
+            Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+            float[] resultado = new float[1];
+            MarkerOptions marcador = new MarkerOptions().position(new LatLng(equipo.getLatitud(), equipo.getLongitud())).title(equipo.getDescripcionEstadio());
+            android.location.Location.distanceBetween(marcador.getPosition().latitude, marcador.getPosition().longitude, location.getLatitude(), location.getLongitude(), resultado);
+            marcador.title(equipo.getDescripcionEstadio());
+            marcador.snippet("Distancia: " + Math.round(resultado[0]/1000)  +"Km");
+            mapa.addMarker(marcador);
+            mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(equipo.getLatitud(), equipo.getLongitud()),16));
+            mapa.getUiSettings().setZoomControlsEnabled(true);
+            mapa.getUiSettings().setCompassEnabled(true);
+        }
+
     }
 
 }
