@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -24,6 +25,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabPosiciones;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabTarjetas;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
 public class Inicio extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -39,6 +41,9 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
 
+        /*
+        * Obtengo los equipos que fueron almacenados como favoritos en las SharedPreferences
+        * */
         ArrayList<String> preferencias = new ArrayList<>();
         for(int i = 1; i <=20; i++){
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
@@ -56,6 +61,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
                 TabTarjetas.class, null);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -63,6 +69,31 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        final ArrayList<Equipo> busqueda = new ArrayList<>();
+        Conexion.buscarEquipos(busqueda);
+
+        final Menu menu = navigationView.getMenu();
+        final SubMenu subMenu;
+        subMenu = menu.addSubMenu("Equipos favoritos");
+
+        System.out.println("TAMAÑO  SADDDDDDDDASD" + busqueda.size());
+
+        for (int i = 0; i < busqueda.size(); i++) {
+            for(int j=0;j<preferencias.size();j++){
+                if(busqueda.get(i).getId().compareTo(preferencias.get(j))==0){
+                    subMenu.add(busqueda.get(i).getNombre());
+                }
+            }
+        }
+
+
+        //Agregado de submenu con los equipos favoritos.
+
+
+        /*for(int i=0; i <busqueda.size();i++){
+            subMenu.add("Equipo Favorito " + i);
+        }*/
     }
 
     @Override
