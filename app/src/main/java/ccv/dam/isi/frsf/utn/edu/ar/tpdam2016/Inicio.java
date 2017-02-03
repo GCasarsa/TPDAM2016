@@ -66,13 +66,13 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         tabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
-        tabHost.addTab(tabHost.newTabSpec("tab_fixture").setIndicator("PARTIDOS"),
+        tabHost.addTab(tabHost.newTabSpec("tab_fixture").setIndicator("", getResources().getDrawable(R.drawable.calendario)),
                 TabFixture.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab_goleadores").setIndicator("GOLEADORES"),
-                TabGoleadores.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab_posiciones").setIndicator("POSICIONES"),
+        tabHost.addTab(tabHost.newTabSpec("tab_posiciones").setIndicator("", getResources().getDrawable(R.drawable.podio)),
                 TabPosiciones.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab_tarjetas").setIndicator("TARJETAS"),
+        tabHost.addTab(tabHost.newTabSpec("tab_goleadores").setIndicator("", getResources().getDrawable(R.drawable.pelota)),
+                TabGoleadores.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab_tarjetas").setIndicator("", getResources().getDrawable(R.drawable.tarjetasfutbol)),
                 TabTarjetas.class, null);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

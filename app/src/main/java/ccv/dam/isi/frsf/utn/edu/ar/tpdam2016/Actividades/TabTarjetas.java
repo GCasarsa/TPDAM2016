@@ -20,6 +20,8 @@ import com.google.firebase.database.Query;
 import java.util.ArrayList;
 import java.util.Map;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterTarjetaA;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.AdapterTarjetaR;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 
@@ -30,7 +32,8 @@ public class TabTarjetas extends Fragment  {
         private static FirebaseDatabase database = FirebaseDatabase.getInstance();
         private static DatabaseReference posicionBD;
         ListView listaTarjetas;
-        ArrayAdapter adapter;
+        AdapterTarjetaA adapterAmarilla;
+        AdapterTarjetaR adapterRojas;
         ArrayList<Jugador> listaJugadores;
 
         @Override
@@ -62,18 +65,13 @@ public class TabTarjetas extends Fragment  {
 
                                 ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
                                 for (int i = listaJugadores.size() - 1; i >= 0; i--)
-                                    listaOrdenada.add(listaJugadores.get(i));
+                                    if(listaJugadores.get(i).getRojas()>0)
+                                        listaOrdenada.add(listaJugadores.get(i));
 
-                                ArrayList<String> tarjetas = new ArrayList<String>(); //Arreglo de string para mostrarlo en el ArrayAdapter
-
-                                for (int i = 0; i < listaOrdenada.size(); i++) {
-                                    if (listaOrdenada.get(i).getRojas() != 0)
-                                        tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getRojas() + " Tarjetas rojas"));
-                                }
 
                                 listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
-                                adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
-                                listaTarjetas.setAdapter(adapter);
+                                adapterRojas = new AdapterTarjetaR(getActivity(),listaOrdenada);
+                                listaTarjetas.setAdapter(adapterRojas);
 
                             }
 
@@ -108,17 +106,12 @@ public class TabTarjetas extends Fragment  {
 
                                 ArrayList<Jugador> listaOrdenada = new ArrayList<Jugador>();
                                 for (int i = listaJugadores.size() - 1; i >= 0; i--)
-                                    listaOrdenada.add(listaJugadores.get(i));
+                                    if(listaJugadores.get(i).getAmarillas()>0)
+                                        listaOrdenada.add(listaJugadores.get(i));
 
-                                ArrayList<String> tarjetas = new ArrayList<String>(); //Arreglo de string para mostrarlo en el ArrayAdapter
-
-                                for (int i = 0; i < listaOrdenada.size(); i++) {
-                                    if (listaOrdenada.get(i).getAmarillas() != 0)
-                                        tarjetas.add(listaOrdenada.get(i).getApellido() + " - " + (listaOrdenada.get(i).getAmarillas() + " Tarjetas amarillas"));
-                                }
                                 listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
-                                adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, tarjetas);
-                                listaTarjetas.setAdapter(adapter);
+                                adapterAmarilla = new AdapterTarjetaA(getActivity(),listaOrdenada);
+                                listaTarjetas.setAdapter(adapterAmarilla);
                             }
                             @Override
                             public void onChildChanged(DataSnapshot dataSnapshot, String s) {

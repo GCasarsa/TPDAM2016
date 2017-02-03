@@ -9,25 +9,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/background_toolbar"
-        android:id="@+id/imageViewGoleadores"
+        android:id="@+id/TAR_A_imageViewJugador"
         android:layout_weight="1" />
 
     <TextView
         android:text="Jugador"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:id="@+id/GOLjugadorTV"
+        android:id="@+id/TAR_A_jugador"
         android:layout_weight="1"
         android:gravity="center_vertical" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/background_toolbar"
+        android:id="@+id/imageViewTarjetaAmarilla"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1" />
 
     <TextView
         android:text="num"
         android:layout_width="33dp"
         android:layout_height="40dp"
-        android:id="@+id/GOLgoles"
+        android:id="@+id/TAR_A_num"
         android:layout_weight="1"
-        android:gravity="center_vertical"
-         />
+        android:gravity="center_vertical" />
 
 
 </LinearLayout>
