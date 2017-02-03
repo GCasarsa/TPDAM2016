@@ -30,6 +30,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabGoleadores;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabPosiciones;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabTarjetas;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
@@ -39,6 +40,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     ArrayList<Equipo> busqueda;
     ArrayList<String> preferencias;
     NavigationView navigationView;
+    SubMenu subMenu;
     int bandera;
 
     @Override
@@ -60,7 +62,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         for(int i = 1; i <=20; i++){
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
         }
-
 
 
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
@@ -130,6 +131,12 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             Conexion.cargarFixture();
             return true;
         }
+        else{
+            System.out.println("Id: " + id);
+            /*Intent intent = new Intent(getApplicationContext(),EquipoInicio.class);
+            intent.putExtra("equipo", 18);
+            startActivity(intent);*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -151,7 +158,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
                 if(busqueda.size()==preferencias.size() && bandera == 0){
                     bandera = 1;
                     final Menu menu = navigationView.getMenu();
-                    final SubMenu subMenu;
+
                     subMenu = menu.addSubMenu("Equipos favoritos");
 
                     for(int i=0; i <busqueda.size();i++){
