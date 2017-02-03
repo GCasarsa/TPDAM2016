@@ -28,11 +28,15 @@
         </item>
     </group>
 
-    <item android:title="Equipos Favoritos">
-        <menu>
-
-        </menu>
-    </item>
+    <group
+        android:id="@+id/group"
+        android:checkableBehavior="single">
+        <item
+            android:checked="false"
+            android:id="@+id/item1"
+            android:icon="@drawable/ic_star_white_24dp"
+            android:title="Equipos Favoritos" />
+    </group>
 
 
 </menu>
