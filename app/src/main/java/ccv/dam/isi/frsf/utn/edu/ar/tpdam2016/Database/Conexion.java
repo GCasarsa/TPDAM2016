@@ -29,10 +29,7 @@ public class Conexion {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
                 listaEquipos.add(equipo);
-                System.out.println("EQUIPOS CARGADOSOOOSSSSSS: " + listaEquipos.size());
             }
-
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
             @Override
@@ -42,7 +39,6 @@ public class Conexion {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-        System.out.println("EQUIPOS CARGADOS EN TOTAL: " + listaEquipos.size());
 
     }
 
@@ -55,7 +51,6 @@ public class Conexion {
                 if(newPost.get("id") == idEquipo){
                     Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
                 }
-
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
