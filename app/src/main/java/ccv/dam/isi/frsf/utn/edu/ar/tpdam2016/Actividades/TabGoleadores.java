@@ -88,6 +88,8 @@ public class TabGoleadores extends Fragment{
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
+        //System.out.println("JUGGGG: "+ listaJugadores.size());
+
         //SystemClock.sleep(7000);
         return rootView;
     }
