@@ -39,7 +39,7 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
         TextView pg = (TextView) row.findViewById(R.id.POSpg);
         pg.setText(getItem(position).getPg());
         TextView pp = (TextView) row.findViewById(R.id.POSpp);
-        pp.setText(getItem(position).getPp().toString());
+        pp.setText(getItem(position).getPp());
         TextView pe = (TextView) row.findViewById(R.id.POSpe);
         pe.setText(getItem(position).getPe());
         TextView gf = (TextView) row.findViewById(R.id.POSgf);
@@ -73,6 +73,8 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
         else if(getItem(position).getEquipo().equals("san lorenzo")) escudo.setImageResource(R.drawable.escudo_sanlorenzo);
         else if(getItem(position).getEquipo().equals("union")) escudo.setImageResource(R.drawable.escudo_union);
         else if(getItem(position).getEquipo().equals("velez")) escudo.setImageResource(R.drawable.escudo_velez);
+        else
+        escudo.setImageResource(R.drawable.escudo_vacio);
 
 
 

@@ -34,12 +34,11 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 public class TabPosiciones extends Fragment {
 
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private static DatabaseReference posicionBD;
+    //private static DatabaseReference posicionBD;
 
     ListView lvPosiciones;
     AdapterPosicion adapterPos;
     ArrayList<FilaPosicion> posiciones;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,8 +49,6 @@ public class TabPosiciones extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.tab_posiciones, container, false);
-        ArrayList<FilaPosicion> listaFechas = new ArrayList<FilaPosicion>();
-        //ArrayList posicionesLista = new ArrayList();
 
             lvPosiciones = (ListView) rootView.findViewById(R.id.listViewPosiciones);
             posiciones = new ArrayList<>();
@@ -59,10 +56,7 @@ public class TabPosiciones extends Fragment {
             lvPosiciones.setAdapter(adapterPos);
 
 
-
-        //partidos.clear();
-
-        posicionBD = database.getReference("POSICIONES");
+        //posicionBD = database.getReference("POSICIONES");
         Query myTopPostsQuery = database.getReference("POSICIONES").orderByChild("PTS");
         myTopPostsQuery.addChildEventListener(new ChildEventListener() {
                 @Override
@@ -76,25 +70,33 @@ public class TabPosiciones extends Fragment {
                     FilaPosicion aux;
                     for (int i = 0; i < posiciones.size() - 1; i++){
                         for (int j = i + 1; j < posiciones.size(); j++) {
-                            System.out.println("PTS IGuales: " + posiciones.get(i).getPts() + " - " + posiciones.get(j).getPts());
-                            System.out.println("HOLAAATabPosciones: " + posiciones.get(i).getDif() + " - " + posiciones.get(j).getDif());
-                            if ((posiciones.get(i).getPts().equals(posiciones.get(j).getPts()) && (Integer.parseInt(posiciones.get(i).getDif()) > Integer.parseInt(posiciones.get(i).getDif())))) {
+                            if ((posiciones.get(i).getPts().equals(posiciones.get(j).getPts())) && ((Integer.parseInt(posiciones.get(i).getDif())) > (Integer.parseInt(posiciones.get(j).getDif())))) {
                                 //intercambiar
                                 aux = posiciones.get(i);
                                 posiciones.add(i, posiciones.get(j));
+                                posiciones.remove(i+1);
                                 posiciones.add(j, aux);
-                                System.out.println("HOLAAA: " + posiciones.get(i).getDif() + " - " + posiciones.get(j).getDif());
-
+                                posiciones.remove(j+1);
                             }
+
+                            else if ((posiciones.get(i).getPts().equals(posiciones.get(j).getPts())) &&(posiciones.get(i).getDif().equals(posiciones.get(j).getDif())) &&(Integer.parseInt(posiciones.get(i).getGf()) > Integer.parseInt(posiciones.get(j).getGf())))
+                                {
+                                    //intercambio
+                                    aux = posiciones.get(i);
+                                    posiciones.add(i, posiciones.get(j));
+                                    posiciones.remove(i+1);
+                                    posiciones.add(j, aux);
+                                    posiciones.remove(j+1);
+                                }
+                            break;
                         }
                 }
-
 
 
                     ArrayList<FilaPosicion> listaOrdenada = new ArrayList<FilaPosicion>();
 
                     //fila_Posicion creada para el scroll horizontal de la tabla Final
-                    FilaPosicion filaTitulo = new FilaPosicion("POSICION   "," Pts", "     J ","    G","     E", "    P", "   Gf", "   /c", "    D", "#   ");
+                    FilaPosicion filaTitulo = new FilaPosicion("Equipo","Pts", "J","G","E", "P", "Gf", "/c", "D", "#");
                     listaOrdenada.add(filaTitulo);
 
                     int aux2=1;
@@ -102,7 +104,6 @@ public class TabPosiciones extends Fragment {
                         listaOrdenada.add(posiciones.get(i));
                         listaOrdenada.get(aux2).setPosicion(""+aux2);
                         aux2++;
-                        //System.out.println("POSSSS: "+ listaOrdenada.get(aux2).getPosicion());
                     }
 
 
@@ -130,7 +131,6 @@ public class TabPosiciones extends Fragment {
                 public void onCancelled(DatabaseError databaseError) {
                 }
             });
-            //return partidos.size();
 
         return rootView;
 
