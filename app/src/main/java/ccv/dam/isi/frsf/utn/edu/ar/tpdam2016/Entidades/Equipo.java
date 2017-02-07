@@ -4,43 +4,35 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
  * Created by Gabriel on 16/01/2017.
  */
 public class Equipo {
-    String id;
     String nombre;
+    String abreviatura;
     String escudo;
     String division;
     String ciudad;
-    String pais;
     String foto;
     Double latitud;
     Double longitud;
     String descripcionEstadio;
+    String directorTecnico;
 
-    public Equipo(String id, String nombre, String escudo, String division) {
-        this.id = id;
+    public Equipo(String nombre, String abreviatura, String escudo, String division, String ciudad, String foto, Double latitud, Double longitud, String descripcionEstadio, String directorTecnico) {
         this.nombre = nombre;
-        this.escudo = escudo;
-        this.division = division;
-    }
-
-    public Equipo(String id, String nombre, String escudo, String division, String ciudad, String pais, String foto, Double latitud, Double longitud, String descripcionEstadio) {
-        this.id = id;
-        this.nombre = nombre;
+        this.abreviatura = abreviatura;
         this.escudo = escudo;
         this.division = division;
         this.ciudad = ciudad;
-        this.pais = pais;
         this.foto = foto;
         this.latitud = latitud;
         this.longitud = longitud;
         this.descripcionEstadio = descripcionEstadio;
+        this.directorTecnico = directorTecnico;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public Equipo(String nombre, String abreviatura, String escudo, String division) {
+        this.nombre = nombre;
+        this.abreviatura = abreviatura;
+        this.escudo = escudo;
+        this.division = division;
     }
 
     public String getNombre() {
@@ -49,6 +41,14 @@ public class Equipo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getAbreviatura() {
+        return abreviatura;
+    }
+
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
     }
 
     public String getEscudo() {
@@ -73,14 +73,6 @@ public class Equipo {
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
     }
 
     public String getFoto() {
@@ -113,5 +105,13 @@ public class Equipo {
 
     public void setDescripcionEstadio(String descripcionEstadio) {
         this.descripcionEstadio = descripcionEstadio;
+    }
+
+    public String getDirectorTecnico() {
+        return directorTecnico;
+    }
+
+    public void setDirectorTecnico(String directorTecnico) {
+        this.directorTecnico = directorTecnico;
     }
 }

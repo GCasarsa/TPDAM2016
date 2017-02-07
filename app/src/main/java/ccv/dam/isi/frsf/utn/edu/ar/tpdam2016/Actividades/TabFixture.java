@@ -144,3 +144,68 @@ public class TabFixture extends Fragment{
 
 
 }
+
+/*
+public class TabFixture extends Fragment implements BusquedaFinalizadaListener<Partido> {
+
+    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private static DatabaseReference posicionBD;
+
+    ListView listaPartidos;
+    AdapterPartido adapter;
+    ArrayList<Partido> partidos;
+    ProgressDialog progressDialog;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        final View rootView = inflater.inflate(R.layout.tab_fixture, container, false);
+        listaPartidos = (ListView) rootView.findViewById(R.id.listaPartidos);
+        partidos = new ArrayList<>();
+        adapter = new AdapterPartido(getActivity(), partidos);
+        listaPartidos.setAdapter(adapter);
+
+        final Spinner spinnerFechas = (Spinner) rootView.findViewById(R.id.spinnerFechas);
+        final String[] fechas = new String[]{"1", "2", "3", "4", "5", "6"};
+        ArrayList<String> arregloFechas = new ArrayList<>();
+        ArrayAdapter<String> listAdapter1;
+        arregloFechas.addAll(Arrays.asList(fechas));
+        listAdapter1 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arregloFechas);
+        listAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFechas.setAdapter(listAdapter1);
+
+        spinnerFechas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                progressDialog = ProgressDialog.show(getActivity(), "Recopilando partidos", "aguarde unos instantes...");
+                buscar(id);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        listaPartidos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(),PartidoInicio.class);
+                intent.putExtra("partido", listaPartidos.getItemIdAtPosition(position)+1);
+                startActivity(intent);
+            }
+        });
+        return rootView;
+    }
+    public void buscar(long id){
+        new BusquedaPartido(this).execute("fecha",String.valueOf(id+1));
+    }
+    @Override
+    public void busquedaFinalizada(ArrayList<Partido> lista) {
+        partidos = lista;
+        adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
+    }*//*
+}*/

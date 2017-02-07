@@ -4,59 +4,43 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
  * Created by Gabriel on 16/01/2017.
  */
 public class Jugador {
-    String nombre, apellido, posicion,equipo;
-    long edad, goles, amarillas, rojas;
+    String id, nombre, apellido, posicion ,equipo, titular;
+    int goles, amarillas, rojas, partidosJugados;
 
 
-    public Jugador(String nombre, String apellido, String posicion, long edad) {
+    public Jugador(String apellido, String nombre, String posicion, String equipo, String titular) {
+        this.id = equipo + " " + apellido + nombre;
         this.nombre = nombre;
         this.apellido = apellido;
         this.posicion = posicion;
-        this.edad = edad;
+        this.equipo = equipo;
+        this.titular = titular;
+        goles = amarillas = rojas = partidosJugados = 0;
     }
 
-    public Jugador(String apellido, long goles, long amarillas, long rojas, String equipo) {
-        this.goles= goles;
+    public Jugador(String id, String nombre, String apellido, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
+        this.nombre = nombre;
         this.apellido = apellido;
-        this.amarillas= amarillas;
-        this.rojas=rojas;
-        this.equipo= equipo;
+        this.posicion = posicion;
+        this.equipo = equipo;
+        this.titular = titular;
+        this.id = id;
+        this.goles = goles;
+        this.amarillas = amarillas;
+        this.rojas = rojas;
+        this.partidosJugados = partidosJugados;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getEquipo() {
-        return equipo;
-    }
-
-    public void setEquipo(String idEquipo) {
-        this.equipo = idEquipo;
-    }
-
-    public long getGoles() {
-        return goles;
-    }
-
-    public void setGoles(int goles) {
-        this.goles = goles;
-    }
-
-    public long getAmarillas() {
-        return amarillas;
-    }
-
-    public void setAmarillas(int amarillas) {
-        this.amarillas = amarillas;
-    }
-
-    public long getRojas() {
-        return rojas;
-    }
-
-    public void setRojas(int rojas) {
-        this.rojas = rojas;
     }
 
     public void setNombre(String nombre) {
@@ -79,11 +63,51 @@ public class Jugador {
         this.posicion = posicion;
     }
 
-    public long getEdad() {
-        return edad;
+    public String getEquipo() {
+        return equipo;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setEquipo(String equipo) {
+        this.equipo = equipo;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public int getGoles() {
+        return goles;
+    }
+
+    public void setGoles(int goles) {
+        this.goles = goles;
+    }
+
+    public int getAmarillas() {
+        return amarillas;
+    }
+
+    public void setAmarillas(int amarillas) {
+        this.amarillas = amarillas;
+    }
+
+    public int getRojas() {
+        return rojas;
+    }
+
+    public void setRojas(int rojas) {
+        this.rojas = rojas;
+    }
+
+    public int getPartidosJugados() {
+        return partidosJugados;
+    }
+
+    public void setPartidosJugados(int partidosJugados) {
+        this.partidosJugados = partidosJugados;
     }
 }

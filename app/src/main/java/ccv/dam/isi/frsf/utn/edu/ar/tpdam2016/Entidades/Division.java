@@ -1,20 +1,18 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
 
-import java.util.ArrayList;
-
 /**
  * Created by Gabriel on 16/01/2017.
  */
 public class Division {
-    int id;
-    int cantidadEquipos;
-    String nombre;
-    ArrayList<Equipo> equipos;
+    int id, año, cantidadEquipos;
+    String categoria, descripcion;
 
-    public Division(int cantidadEquipos, String nombre, ArrayList<Equipo> equipos) {
+    public Division(int id, int año, int cantidadEquipos, String categoria, String descripcion) {
+        this.id = id;
+        this.año = año;
         this.cantidadEquipos = cantidadEquipos;
-        this.nombre = nombre;
-        this.equipos = equipos;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
     }
 
     public int getId() {
@@ -25,6 +23,14 @@ public class Division {
         this.id = id;
     }
 
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
     public int getCantidadEquipos() {
         return cantidadEquipos;
     }
@@ -33,23 +39,19 @@ public class Division {
         this.cantidadEquipos = cantidadEquipos;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public void addEquipo(Equipo equipo) {
-        this.equipos.add(equipo);
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public ArrayList<Equipo> getEquipos() {
-        return equipos;
-    }
-
-    public void setEquipos(ArrayList<Equipo> equipos) {
-        this.equipos = equipos;
+    public void setDescrpicion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }
