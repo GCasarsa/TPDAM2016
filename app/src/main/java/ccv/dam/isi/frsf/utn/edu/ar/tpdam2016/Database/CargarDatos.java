@@ -15,7 +15,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
  */
 
 public class CargarDatos {
-/*
+
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static DatabaseReference posicionBD;
 
@@ -48,12 +48,11 @@ public class CargarDatos {
                 -31.719082,
                 -61.094112,
                 "12 DE ENERO",
-                "RAÍL FRANCISCO FERRERO",
-                jugadoresArgentino
+                "RAÍL FRANCISCO FERRERO"
                 ));
 
         for(int i = 0; i < listaEquipos.size(); i++){
-            posicionBD = database.getReference("bd");
+            posicionBD = database.getReference("datos");
             Map<String, Object> postValues = toMap(listaEquipos.get((i)));
             Map<String, Object> childUpdates = new HashMap<>();
             childUpdates.put("/equipos/primeradivision/" + listaEquipos.get((i)).getNombre(), postValues);
@@ -64,7 +63,7 @@ public class CargarDatos {
     public static void cargarJugadores(ArrayList<ArrayList<Jugador>> jugadores){
         for(int i = 0; i < jugadores.size(); i++){
             for(int j = 0; j<jugadores.get(i).size(); j++){
-                posicionBD = database.getReference("bd");
+                posicionBD = database.getReference("datos");
                 Map<String, Object> postValues = toMap(jugadores.get(i).get(j));
                 Map<String, Object> childUpdates = new HashMap<>();
                 childUpdates.put("/jugadores/" + jugadores.get(i).get(j).getId(), postValues);
@@ -104,7 +103,7 @@ public class CargarDatos {
     }
     */
 
-/*
+
     public static Map<String, Object> toMap(Equipo equipo) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("nombre", equipo.getNombre());
@@ -117,7 +116,6 @@ public class CargarDatos {
         result.put("longitud", equipo.getLongitud());
         result.put("descripcionEstadio", equipo.getDescripcionEstadio());
         result.put("directorTecnico", equipo.getDirectorTecnico());
-        result.put("jugadores", equipo.getJugadores());
         return result;
     }
 
@@ -129,12 +127,11 @@ public class CargarDatos {
         result.put("posicion", jugador.getPosicion());
         result.put("equipo", jugador.getEquipo());
         result.put("titular", jugador.getTitular());
-        result.put("edad", jugador.getEdad());
         result.put("goles", jugador.getGoles());
         result.put("amarillas", jugador.getAmarillas());
         result.put("rojas", jugador.getRojas());
         result.put("partidosJugados", jugador.getPartidosJugados());
         return result;
     }
-*/
+
 }

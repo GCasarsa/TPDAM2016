@@ -20,116 +20,7 @@ public class Conexion {
 
     public Conexion(){
     }
-
-    public static void buscarEquipos(final ArrayList<Equipo> listaEquipos){
-        posicionBD = database.getReference("bd/equipos");
-        posicionBD.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
-                listaEquipos.add(equipo);
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-
-    }
-
-    public static void buscarEquipos(final String idEquipo){
-        posicionBD = database.getReference("bd/equipos");
-        posicionBD.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                if(newPost.get("id") == idEquipo){
-                    Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
-                }
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-    }
-
-    public static void buscarPartidos(final ArrayList<Partido> listaPartidos){
-        posicionBD = database.getReference("partidos");
-        posicionBD.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
-                listaPartidos.add(partido);
-                System.out.println(listaPartidos.size());
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-    }
-
-    public static void buscarJugadores(final ArrayList<Jugador> listaJugadores){
-        posicionBD = database.getReference("jugadores");
-        posicionBD.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(),(long)newPost.get("goles"), (long)newPost.get("Amarillas"),(long)newPost.get("Rojas"),(String)newPost.get("equipoID"));
-                listaJugadores.add(jugador);
-                System.out.println(listaJugadores.size());
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-    }
-
-    public static void buscarPartidosPorFecha(final ArrayList<Partido> listaPartidos, final int fecha){
-        posicionBD = database.getReference("bd/partidos");
-        posicionBD.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                //System.out.println("FECHA 1: " + fecha + " - FECHA 2: "+Integer.parseInt(newPost.get("jornadaTorneo").toString()));
-                if(Integer.parseInt(newPost.get("fecha").toString())==fecha) {
-                    Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
-                    listaPartidos.add(partido);
-                }
-                //System.out.println("PARTIDOS: " + listaPartidos.size());
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-    }
-
+/*
     public static void cargarEquipos(){
         posicionBD = database.getReference("bd");
         ArrayList<Equipo> listaEquipos = new ArrayList<>();
@@ -241,5 +132,5 @@ public class Conexion {
         result.put("estadio",partido.getLugar().toUpperCase());
         result.put("arbitro", partido.getArbitro().toUpperCase());
         return result;
-    }
+    }*/
 }

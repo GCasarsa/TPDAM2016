@@ -75,55 +75,6 @@ public class Adapter extends ArrayAdapter<Equipo> {
         else if(getItem(position).getNombre().toString().equals("UNION DE SANTA FE")) imageView.setImageResource(R.drawable.escudo_union);
         else if(getItem(position).getNombre().toString().equals("VELEZ")) imageView.setImageResource(R.drawable.escudo_velez);
 
-/*
-
-        String escudo = "gs://tpdam2016.appspot.com/img/escudos/" + getItem(position).getEscudo().toString();
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        System.out.println(escudo);
-        //StorageReference storageRef = storage.getReferenceFromUrl(escudo);
-        StorageReference storageRef = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/img%2Fescudos%2Friver.png?alt=media&token=492d656f-fb51-4231-9406-486d8d8474e5");
-
-        File localFile = null;
-        try {
-            localFile = File.createTempFile("images", "png");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                StorageReference temp = taskSnapshot.getStorage();
-                try {
-                    imageView.setImageBitmap(BitmapFactory.decodeStream( new URL(temp.getPath()).openStream()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                exception.printStackTrace();
-            }
-        });
-/*
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://tpdam2016.appspot.com");
-
-        StorageReference imagen = storageRef.child(getItem(position).getEscudo().toString());
-
-        final long ONE_MEGABYTE = 1024 * 1024;
-        imagen.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                imageView.setImageBitmap(bm);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-            }
-        });*/
         return(row);
     }
 

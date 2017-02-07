@@ -73,16 +73,16 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 if(newPost.get("id").equals(idEquipo)){
-                    listaEquipos.add(new Equipo(newPost.get("id").toString(),
-                            newPost.get("nombre").toString(),
+                    listaEquipos.add(new Equipo(newPost.get("nombre").toString(),
+                            newPost.get("abreviatura").toString(),
                             newPost.get("escudo").toString(),
                             newPost.get("division").toString(),
                             newPost.get("ciudad").toString(),
-                            newPost.get("pais").toString(),
-                            "",
+                            newPost.get("foto").toString(),
                             Double.parseDouble(newPost.get("latitud").toString()),
                             Double.parseDouble(newPost.get("longitud").toString()),
-                            newPost.get("descripcion").toString()));
+                            newPost.get("descripcion").toString(),
+                            newPost.get("dt").toString()));
                 }
             }
             @Override

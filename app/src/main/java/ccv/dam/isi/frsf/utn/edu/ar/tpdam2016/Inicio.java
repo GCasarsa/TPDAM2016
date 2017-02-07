@@ -30,7 +30,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabGoleadores;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabPosiciones;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabTarjetas;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
-import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.CargarDatos;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
@@ -126,9 +126,10 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             return true;
 
         } else if (id == R.id.menuCargarDatos) {
-            Conexion.cargarEquipos();
+            /*Conexion.cargarEquipos();
             Conexion.cargarPartidos();
-            Conexion.cargarFixture();
+            Conexion.cargarFixture();*/
+            CargarDatos.cargarEquipos();
             return true;
         }
         else{
