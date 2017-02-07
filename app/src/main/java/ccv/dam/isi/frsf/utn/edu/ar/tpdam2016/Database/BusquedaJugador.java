@@ -73,7 +73,6 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
             public void onCancelled(DatabaseError databaseError) {}
         });
         while(listaJugadores.isEmpty()){
-
         }
         return listaJugadores;
     }

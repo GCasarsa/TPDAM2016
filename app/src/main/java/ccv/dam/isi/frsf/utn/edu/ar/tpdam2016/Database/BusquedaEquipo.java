@@ -72,16 +72,18 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                listaEquipos.add(new Equipo(newPost.get("id").toString(),
-                        newPost.get("nombre").toString(),
-                        newPost.get("escudo").toString(),
-                        newPost.get("division").toString(),
-                        newPost.get("ciudad").toString(),
-                        newPost.get("pais").toString(),
-                        "",
-                        Double.parseDouble(newPost.get("latitud").toString()),
-                        Double.parseDouble(newPost.get("longitud").toString()),
-                        newPost.get("descripcion").toString()));
+                if(newPost.get("id").equals(idEquipo)){
+                    listaEquipos.add(new Equipo(newPost.get("id").toString(),
+                            newPost.get("nombre").toString(),
+                            newPost.get("escudo").toString(),
+                            newPost.get("division").toString(),
+                            newPost.get("ciudad").toString(),
+                            newPost.get("pais").toString(),
+                            "",
+                            Double.parseDouble(newPost.get("latitud").toString()),
+                            Double.parseDouble(newPost.get("longitud").toString()),
+                            newPost.get("descripcion").toString()));
+                }
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
@@ -92,6 +94,8 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
+        while(listaEquipos.isEmpty()){
+        }
         return listaEquipos;
     }
 }
