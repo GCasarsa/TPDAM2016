@@ -47,9 +47,9 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
         if(tipoConsulta[0].equals("goles"))
             listaJugadores = buscarJugadores(database.getReference("jugadores").orderByChild("goles"));
         else if(tipoConsulta[0].equals("amarillas"))
-            listaJugadores = buscarJugadores(database.getReference("jugadores").orderByChild("amarillas"));
+            listaJugadores = buscarJugadores(database.getReference("jugadores").orderByChild("Amarillas"));
         else if(tipoConsulta[0].equals("rojas"))
-            listaJugadores = buscarJugadores(database.getReference("jugadores").orderByChild("rojas"));
+            listaJugadores = buscarJugadores(database.getReference("jugadores").orderByChild("Rojas"));
         return listaJugadores;
     }
 
