@@ -60,8 +60,17 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Jugador jugador = new Jugador(newPost.get("ApellidoNombre").toString(),(long)newPost.get("goles"), (long)newPost.get("Amarillas"),(long)newPost.get("Rojas"),newPost.get("equipoID").toString());
-                listaJugadores.add(jugador);
+                listaJugadores.add(new Jugador(newPost.get("id").toString(),
+                        newPost.get("nombre").toString(),
+                        newPost.get("apellido").toString(),
+                        newPost.get("posicion").toString(),
+                        newPost.get("equipo").toString(),
+                        newPost.get("titular").toString(),
+                        Integer.parseInt(newPost.get("goles").toString()),
+                        Integer.parseInt(newPost.get("amarillas").toString()),
+                        Integer.parseInt(newPost.get("rojas").toString()),
+                        Integer.parseInt(newPost.get("partidosJugados").toString())
+                ));
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
