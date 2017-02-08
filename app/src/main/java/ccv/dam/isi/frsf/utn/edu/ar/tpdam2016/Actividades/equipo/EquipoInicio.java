@@ -96,7 +96,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
 
         nombre.setText(equipo.getNombre());
         titulo.setText(equipo.getNombre());
-        String url = "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fargentinodesancarlos.png?alt=media&token=71c06334-6990-4961-8d24-106ac38bacfc";
+        String url = equipo.getEscudo();
         if (url.length()>0)
             new DownloadImageTask().execute(url);
 

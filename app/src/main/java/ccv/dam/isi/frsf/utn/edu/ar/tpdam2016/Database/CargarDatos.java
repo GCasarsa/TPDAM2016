@@ -49,14 +49,14 @@ public class CargarDatos {
                 -31.719082,
                 -61.094112,
                 "12 DE ENERO",
-                "RAÍL FRANCISCO FERRERO"
+                "RAÚL FRANCISCO FERRERO"
                 ));
 
         for(int i = 0; i < listaEquipos.size(); i++){
             posicionBD = database.getReference("datos");
             Map<String, Object> postValues = toMap(listaEquipos.get((i)));
             Map<String, Object> childUpdates = new HashMap<>();
-            childUpdates.put("/equipos/primeradivision/" + listaEquipos.get((i)).getNombre(), postValues);
+            childUpdates.put("/equipos/primeradivision/" + listaEquipos.get((i)).getId(), postValues);
             posicionBD.updateChildren(childUpdates);
         }
     }
@@ -107,6 +107,7 @@ public class CargarDatos {
 
     public static Map<String, Object> toMap(Equipo equipo) {
         HashMap<String, Object> result = new HashMap<>();
+        result.put("id", equipo.getId());
         result.put("nombre", equipo.getNombre());
         result.put("abreviatura", equipo.getAbreviatura());
         result.put("escudo", equipo.getEscudo());
