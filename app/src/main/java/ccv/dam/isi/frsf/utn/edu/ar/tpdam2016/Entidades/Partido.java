@@ -15,11 +15,28 @@ public class Partido {
     String dia;
     String fecha;
     String lugar;
-    //boolean partidoDisputado;
-    //String competencia;
-    //String descripcion; //apertura 17 o clausura 2018, etc...
+    String partidoDisputado;
 
-    public Partido (String idPartido, String equipoLocal, String equipoVisitante, String resultadoLocal, String resultadoVisitante, String arbitro, String dia, String fecha, String lugar){
+    public String getPartidoDisputado() {
+        return partidoDisputado;
+    }
+
+    public void setPartidoDisputado(String partidoDisputado) {
+        this.partidoDisputado = partidoDisputado;
+    }
+
+    public String getCompetenciaId() {
+        return competenciaId;
+    }
+
+    public void setCompetenciaId(String competenciaId) {
+        this.competenciaId = competenciaId;
+    }
+
+    String competenciaId;
+
+
+    public Partido (String idPartido, String equipoLocal, String equipoVisitante, String resultadoLocal, String resultadoVisitante, String arbitro, String dia, String fecha, String lugar, String partidoDisputado){
         this.idPartido = idPartido;
         this.equipoLocal = equipoLocal;
         this.resultadoLocal = resultadoLocal;
@@ -29,6 +46,7 @@ public class Partido {
         this.dia = dia;
         this.lugar = lugar;
         this.arbitro=arbitro;
+        this.partidoDisputado=partidoDisputado;
     }
 
     public String getIdPartido() {

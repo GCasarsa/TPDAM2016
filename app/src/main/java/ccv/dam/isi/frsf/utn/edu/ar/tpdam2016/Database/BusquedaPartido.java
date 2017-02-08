@@ -50,7 +50,7 @@ public class BusquedaPartido extends AsyncTask<String,Integer,ArrayList<Partido>
     }
 
     public ArrayList<Partido> buscarPartidos(){
-        posicionBD = database.getReference("bd/partidos");
+        posicionBD = database.getReference("datos/partidos");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
@@ -63,7 +63,8 @@ public class BusquedaPartido extends AsyncTask<String,Integer,ArrayList<Partido>
                         newPost.get("arbitro").toString(),
                         newPost.get("dia").toString(),
                         newPost.get("fecha").toString(),
-                        newPost.get("estadio").toString()));
+                        newPost.get("estadio").toString(),
+                        newPost.get("partidoDisputado").toString()));
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
@@ -78,7 +79,7 @@ public class BusquedaPartido extends AsyncTask<String,Integer,ArrayList<Partido>
     }
 
     public ArrayList<Partido> buscarPartido(final String idPartido){
-        posicionBD = database.getReference("bd/partidos");
+        posicionBD = database.getReference("datos/partidos");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
@@ -92,7 +93,8 @@ public class BusquedaPartido extends AsyncTask<String,Integer,ArrayList<Partido>
                             newPost.get("arbitro").toString(),
                             newPost.get("dia").toString(),
                             newPost.get("fecha").toString(),
-                            newPost.get("estadio").toString()));
+                            newPost.get("estadio").toString(),
+                            newPost.get("partidoDisputado").toString()));
                 }
             }
             @Override
@@ -124,7 +126,8 @@ public class BusquedaPartido extends AsyncTask<String,Integer,ArrayList<Partido>
                             newPost.get("arbitro").toString(),
                             newPost.get("dia").toString(),
                             newPost.get("fecha").toString(),
-                            newPost.get("estadio").toString()));
+                            newPost.get("estadio").toString(),
+                            newPost.get("partidoDisputado").toString()));
                 }
             }
             @Override

@@ -60,13 +60,13 @@ public class EquipoTabResultados  extends Fragment {
     }
 
     public void buscarPartidosPorEquipo(final ArrayList<Partido> listaPartidos, final String nombre){
-        posicionBD = database.getReference("bd/partidos");
+        posicionBD = database.getReference("datos/partidos");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 if(newPost.get("equipoLocal").toString().equals(nombre) || newPost.get("equipoVisitante").toString().equals(nombre)) {
-                    Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
+                    Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString(),newPost.get("partidoDisputado").toString());
                     listaPartidos.add(partido);
                     adapter = new AdapterResultado(getActivity(), listaPartidos);
                     listViewPartidos.setAdapter(adapter);

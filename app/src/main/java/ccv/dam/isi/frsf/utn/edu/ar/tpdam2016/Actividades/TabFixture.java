@@ -109,7 +109,7 @@ public class TabFixture extends Fragment{
         protected Integer doInBackground(Integer... fecha) {
             final int fechaConsultada =  fecha[0]+1;
             partidos.clear();
-            posicionBD = database.getReference("bd/partidos");
+            posicionBD = database.getReference("datos/partidos");
             posicionBD.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
@@ -118,7 +118,7 @@ public class TabFixture extends Fragment{
                         Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(),
                                 newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(),
                                 newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(),
-                                newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString());
+                                newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString(),  newPost.get("partidoDisputado").toString());
                         partidos.add(partido);
                         adapter.notifyDataSetChanged();
                         progressDialog.dismiss();
