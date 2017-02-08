@@ -283,13 +283,13 @@ public class CargarDatos {
         partidosArray.add(new Partido("2","SANJUSTINO","COSMOS FC","2","0","CEBALLOS","08/02","1","Coloso del Oeste","1"));
         partidosArray.add(new Partido("3","COLON DE SANTA FE","UNION DE SANTA FE","2","0","ORTIZ","08/02","1","Estanislao López","1"));
         partidosArray.add(new Partido("4","NEWELLS DE SANTA FE","UNION DE SANTA FE","1","1","CASTRILLI","15/02","2","Miguel Franconieri","1"));
-        partidosArray.add(new Partido("5","COSMOS F.C.","COLON DE SANTA FE","1","0","ORTIZ","15/02","2","Liga Santafesina Predio","1"));
+        partidosArray.add(new Partido("5","COSMOS FC","COLON DE SANTA FE","1","0","ORTIZ","15/02","2","Liga Santafesina Predio","1"));
         partidosArray.add(new Partido("6","ARGENTINO DE SAN CARLOS","SANJUSTINO","2","0","CASTRILLI","15/02","2","12 de Enero","1"));
         partidosArray.add(new Partido("7","LA SALLE JOBSON","ATENEO INMACULADA","3","0","ORTIZ","22/02","3","Cabaña Leiva","1"));
         partidosArray.add(new Partido("8","ATENEO INMACULADA","NEWELLS DE SANTA FE","1","1","CEBALLOS","15/02","2","Ateneo","1"));
         partidosArray.add(new Partido("9","SANJUSTINO","LA SALLE JOBSON","3","2","CASTRILLI","22/02","3","San Justo","1"));
         partidosArray.add(new Partido("10","COLON DE SANTA FE","ARGENTINO DE SAN CARLOS","1","0","ELIZONDO","22/02","3","Brigadier Estanislao Lopez","1"));
-        partidosArray.add(new Partido("11","UNION DE SANTA FE","COSMOS F.C.","2","2","CASTRILLI","22/02","3","15 de Abril","1"));
+        partidosArray.add(new Partido("11","UNION DE SANTA FE","COSMOS FC","2","2","CASTRILLI","22/02","3","15 de Abril","1"));
        /* partidosArray.add(new Partido("12","LA SALLE","NEWELLS","3","1","CASTRILLI","01/03","4","Cabaña Leiva","1"));
         partidosArray.add(new Partido("13","LA SALLE","NEWELLS","3","1","CEBALLOS","01/03","4","Cabaña Leiva","1"));
         partidosArray.add(new Partido("14","LA SALLE","NEWELLS","3","1","CASTRILLI","01/03","4","Cabaña Leiva","1"));
@@ -307,7 +307,7 @@ public class CargarDatos {
         partidosArray.add(new Partido("26","LA SALLE","NEWELLS","3","1","CASTRILLI","22/03","7","Cabaña Leiva","0"));
         partidosArray.add(new Partido("27","LA SALLE","NEWELLS","3","1","ELIZONDO","22/03","7","Cabaña Leiva","0"));*/
 
-
+        cargarPartidos(partidosArray);
     }
 
     public static void cargarJugadores(ArrayList<ArrayList<Jugador>> jugadores){
@@ -328,7 +328,7 @@ public class CargarDatos {
             posicionBD = database.getReference("datos");
             Map<String, Object> postValues = toMap(partidos.get(i));
             Map<String, Object> childUpdates = new HashMap<>();
-            childUpdates.put("/partidos/" + partidos.get(i), postValues);
+            childUpdates.put("/partidos/" + partidos.get(i).getIdPartido(), postValues);
             posicionBD.updateChildren(childUpdates);
         }
     }

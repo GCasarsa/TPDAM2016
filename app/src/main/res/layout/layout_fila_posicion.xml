@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="30dp"
     android:weightSum="1">
 
     <TextView
@@ -9,83 +9,93 @@
         android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="#"
+        android:gravity="center"
         android:id="@+id/POSnumeroOrden" />
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:id="@+id/POSimageView"
-        android:layout_weight="0.06" />
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
     <TextView
         android:layout_width="120dp"
         android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="equipo"
+        android:layout_marginLeft="4dp"
+        android:gravity="center_vertical"
         android:id="@+id/POSnombreEquipo" />
-
-
 
     <TextView
         android:layout_width="33dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="PTS"
         android:layout_marginEnd="1dp"
-
+        android:gravity="center"
         android:id="@+id/POSpts" />
 
     <TextView
         android:layout_width="33dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="PJ"
+        android:gravity="center"
         android:layout_marginEnd="1dp"
         android:id="@+id/POSpj" />
 
     <TextView
         android:layout_width="33dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="G"
+        android:gravity="center"
         android:layout_marginEnd="1dp"
         android:id="@+id/POSpg" />
 
     <TextView
         android:layout_width="33dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="E"
+        android:gravity="center"
         android:layout_marginEnd="1dp"
         android:id="@+id/POSpe" />
 
     <TextView
         android:layout_width="33dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="P"
+        android:gravity="center"
         android:layout_marginEnd="1dp"
         android:id="@+id/POSpp" />
 
     <TextView
         android:layout_width="33dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="GF"
+        android:gravity="center"
         android:layout_marginEnd="1dp"
         android:id="@+id/POSgf" />
 
     <TextView
         android:layout_width="33dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="/c"
+        android:gravity="center"
         android:layout_marginEnd="0dp"
         android:id="@+id/POSgc" />
 
     <TextView
         android:layout_width="33dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="DIF"
         android:layout_marginEnd="1dp"
+        android:gravity="center"
         android:id="@+id/POSdif" />
 </LinearLayout>
