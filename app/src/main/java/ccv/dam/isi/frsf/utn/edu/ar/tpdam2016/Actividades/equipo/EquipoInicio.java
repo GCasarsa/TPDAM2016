@@ -35,7 +35,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizadaListener<Equipo>{
 
     private static ImageView atras, escudo;
-    private static TextView titulo, nombre;
+    private static TextView titulo, nombre, lugar;
     private static Equipo equipo;
     private static CheckBox fav;
     ProgressDialog progressDialog;
@@ -52,6 +52,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
 
         setContentView(R.layout.activity_equipo);
         escudo = (ImageView) findViewById(R.id.ivEquipoEscudo);
+        lugar = (TextView) findViewById(R.id.tvEquipoLugar);
         nombre = (TextView) findViewById(R.id.tvEquipoNombre);
         titulo = (TextView) findViewById(R.id.tvEquipoTitulo);
         atras = (ImageView) findViewById(R.id.ivEquipoAtras);
@@ -96,6 +97,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
 
         nombre.setText(equipo.getNombre());
         titulo.setText(equipo.getNombre());
+        lugar.setText(equipo.getCiudad() + "  -  " + equipo.getDivision());
         String url = equipo.getEscudo();
         if (url.length()>0)
             new DownloadImageTask().execute(url);

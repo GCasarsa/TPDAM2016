@@ -15,7 +15,7 @@ public class CargarEscudos {
         else if(nombre.equals("CICLON RACING")) return R.drawable.escudo_ciclonracing;
         else if(nombre.equals("COLON DE SANTA FE")) return R.drawable.escudo_colon;
         else if(nombre.equals("COLON DE SAN JUSTO")) return R.drawable.escudo_colonsanjusto;
-        else if(nombre.equals("COSMOS F.C.")) return R.drawable.escudo_clubcosmos;
+        else if(nombre.equals("COSMOS FC")) return R.drawable.escudo_clubcosmos;
         else if(nombre.equals("QUILLA")) return R.drawable.escudo_quilla;
         else if(nombre.equals("GIMNASIA DE CIUDADELA")) return R.drawable.escudo_gimnasiaciudadela;
         else if(nombre.equals("LA PERLA DEL OESTE")) return R.drawable.escudo_laperladeloeste;
@@ -37,7 +37,7 @@ public class CargarEscudos {
         //else if(nombre.equals("CICLON RACING")) return R.drawable.escudo_ciclonracing;
         else if(nombre.equals("COLON DE SANTA FE")) return R.drawable.portada_colon;
         //else if(nombre.equals("COLON DE SAN JUSTO")) return R.drawable.escudo_colonsanjusto;
-        else if(nombre.equals("COSMOS F.C.")) return R.drawable.portada_cosmos;
+        else if(nombre.equals("COSMOS FC")) return R.drawable.portada_cosmos;
         //else if(nombre.equals("QUILLA")) return R.drawable.escudo_quilla;
         //else if(nombre.equals("GIMNASIA DE CIUDADELA")) return R.drawable.escudo_gimnasiaciudadela;
         //else if(nombre.equals("LA PERLA DEL OESTE")) return R.drawable.escudo_laperladeloeste;
