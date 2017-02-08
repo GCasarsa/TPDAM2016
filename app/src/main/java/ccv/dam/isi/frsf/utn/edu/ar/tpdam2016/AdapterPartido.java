@@ -40,7 +40,6 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         }
 
         final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageViewEscudoLocal);
-        verDetalle.setImageResource(R.drawable.editar);
         TextView arbitro = (TextView) row.findViewById(R.id.textViewArbitro);
         arbitro.setText("Árbitro: " + getItem(position).getArbitro().toString());
         TextView dia = (TextView) row.findViewById(R.id.textViewDia);

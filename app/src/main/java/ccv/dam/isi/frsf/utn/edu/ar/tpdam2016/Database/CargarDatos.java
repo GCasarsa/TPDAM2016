@@ -67,18 +67,18 @@ public class CargarDatos {
         jugadoresArgentino.add(new Jugador("PRIETTO","LIVIO","M","COLON DE SANTA FE","S",1,0,0,4));
 
         ArrayList<Jugador> jugadoresCosmos = new ArrayList<>();
-        jugadoresArgentino.add(new Jugador("PASSET","LUIS","A","COSMOS F.C.","T", 0, 1, 0, 4));
-        jugadoresArgentino.add(new Jugador("RIVADERO","AGUSTIN","D","COSMOS F.C.","T",0,1,0,4));
-        jugadoresArgentino.add(new Jugador("MANUSOVICH","PABLO","D","COSMOS F.C.","T",0,0,0,4));
-        jugadoresArgentino.add(new Jugador("RUGGERI","ANDRÉS","D","COSMOS F.C.","T",0,4,0,4));
-        jugadoresArgentino.add(new Jugador("GALETTO","RODRIGO","D","COSMOS F.C.","T",0,0,0,4));
-        jugadoresArgentino.add(new Jugador("SILAS","JOAQUÍN","M","COSMOS F.C.","T",0,0,0,4));
-        jugadoresArgentino.add(new Jugador("GOROSITO","GABRIEL JESUS","M","COSMOS F.C.","T",0,0,1,4));
-        jugadoresArgentino.add(new Jugador("BIAGGIO","MATÍAS","M","COSMOS F.C.","T",3,0,0,4));
-        jugadoresArgentino.add(new Jugador("GONZALEZ","FERNANDO","M","COSMOS F.C.","T",0,0,0,4));
-        jugadoresArgentino.add(new Jugador("MONSERRAT","GABRIEL","M","COSMOS F.C.","S",0,0,0,4));
-        jugadoresArgentino.add(new Jugador("AREVALO","MAURO","M","COSMOS F.C.","S",0,0,0,4));
-        jugadoresArgentino.add(new Jugador("ARBARELLO","LIVIO","M","COSMOS F.C.","S",0,0,0,4));
+        jugadoresArgentino.add(new Jugador("PASSET","LUIS","A","COSMOS FC","T", 0, 1, 0, 4));
+        jugadoresArgentino.add(new Jugador("RIVADERO","AGUSTIN","D","COSMOS FC","T",0,1,0,4));
+        jugadoresArgentino.add(new Jugador("MANUSOVICH","PABLO","D","COSMOS FC","T",0,0,0,4));
+        jugadoresArgentino.add(new Jugador("RUGGERI","ANDRÉS","D","COSMOS FC","T",0,4,0,4));
+        jugadoresArgentino.add(new Jugador("GALETTO","RODRIGO","D","COSMOS FC","T",0,0,0,4));
+        jugadoresArgentino.add(new Jugador("SILAS","JOAQUÍN","M","COSMOS FC","T",0,0,0,4));
+        jugadoresArgentino.add(new Jugador("GOROSITO","GABRIEL JESUS","M","COSMOS FC","T",0,0,1,4));
+        jugadoresArgentino.add(new Jugador("BIAGGIO","MATÍAS","M","COSMOS FC","T",3,0,0,4));
+        jugadoresArgentino.add(new Jugador("GONZALEZ","FERNANDO","M","COSMOS FC","T",0,0,0,4));
+        jugadoresArgentino.add(new Jugador("MONSERRAT","GABRIEL","M","COSMOS FC","S",0,0,0,4));
+        jugadoresArgentino.add(new Jugador("AREVALO","MAURO","M","COSMOS FC","S",0,0,0,4));
+        jugadoresArgentino.add(new Jugador("ARBARELLO","LIVIO","M","COSMOS FC","S",0,0,0,4));
 
         ArrayList<Jugador> jugadoresLaSalle = new ArrayList<>();
         jugadoresArgentino.add(new Jugador("SAJA","LUIS","A","LA SALLE JOBSON","T", 0, 1, 0, 4));
@@ -189,7 +189,7 @@ public class CargarDatos {
         ));
 
         listaEquipos.add(new Equipo("4",
-                "COSMOS F.C.",
+                "COSMOS FC",
                 "COSMOS",
                 "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fclubcosmos.png?alt=media&token=35f0361b-a12a-407f-ae28-bfa6c5f09a21",
                 "PRIMERA A",
@@ -356,7 +356,7 @@ public class CargarDatos {
             posicionBD = database.getReference("datos");
             Map<String, Object> postValues = toMap(posiciones.get(i));
             Map<String, Object> childUpdates = new HashMap<>();
-            childUpdates.put("/posiciones/" + posiciones.get(i), postValues);
+            childUpdates.put("/posiciones/" + posiciones.get(i).getEquipo(), postValues);
             posicionBD.updateChildren(childUpdates);
         }
     }

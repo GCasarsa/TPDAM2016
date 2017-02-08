@@ -19,12 +19,26 @@ public class Jugador {
     }
 
     public Jugador(String id, String nombre, String apellido, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.posicion = posicion;
         this.equipo = equipo;
         this.titular = titular;
         this.id = id;
+        this.goles = goles;
+        this.amarillas = amarillas;
+        this.rojas = rojas;
+        this.partidosJugados = partidosJugados;
+    }
+
+    public Jugador(String nombre, String apellido, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.posicion = posicion;
+        this.equipo = equipo;
+        this.titular = titular;
+        this.id = equipo + " " + apellido + nombre;
         this.goles = goles;
         this.amarillas = amarillas;
         this.rojas = rojas;

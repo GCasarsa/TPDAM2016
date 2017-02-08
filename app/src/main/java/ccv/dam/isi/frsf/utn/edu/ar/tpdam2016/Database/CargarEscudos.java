@@ -32,7 +32,7 @@ public class CargarEscudos {
     public static int cargarPortada(String nombre){
         if(nombre.equals("ARGENTINO DE SAN CARLOS")) return R.drawable.portada_argentino;
         //else if(nombre.equals("EL CADI")) return R.drawable.escudo_elcadi;
-        else if(nombre.equals("ATENEO INMACULADA")) return R.drawable.portada_ateneo;
+        //else if(nombre.equals("ATENEO INMACULADA")) return R.drawable.portada_ateneo;
         //else if(nombre.equals("BANCO PROVINCIAL")) return R.drawable.escudo_bancoprovincial;
         //else if(nombre.equals("CICLON RACING")) return R.drawable.escudo_ciclonracing;
         else if(nombre.equals("COLON DE SANTA FE")) return R.drawable.portada_colon;
