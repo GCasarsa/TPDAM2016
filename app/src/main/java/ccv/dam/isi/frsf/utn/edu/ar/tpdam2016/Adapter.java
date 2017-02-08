@@ -57,7 +57,6 @@ public class Adapter extends ArrayAdapter<Equipo> {
         TextView division = (TextView) row.findViewById(R.id.tvVerEquiposLiga);
         imageView =(ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
         nombreDelEquipo.setText(getItem(position).getNombre().toString());
-
         division.setText(getItem(position).getDivision());
         //new DownloadImageTask().execute(getItem(position).getEscudo());
         return(row);

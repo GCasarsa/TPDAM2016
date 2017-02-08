@@ -39,7 +39,8 @@ public class CargarDatos {
         jugadores.add(jugadoresArgentino);
         cargarJugadores(jugadores);
         ArrayList<Equipo> listaEquipos = new ArrayList<>();
-        listaEquipos.add(new Equipo("ARGENTINO DE SAN CARLOS",
+        listaEquipos.add(new Equipo("1",
+                "ARGENTINO DE SAN CARLOS",
                 "ARGENTINO",
                 "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fargentinodesancarlos.png?alt=media&token=71c06334-6990-4961-8d24-106ac38bacfc",
                 "PRIMERA A",

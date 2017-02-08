@@ -51,7 +51,7 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Equipo equipo = new Equipo(newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
+                Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
                 listaEquipos.add(equipo);
             }
             @Override
@@ -63,6 +63,8 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
+        while(listaEquipos.isEmpty()){
+        }
         return listaEquipos;
     }
 
@@ -73,7 +75,8 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 if(newPost.get("id").equals(idEquipo)){
-                    listaEquipos.add(new Equipo(newPost.get("nombre").toString(),
+                    listaEquipos.add(new Equipo(newPost.get("id").toString(),
+                            newPost.get("nombre").toString(),
                             newPost.get("abreviatura").toString(),
                             newPost.get("escudo").toString(),
                             newPost.get("division").toString(),
