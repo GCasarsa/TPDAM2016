@@ -49,8 +49,74 @@ public class CargarDatos {
                 -31.719082,
                 -61.094112,
                 "12 DE ENERO",
-                "RAÍL FRANCISCO FERRERO"
-                ));
+                "RAÚL FRANCISCO FERRERO"
+        ));
+
+        listaEquipos.add(new Equipo("2",
+                "COLON DE SANTA FE",
+                "COLON",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fcolon.png?alt=media&token=22f8769e-3a78-440b-b58c-22816d329af4",
+                "PRIMERA A",
+                "SANTA FE",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Ffoto%2Fargentino.png",
+                -31.662614,
+                -60.726503,
+                "ESTANISLAO LÓPEZ",
+                "PABLO BONAVERI"
+        ));
+
+        listaEquipos.add(new Equipo("3",
+                "COSMOS F.C.",
+                "COSMOS",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fclubcosmos.png?alt=media&token=35f0361b-a12a-407f-ae28-bfa6c5f09a21",
+                "PRIMERA A",
+                "SANTA FE",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Ffoto%2Fargentino.png",
+                -31.584166,
+                -60.684882,
+                "LIGA SANTAFESINA",
+                "LEANDRO BIROLLO"
+        ));
+
+        listaEquipos.add(new Equipo("4",
+                "COSMOS F.C.",
+                "COSMOS",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fclubcosmos.png?alt=media&token=35f0361b-a12a-407f-ae28-bfa6c5f09a21",
+                "PRIMERA A",
+                "SANTA FE",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Ffoto%2Fargentino.png",
+                -31.584166,
+                -60.684882,
+                "LIGA SANTAFESINA",
+                "LEANDRO BIROLLO"
+        ));
+
+        listaEquipos.add(new Equipo("5",
+                "NEWELLS DE SANTA FE",
+                "NEWELLS",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fnewells.png?alt=media&token=23b8edc9-85a4-45eb-ad1d-8c72e8bfe8e5",
+                "PRIMERA A",
+                "SANTA FE",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Ffoto%2Fargentino.png",
+                -31.645053,
+                -60.726395,
+                "MIGUEL FRANCONIERI",
+                "DARIO SABENA"
+        ));
+
+        listaEquipos.add(new Equipo("6",
+                "SANJUSTINO",
+                "SANJUSTINO",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fsanjustino.png?alt=media&token=4a20e9be-34b1-4365-a7d7-b3bbd07da148",
+                "PRIMERA A",
+                "SAN JUSTO",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Ffoto%2Fargentino.png",
+                -30.788142,
+                -60.600725,
+                "COLOSO DEL OESTE",
+                "SEBASTIÁN BUENO"
+        ));
+
 
         for(int i = 0; i < listaEquipos.size(); i++){
             posicionBD = database.getReference("datos");
