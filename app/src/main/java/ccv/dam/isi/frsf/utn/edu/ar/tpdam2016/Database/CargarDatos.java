@@ -122,7 +122,7 @@ public class CargarDatos {
             posicionBD = database.getReference("datos");
             Map<String, Object> postValues = toMap(listaEquipos.get((i)));
             Map<String, Object> childUpdates = new HashMap<>();
-            childUpdates.put("/equipos/primeradivision/" + listaEquipos.get((i)).getNombre(), postValues);
+            childUpdates.put("/equipos/primeradivision/" + listaEquipos.get((i)).getId(), postValues);
             posicionBD.updateChildren(childUpdates);
         }
     }

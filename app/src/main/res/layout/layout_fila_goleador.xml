@@ -6,12 +6,15 @@
     android:baselineAligned="false">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:srcCompat="@drawable/background_toolbar"
         android:id="@+id/imageViewGoleadores"
         android:layout_weight="1"
-        android:gravity="center_vertical"/>
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+
+       />
 
     <TextView
         android:text="Jugador"
@@ -19,7 +22,8 @@
         android:layout_height="40dp"
         android:id="@+id/GOLjugadorTV"
         android:layout_weight="1"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:text="num"
