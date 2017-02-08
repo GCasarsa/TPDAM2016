@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/background_toolbar"
         android:id="@+id/imageViewGoleadores"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:gravity="center_vertical"/>
 
     <TextView
         android:text="Jugador"

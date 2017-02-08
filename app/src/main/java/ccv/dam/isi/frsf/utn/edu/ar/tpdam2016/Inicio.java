@@ -145,7 +145,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     }
 
     public void buscarEquipos(){
-        posicionBD = database.getReference("bd/equipos");
+        posicionBD = database.getReference("datos/equipos/primeradivision");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {

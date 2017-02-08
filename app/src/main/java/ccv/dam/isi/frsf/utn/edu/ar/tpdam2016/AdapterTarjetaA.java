@@ -1,6 +1,8 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
@@ -18,6 +24,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
 
 public class AdapterTarjetaA extends ArrayAdapter<Jugador> {
     LayoutInflater inflater;
+    ImageView escudo;
 
     public AdapterTarjetaA(Context context, List<Jugador> items) {
         super(context, R.layout.layout_fila_tarjeta, items);
@@ -33,10 +40,13 @@ public class AdapterTarjetaA extends ArrayAdapter<Jugador> {
         numTarjetas.setText(""+getItem(position).getAmarillas());
         ImageView imagenAmarilla = (ImageView) row.findViewById(R.id.imageViewTarjetaAmarilla);
         imagenAmarilla.setImageResource(R.drawable.tarjetaamarilla);
-        final ImageView escudo =(ImageView) row.findViewById(R.id.TAR_A_imageViewJugador);
+        escudo =(ImageView) row.findViewById(R.id.TAR_A_imageViewJugador);
 
 
-        if(getItem(position).getEquipo().equals("aldosivi")) escudo.setImageResource(R.drawable.escudo_aldosivi);
+        //if(getItem(position).getEquipo().equals("aldosivi")) escudo.setImageResource(R.drawable.escudo_aldosivi);
+        //if(getItem(position).getEquipo().equals("ARGENTINO DE SAN CARLOS")) new DownloadImageTask().execute("https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fargentinodesancarlos.png?alt=media&token=71c06334-6990-4961-8d24-106ac38bacfc");
+        if(getItem(position).getEquipo().equals("ARGENTINO DE SAN CARLOS")) escudo.setImageResource(R.drawable.argentinodesancarlos);
+
         else if(getItem(position).getEquipo().equals("arsenal")) escudo.setImageResource(R.drawable.escudo_arsenal);
         else if(getItem(position).getEquipo().equals("bandfield")) escudo.setImageResource(R.drawable.escudo_banfield);
         else if(getItem(position).getEquipo().equals("belgrano")) escudo.setImageResource(R.drawable.escudo_belgrano);
@@ -58,6 +68,32 @@ public class AdapterTarjetaA extends ArrayAdapter<Jugador> {
 
 
         return(row);
+    }
+
+    class DownloadImageTask extends AsyncTask<String, Void, Drawable> {
+        protected void onPreExecute() {}
+        protected Drawable doInBackground(String... urls) {
+            return downloadImage(urls[0]);
+        }
+        protected void onPostExecute(Drawable imagen) {
+            escudo.setImageDrawable(imagen);
+            //progressDialog.dismiss();
+        }
+        private Drawable downloadImage(String imageUrl) {
+            try {
+                URL url = new URL(imageUrl);
+                InputStream is = (InputStream)url.getContent();
+                return Drawable.createFromStream(is, "src");
+            }
+            catch (MalformedURLException e) {
+                e.printStackTrace();
+                return null;
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
     }
 
 
