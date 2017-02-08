@@ -71,12 +71,12 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
                     SharedPreferences.Editor edit = pref.edit();
-                    edit.putBoolean(equipo.getId(), true);
+                    edit.putBoolean(equipo.getNombre(), true);
                     edit.commit();
                 }
                 else {
                     SharedPreferences.Editor edit = pref.edit();
-                    edit.putBoolean(equipo.getId(), false);
+                    edit.putBoolean(equipo.getNombre(), false);
                     edit.commit();
                 }
             }

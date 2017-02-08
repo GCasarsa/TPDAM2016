@@ -152,7 +152,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 for(int i = 0; i < preferencias.size(); i++){
                     if(newPost.get("id").toString().equals(preferencias.get(i))) {
-                        Equipo equipo = new Equipo(newPost.get("id").toString(), newPost.get("nombre").toString(), newPost.get("escudo").toString(), newPost.get("division").toString());
+                        Equipo equipo = new Equipo(newPost.get("nombre").toString(), newPost.get("escudo").toString(), newPost.get("division").toString());
                         busqueda.add(equipo);
                     }
                 }

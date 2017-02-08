@@ -28,9 +28,8 @@ public class Equipo {
         this.directorTecnico = directorTecnico;
     }
 
-    public Equipo(String nombre, String abreviatura, String escudo, String division) {
+    public Equipo(String nombre, String escudo, String division) {
         this.nombre = nombre;
-        this.abreviatura = abreviatura;
         this.escudo = escudo;
         this.division = division;
     }

@@ -54,7 +54,7 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
     }
 
     public ArrayList<Jugador> buscarJugadores(Query consulta){
-        posicionBD = database.getReference("jugadores");
+        posicionBD = database.getReference("datos/jugadores");
 
         consulta.addChildEventListener(new ChildEventListener() {
             @Override

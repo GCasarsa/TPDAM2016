@@ -2,6 +2,7 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
@@ -46,7 +51,6 @@ public class VerEquiposActivity extends AppCompatActivity  implements BusquedaFi
                 startActivity(intent);
             }
         });
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -55,7 +59,6 @@ public class VerEquiposActivity extends AppCompatActivity  implements BusquedaFi
                 startActivity(intent);
             }
         });
-
     }
     @Override
     public void busquedaFinalizada(ArrayList<Equipo> lista) {
@@ -64,6 +67,5 @@ public class VerEquiposActivity extends AppCompatActivity  implements BusquedaFi
         adapter= new Adapter(getApplicationContext(), listaEquipos);
         listView.setAdapter(adapter);
     }
-
 
 }

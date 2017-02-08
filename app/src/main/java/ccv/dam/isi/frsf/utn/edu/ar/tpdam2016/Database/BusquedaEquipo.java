@@ -46,12 +46,12 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
     }
 
     public ArrayList<Equipo> buscarEquipos(){
-        posicionBD = database.getReference("bd/equipos");
+        posicionBD = database.getReference("datos/equipos/primeradivision");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
-                Equipo equipo = new Equipo(newPost.get("id").toString(),newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
+                Equipo equipo = new Equipo(newPost.get("nombre").toString(), newPost.get("escudo").toString(),newPost.get("division").toString());
                 listaEquipos.add(equipo);
             }
             @Override
@@ -67,7 +67,7 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
     }
 
     public ArrayList<Equipo> buscarEquipo(final String idEquipo){
-        posicionBD = database.getReference("bd/equipos");
+        posicionBD = database.getReference("datos/equipos/primeradivision");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {

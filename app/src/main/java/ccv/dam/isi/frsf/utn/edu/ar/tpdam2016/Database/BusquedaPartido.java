@@ -138,7 +138,6 @@ public class BusquedaPartido extends AsyncTask<String,Integer,ArrayList<Partido>
         });
         while(listaPartidos.isEmpty()){
         }
-        System.out.println(listaPartidos.size());
         return listaPartidos;
     }
 }

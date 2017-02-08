@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -28,15 +29,18 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
 public class Adapter extends ArrayAdapter<Equipo> {
     LayoutInflater inflater;
     FirebaseAuth autenticacion;
     Context contexto;
+    ImageView imageView;
     private static final String TAG = "Storage#MainActivity";
 
     public Adapter(Context context, List<Equipo> items) {
@@ -51,31 +55,36 @@ public class Adapter extends ArrayAdapter<Equipo> {
         View row = inflater.inflate(R.layout.layout_fila_equipo, parent, false);
         TextView nombreDelEquipo = (TextView) row.findViewById(R.id.tvVerEquiposNombre);
         TextView division = (TextView) row.findViewById(R.id.tvVerEquiposLiga);
-        final ImageView imageView =(ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
+        imageView =(ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
         nombreDelEquipo.setText(getItem(position).getNombre().toString());
-        division.setText(getItem(position).getDivision());
-        if(getItem(position).getNombre().toString().equals("ALDOSIVI")) imageView.setImageResource(R.drawable.escudo_aldosivi);
-        else if(getItem(position).getNombre().toString().equals("ARSENAL DE SARANDÍ")) imageView.setImageResource(R.drawable.escudo_arsenal);
-        else if(getItem(position).getNombre().toString().equals("BANFIELD")) imageView.setImageResource(R.drawable.escudo_banfield);
-        else if(getItem(position).getNombre().toString().equals("BELGRANO")) imageView.setImageResource(R.drawable.escudo_belgrano);
-        else if(getItem(position).getNombre().toString().equals("BOCA JUNIORS")) imageView.setImageResource(R.drawable.escudo_boca);
-        else if(getItem(position).getNombre().toString().equals("ROSARIO CENTRAL")) imageView.setImageResource(R.drawable.escudo_central);
-        else if(getItem(position).getNombre().toString().equals("COLON DE SANTA FE")) imageView.setImageResource(R.drawable.escudo_colon);
-        else if(getItem(position).getNombre().toString().equals("DEFENSA Y JUSTICIA")) imageView.setImageResource(R.drawable.escudo_defensa);
-        else if(getItem(position).getNombre().toString().equals("ESTUDIANTES")) imageView.setImageResource(R.drawable.escudo_estudiantes);
-        else if(getItem(position).getNombre().toString().equals("GIMNASIA DE LA PLATA")) imageView.setImageResource(R.drawable.escudo_gimnasia);
-        else if(getItem(position).getNombre().toString().equals("GODOY CRUZ")) imageView.setImageResource(R.drawable.escudo_godoy);
-        else if(getItem(position).getNombre().toString().equals("HURACAN")) imageView.setImageResource(R.drawable.escudo_huracan);
-        else if(getItem(position).getNombre().toString().equals("INDEPENDIENTE")) imageView.setImageResource(R.drawable.escudo_independiente);
-        else if(getItem(position).getNombre().toString().equals("LANUS")) imageView.setImageResource(R.drawable.escudo_lanus);
-        else if(getItem(position).getNombre().toString().equals("NEWELLS OLD BOYS")) imageView.setImageResource(R.drawable.escudo_newells);
-        else if(getItem(position).getNombre().toString().equals("RACING CLUB")) imageView.setImageResource(R.drawable.escudo_racing);
-        else if(getItem(position).getNombre().toString().equals("RIVER PLATE")) imageView.setImageResource(R.drawable.escudo_river);
-        else if(getItem(position).getNombre().toString().equals("SAN LORENZO")) imageView.setImageResource(R.drawable.escudo_sanlorenzo);
-        else if(getItem(position).getNombre().toString().equals("UNION DE SANTA FE")) imageView.setImageResource(R.drawable.escudo_union);
-        else if(getItem(position).getNombre().toString().equals("VELEZ")) imageView.setImageResource(R.drawable.escudo_velez);
 
+        division.setText(getItem(position).getDivision());
+        //new DownloadImageTask().execute(getItem(position).getEscudo());
         return(row);
+    }
+    class DownloadImageTask extends AsyncTask<String, Void, Drawable> {
+        protected void onPreExecute() {}
+        protected Drawable doInBackground(String... urls) {
+            return downloadImage(urls[0]);
+        }
+        protected void onPostExecute(Drawable imagen) {
+            imageView.setImageDrawable(imagen);
+        }
+        private Drawable downloadImage(String imageUrl) {
+            try {
+                URL url = new URL(imageUrl);
+                InputStream is = (InputStream)url.getContent();
+                return Drawable.createFromStream(is, "src");
+            }
+            catch (MalformedURLException e) {
+                e.printStackTrace();
+                return null;
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
     }
 
 }
