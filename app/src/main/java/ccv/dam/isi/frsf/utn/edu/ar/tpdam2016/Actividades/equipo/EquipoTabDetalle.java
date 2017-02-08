@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.BusquedaFinalizadaListener;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.BusquedaJugador;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.CargarEscudos;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
@@ -64,36 +65,9 @@ public class EquipoTabDetalle extends Fragment implements BusquedaFinalizadaList
             jugadores = lista;
             adapter= new AdapterDetalle(getActivity(), jugadores);
             listaJugadores.setAdapter(adapter);
-            String url = equipo.getEscudo();
-            if (url.length()>0)
-                new DownloadImageTask().execute(url);
+            fotoPlantilla.setImageResource(CargarEscudos.cargarPortada(equipo.getNombre()));
         }
         dt.setText(equipo.getDirectorTecnico());
-    }
-
-    class DownloadImageTask extends AsyncTask<String, Void, Drawable> {
-        protected void onPreExecute() {}
-        protected Drawable doInBackground(String... urls) {
-            return downloadImage(urls[0]);
-        }
-        protected void onPostExecute(Drawable imagen) {
-            fotoPlantilla.setImageDrawable(imagen);
-        }
-        private Drawable downloadImage(String imageUrl) {
-            try {
-                URL url = new URL(imageUrl);
-                InputStream is = (InputStream)url.getContent();
-                return Drawable.createFromStream(is, "src");
-            }
-            catch (MalformedURLException e) {
-                e.printStackTrace();
-                return null;
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
     }
 
 }

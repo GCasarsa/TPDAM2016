@@ -34,6 +34,7 @@ import java.net.URL;
 import java.util.List;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.CargarEscudos;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
 public class Adapter extends ArrayAdapter<Equipo> {
@@ -41,6 +42,7 @@ public class Adapter extends ArrayAdapter<Equipo> {
     FirebaseAuth autenticacion;
     Context contexto;
     ImageView imageView;
+    TextView division, nombreDelEquipo;
     private static final String TAG = "Storage#MainActivity";
 
     public Adapter(Context context, List<Equipo> items) {
@@ -53,37 +55,15 @@ public class Adapter extends ArrayAdapter<Equipo> {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         View row = inflater.inflate(R.layout.layout_fila_equipo, parent, false);
-        TextView nombreDelEquipo = (TextView) row.findViewById(R.id.tvVerEquiposNombre);
-        TextView division = (TextView) row.findViewById(R.id.tvVerEquiposLiga);
-        imageView =(ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
+        nombreDelEquipo = (TextView) row.findViewById(R.id.tvVerEquiposNombre);
+        division = (TextView) row.findViewById(R.id.tvVerEquiposLiga);
+        imageView = (ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
+
         nombreDelEquipo.setText(getItem(position).getNombre());
         division.setText(getItem(position).getDivision());
-        new DownloadImageTask().execute(getItem(position).getEscudo());
-        return(row);
-    }
-    class DownloadImageTask extends AsyncTask<String, Void, Drawable> {
-        protected void onPreExecute() {}
-        protected Drawable doInBackground(String... urls) {
-            return downloadImage(urls[0]);
-        }
-        protected void onPostExecute(Drawable imagen) {
-            imageView.setImageDrawable(imagen);
-        }
-        private Drawable downloadImage(String imageUrl) {
-            try {
-                URL url = new URL(imageUrl);
-                InputStream is = (InputStream)url.getContent();
-                return Drawable.createFromStream(is, "src");
-            }
-            catch (MalformedURLException e) {
-                e.printStackTrace();
-                return null;
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
+        imageView.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getNombre()));
+
+        return (row);
     }
 
 }

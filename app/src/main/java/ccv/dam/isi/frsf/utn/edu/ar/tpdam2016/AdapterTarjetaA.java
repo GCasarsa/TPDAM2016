@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.CargarEscudos;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
 
 /**
@@ -41,30 +42,29 @@ public class AdapterTarjetaA extends ArrayAdapter<Jugador> {
         ImageView imagenAmarilla = (ImageView) row.findViewById(R.id.imageViewTarjetaAmarilla);
         imagenAmarilla.setImageResource(R.drawable.tarjetaamarilla);
         escudo =(ImageView) row.findViewById(R.id.TAR_A_imageViewJugador);
+        escudo.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipo()));
 
 
-        //if(getItem(position).getEquipo().equals("aldosivi")) escudo.setImageResource(R.drawable.escudo_aldosivi);
         //if(getItem(position).getEquipo().equals("ARGENTINO DE SAN CARLOS")) new DownloadImageTask().execute("https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fargentinodesancarlos.png?alt=media&token=71c06334-6990-4961-8d24-106ac38bacfc");
-        if(getItem(position).getEquipo().equals("ARGENTINO DE SAN CARLOS")) escudo.setImageResource(R.drawable.argentinodesancarlos);
-
-        else if(getItem(position).getEquipo().equals("arsenal")) escudo.setImageResource(R.drawable.escudo_arsenal);
-        else if(getItem(position).getEquipo().equals("bandfield")) escudo.setImageResource(R.drawable.escudo_banfield);
-        else if(getItem(position).getEquipo().equals("belgrano")) escudo.setImageResource(R.drawable.escudo_belgrano);
-        else if(getItem(position).getEquipo().equals("boca")) escudo.setImageResource(R.drawable.escudo_boca);
-        else if(getItem(position).getEquipo().equals("central")) escudo.setImageResource(R.drawable.escudo_central);
-        else if(getItem(position).getEquipo().equals("colon")) escudo.setImageResource(R.drawable.escudo_colon);
-        else if(getItem(position).getEquipo().equals("defensa y justicia")) escudo.setImageResource(R.drawable.escudo_defensa);
-        else if(getItem(position).getEquipo().equals("estudiantes")) escudo.setImageResource(R.drawable.escudo_estudiantes);
-        else if(getItem(position).getEquipo().equals("gimnasia")) escudo.setImageResource(R.drawable.escudo_gimnasia);
-        else if(getItem(position).getEquipo().equals("godoy Cruz")) escudo.setImageResource(R.drawable.escudo_godoy);
-        else if(getItem(position).getEquipo().equals("huracan")) escudo.setImageResource(R.drawable.escudo_huracan);
-        else if(getItem(position).getEquipo().equals("independiente")) escudo.setImageResource(R.drawable.escudo_independiente);
-        else if(getItem(position).getEquipo().equals("lanus")) escudo.setImageResource(R.drawable.escudo_lanus);
-        else if(getItem(position).getEquipo().equals("racing")) escudo.setImageResource(R.drawable.escudo_racing);
-        else if(getItem(position).getEquipo().equals("river")) escudo.setImageResource(R.drawable.escudo_river);
-        else if(getItem(position).getEquipo().equals("san lorenzo")) escudo.setImageResource(R.drawable.escudo_sanlorenzo);
-        else if(getItem(position).getEquipo().equals("union")) escudo.setImageResource(R.drawable.escudo_union);
-        else if(getItem(position).getEquipo().equals("velez")) escudo.setImageResource(R.drawable.escudo_velez);
+        /*if(getItem(position).getEquipo().equals("ARGENTINO DE SAN CARLOS")) escudo.setImageResource(R.drawable.argentinodesancarlos);
+        else if(getItem(position).getEquipo().equals("EL CADI")) escudo.setImageResource(R.drawable.escudo_elcadi);
+        else if(getItem(position).getEquipo().equals("ATENEO INMACULADA")) escudo.setImageResource(R.drawable.escudo_ateneo);
+        else if(getItem(position).getEquipo().equals("BANCO PROVINCIAL")) escudo.setImageResource(R.drawable.escudo_bancoprovincial);
+        else if(getItem(position).getEquipo().equals("CICLON RACING")) escudo.setImageResource(R.drawable.escudo_ciclonracing);
+        else if(getItem(position).getEquipo().equals("COLON")) escudo.setImageResource(R.drawable.escudo_colon);
+        else if(getItem(position).getEquipo().equals("COLON DE SAN JUSTO")) escudo.setImageResource(R.drawable.escudo_colonsanjusto);
+        else if(getItem(position).getEquipo().equals("COSMOS FC")) escudo.setImageResource(R.drawable.escudo_clubcosmos);
+        else if(getItem(position).getEquipo().equals("QUILLA")) escudo.setImageResource(R.drawable.escudo_quilla);
+        else if(getItem(position).getEquipo().equals("GIMNASIA DE CIUDADELA")) escudo.setImageResource(R.drawable.escudo_gimnasiaciudadela);
+        else if(getItem(position).getEquipo().equals("LA PERLA DEL OESTE")) escudo.setImageResource(R.drawable.escudo_laperladeloeste);
+        else if(getItem(position).getEquipo().equals("NEWELLS DE SANTA FE")) escudo.setImageResource(R.drawable.escudo_newells);
+        else if(getItem(position).getEquipo().equals("SAN JUSTINO")) escudo.setImageResource(R.drawable.escudo_sanjustino);
+        else if(getItem(position).getEquipo().equals("UNION")) escudo.setImageResource(R.drawable.escudo_union);
+        else if(getItem(position).getEquipo().equals("UNL")) escudo.setImageResource(R.drawable.escudo_unl);
+        else if(getItem(position).getEquipo().equals("LA SALLE")) escudo.setImageResource(R.drawable.escudo_lasalle);
+        else if(getItem(position).getEquipo().equals("BELGRANO DE CORONDA")) escudo.setImageResource(R.drawable.escudo_belgranodecoronda);
+        else if(getItem(position).getEquipo().equals("PUCARA")) escudo.setImageResource(R.drawable.escudo_pucara);
+        else if(getItem(position).getEquipo().equals("INDEPENDIENTE DE SANTO TOME")) escudo.setImageResource(R.drawable.escudo_independiente);*/
 
 
         return(row);

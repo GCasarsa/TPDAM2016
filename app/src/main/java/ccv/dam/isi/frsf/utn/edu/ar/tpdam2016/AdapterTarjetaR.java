@@ -51,18 +51,18 @@ if(getItem(position).getEquipo().equals("ARGENTINO DE SAN CARLOS")) escudo.setIm
         else if(getItem(position).getEquipo().equals("belgrano")) escudo.setImageResource(R.drawable.escudo_belgrano);
         else if(getItem(position).getEquipo().equals("boca")) escudo.setImageResource(R.drawable.escudo_boca);
         else if(getItem(position).getEquipo().equals("central")) escudo.setImageResource(R.drawable.escudo_central);
-        else if(getItem(position).getEquipo().equals("colon")) escudo.setImageResource(R.drawable.escudo_colon);
+        else if(getItem(position).getEquipo().equals("escudo_colon")) escudo.setImageResource(R.drawable.escudo_colon);
         else if(getItem(position).getEquipo().equals("defensa y justicia")) escudo.setImageResource(R.drawable.escudo_defensa);
         else if(getItem(position).getEquipo().equals("estudiantes")) escudo.setImageResource(R.drawable.escudo_estudiantes);
         else if(getItem(position).getEquipo().equals("gimnasia")) escudo.setImageResource(R.drawable.escudo_gimnasia);
         else if(getItem(position).getEquipo().equals("godoy Cruz")) escudo.setImageResource(R.drawable.escudo_godoy);
         else if(getItem(position).getEquipo().equals("huracan")) escudo.setImageResource(R.drawable.escudo_huracan);
-        else if(getItem(position).getEquipo().equals("independiente")) escudo.setImageResource(R.drawable.escudo_independiente);
+        else if(getItem(position).getEquipo().equals("escudo_independiente")) escudo.setImageResource(R.drawable.escudo_independiente);
         else if(getItem(position).getEquipo().equals("lanus")) escudo.setImageResource(R.drawable.escudo_lanus);
         else if(getItem(position).getEquipo().equals("racing")) escudo.setImageResource(R.drawable.escudo_racing);
         else if(getItem(position).getEquipo().equals("river")) escudo.setImageResource(R.drawable.escudo_river);
         else if(getItem(position).getEquipo().equals("san lorenzo")) escudo.setImageResource(R.drawable.escudo_sanlorenzo);
-        else if(getItem(position).getEquipo().equals("union")) escudo.setImageResource(R.drawable.escudo_union);
+        else if(getItem(position).getEquipo().equals("escudo_union")) escudo.setImageResource(R.drawable.escudo_union);
         else if(getItem(position).getEquipo().equals("velez")) escudo.setImageResource(R.drawable.escudo_velez);
 
 
