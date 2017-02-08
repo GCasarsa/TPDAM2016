@@ -50,12 +50,12 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
             listaJugadores = buscarJugadores(database.getReference("datos/jugadores").orderByChild("amarillas"));
         else if(tipoConsulta[0].equals("rojas"))
             listaJugadores = buscarJugadores(database.getReference("datos/jugadores").orderByChild("rojas"));
+        else listaJugadores = buscarJugadores(tipoConsulta[0], database.getReference("datos/jugadores").orderByChild("posicion"));
         return listaJugadores;
     }
 
     public ArrayList<Jugador> buscarJugadores(Query consulta){
         posicionBD = database.getReference("datos/jugadores");
-
         consulta.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
@@ -85,5 +85,36 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
         }
         return listaJugadores;
     }
-
+    public ArrayList<Jugador> buscarJugadores(final String equipo, Query consulta){
+        posicionBD = database.getReference("datos/jugadores");
+        consulta.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+                if(newPost.get("equipo").equals(equipo))
+                    listaJugadores.add(new Jugador(newPost.get("id").toString(),
+                            newPost.get("nombre").toString(),
+                            newPost.get("apellido").toString(),
+                            newPost.get("posicion").toString(),
+                            newPost.get("equipo").toString(),
+                            newPost.get("titular").toString(),
+                            Integer.parseInt(newPost.get("goles").toString()),
+                            Integer.parseInt(newPost.get("amarillas").toString()),
+                            Integer.parseInt(newPost.get("rojas").toString()),
+                            Integer.parseInt(newPost.get("partidosJugados").toString())
+                    ));
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+        while(listaJugadores.isEmpty()){
+        }
+        return listaJugadores;
+    }
 }

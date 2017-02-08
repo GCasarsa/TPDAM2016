@@ -56,9 +56,9 @@ public class Adapter extends ArrayAdapter<Equipo> {
         TextView nombreDelEquipo = (TextView) row.findViewById(R.id.tvVerEquiposNombre);
         TextView division = (TextView) row.findViewById(R.id.tvVerEquiposLiga);
         imageView =(ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
-        nombreDelEquipo.setText(getItem(position).getNombre().toString());
+        nombreDelEquipo.setText(getItem(position).getNombre());
         division.setText(getItem(position).getDivision());
-        //new DownloadImageTask().execute(getItem(position).getEscudo());
+        new DownloadImageTask().execute(getItem(position).getEscudo());
         return(row);
     }
     class DownloadImageTask extends AsyncTask<String, Void, Drawable> {

@@ -1,36 +1,47 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo;
 
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerTitleStrip;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
-import java.util.Map;
-
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.BusquedaFinalizadaListener;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.BusquedaJugador;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 
 /**
  * Created by Gabriel on 29/01/2017.
  */
-public class EquipoTabDetalle extends Fragment {
+public class EquipoTabDetalle extends Fragment implements BusquedaFinalizadaListener<Jugador> {
 
     private static Equipo equipo;
+    ImageView fotoPlantilla;
+    ListView listaJugadores;
+    ArrayList<Jugador> jugadores;
+    TextView dt;
+    AdapterDetalle adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.activity_equipo_tab_detalle, container, false);
-
+        fotoPlantilla = (ImageView) rootView.findViewById(R.id.ivEquipoDetalleFoto);
+        listaJugadores = (ListView) rootView.findViewById(R.id.lvEquipoDetalle);
+        dt = (TextView) rootView.findViewById(R.id.tvEquipoDetalleDT);
+        busqueda(equipo.getNombre());
         return rootView;
     }
 
@@ -43,4 +54,46 @@ public class EquipoTabDetalle extends Fragment {
         fragmentFirst.setArguments(args);
         return fragmentFirst;
     }
+    public void busqueda(String nombreEquipo){
+        new BusquedaJugador(this).execute(nombreEquipo);
+    }
+
+    @Override
+    public void busquedaFinalizada(ArrayList<Jugador> lista) {
+        if(!lista.isEmpty()){
+            jugadores = lista;
+            adapter= new AdapterDetalle(getActivity(), jugadores);
+            listaJugadores.setAdapter(adapter);
+            String url = equipo.getEscudo();
+            if (url.length()>0)
+                new DownloadImageTask().execute(url);
+        }
+        dt.setText(equipo.getDirectorTecnico());
+    }
+
+    class DownloadImageTask extends AsyncTask<String, Void, Drawable> {
+        protected void onPreExecute() {}
+        protected Drawable doInBackground(String... urls) {
+            return downloadImage(urls[0]);
+        }
+        protected void onPostExecute(Drawable imagen) {
+            fotoPlantilla.setImageDrawable(imagen);
+        }
+        private Drawable downloadImage(String imageUrl) {
+            try {
+                URL url = new URL(imageUrl);
+                InputStream is = (InputStream)url.getContent();
+                return Drawable.createFromStream(is, "src");
+            }
+            catch (MalformedURLException e) {
+                e.printStackTrace();
+                return null;
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
+
 }
