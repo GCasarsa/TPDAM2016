@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,6 +45,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
         String id = String.valueOf(getIntent().getExtras().getLong("equipo"));
         progressDialog = ProgressDialog.show(this, "Recopilando Información", "Aguarde unos instantes...");
         new BusquedaEquipo(this).execute(id);
@@ -56,6 +58,10 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
         fav = (CheckBox) findViewById(R.id.checkBoxFav);
 
 
+        // Obtengo las preferencias correspondientes a un equipo para ver si fue marcado como favorito
+        Boolean esFavorito = pref.getBoolean(id,false);
+        fav.setChecked(esFavorito);
+
 
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +71,12 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
             }
         });
 
+
         fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 if(isChecked) {
                     SharedPreferences.Editor edit = pref.edit();
                     edit.putBoolean(equipo.getNombre(), true);
@@ -96,15 +104,11 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
         ViewPager mViewPager;
         adapterTabs = new AdapterTabs(getSupportFragmentManager(), equipo);
 
-         // Obtengo las preferencias correspondientes a un equipo para ver si fue marcado como favorito
-        /*
-        Boolean esFavorito = pref.getBoolean(equipo.getId(),false);
-        fav.setChecked(esFavorito);
-        */
+
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(adapterTabs);
-        pref = PreferenceManager.getDefaultSharedPreferences(this);
-        pref.edit().clear();
+
+
     }
 
     class DownloadImageTask extends AsyncTask<String, Void, Drawable> {
