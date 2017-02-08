@@ -84,8 +84,8 @@ public class BusquedaEquipo extends AsyncTask<String,Integer,ArrayList<Equipo>> 
                             newPost.get("foto").toString(),
                             Double.parseDouble(newPost.get("latitud").toString()),
                             Double.parseDouble(newPost.get("longitud").toString()),
-                            newPost.get("descripcion").toString(),
-                            newPost.get("dt").toString()));
+                            newPost.get("descripcionEstadio").toString(),
+                            newPost.get("directorTecnico").toString()));
                 }
             }
             @Override
