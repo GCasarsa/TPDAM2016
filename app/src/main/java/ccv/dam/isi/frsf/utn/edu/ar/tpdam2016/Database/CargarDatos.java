@@ -279,33 +279,39 @@ public class CargarDatos {
 
         ArrayList<Partido> partidosArray = new ArrayList<Partido>();
         partidosArray.add(new Partido("0","LA SALLE JOBSON","NEWELLS DE SANTA FE","3","1","CASTRILLI","08/02","1","Cabaña Leiva","1"));
-        partidosArray.add(new Partido("1","ATENEO INMACULADA","ARGENTINO DE SAN CARLOS","0","1","ELIZONDO","08/02","1","Ateneo","1"));
+        partidosArray.add(new Partido("1","ATENEO INMACULADA","ARGENTINO","0","1","ELIZONDO","08/02","1","Ateneo","1"));
         partidosArray.add(new Partido("2","SANJUSTINO","COSMOS FC","2","0","CEBALLOS","08/02","1","Coloso del Oeste","1"));
         partidosArray.add(new Partido("3","COLON DE SANTA FE","UNION DE SANTA FE","2","0","ORTIZ","08/02","1","Estanislao López","1"));
+
         partidosArray.add(new Partido("4","NEWELLS DE SANTA FE","UNION DE SANTA FE","1","1","CASTRILLI","15/02","2","Miguel Franconieri","1"));
         partidosArray.add(new Partido("5","COSMOS FC","COLON DE SANTA FE","1","0","ORTIZ","15/02","2","Liga Santafesina Predio","1"));
-        partidosArray.add(new Partido("6","ARGENTINO DE SAN CARLOS","SANJUSTINO","2","0","CASTRILLI","15/02","2","12 de Enero","1"));
+        partidosArray.add(new Partido("6","ARGENTINO","SANJUSTINO","2","0","CASTRILLI","15/02","2","12 de Enero","1"));
         partidosArray.add(new Partido("7","LA SALLE JOBSON","ATENEO INMACULADA","3","0","ORTIZ","22/02","3","Cabaña Leiva","1"));
+
         partidosArray.add(new Partido("8","ATENEO INMACULADA","NEWELLS DE SANTA FE","1","1","CEBALLOS","15/02","2","Ateneo","1"));
         partidosArray.add(new Partido("9","SANJUSTINO","LA SALLE JOBSON","3","2","CASTRILLI","22/02","3","San Justo","1"));
-        partidosArray.add(new Partido("10","COLON DE SANTA FE","ARGENTINO DE SAN CARLOS","1","0","ELIZONDO","22/02","3","Brigadier Estanislao Lopez","1"));
+        partidosArray.add(new Partido("10","COLON DE SANTA FE","ARGENTINO","1","0","ELIZONDO","22/02","3","Brigadier Estanislao Lopez","1"));
         partidosArray.add(new Partido("11","UNION DE SANTA FE","COSMOS FC","2","2","CASTRILLI","22/02","3","15 de Abril","1"));
-       /* partidosArray.add(new Partido("12","LA SALLE","NEWELLS","3","1","CASTRILLI","01/03","4","Cabaña Leiva","1"));
-        partidosArray.add(new Partido("13","LA SALLE","NEWELLS","3","1","CEBALLOS","01/03","4","Cabaña Leiva","1"));
-        partidosArray.add(new Partido("14","LA SALLE","NEWELLS","3","1","CASTRILLI","01/03","4","Cabaña Leiva","1"));
-        partidosArray.add(new Partido("15","LA SALLE","NEWELLS","3","1","ELIZONDO","01/03","4","Cabaña Leiva","1"));
-        partidosArray.add(new Partido("16","LA SALLE","NEWELLS","3","1","CASTRILLI","08/03","5","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("17","LA SALLE","NEWELLS","3","1","CASTRILLI","08/03","5","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("18","LA SALLE","NEWELLS","3","1","ORTIZ","08/03","5","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("19","LA SALLE","NEWELLS","3","1","CEBALLOS","08/03","5","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("20","LA SALLE","NEWELLS","3","1","CASTRILLI","15/03","6","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("21","LA SALLE","NEWELLS","3","1","ELIZONDO","15/03","6","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("22","LA SALLE","NEWELLS","3","1","CEBALLOS","15/03","6","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("23","LA SALLE","NEWELLS","3","1","CASTRILLI","15/03","6","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("24","LA SALLE","NEWELLS","3","1","ORTIZ","22/03","7","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("25","LA SALLE","NEWELLS","3","1","CEBALLOS","22/03","7","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("26","LA SALLE","NEWELLS","3","1","CASTRILLI","22/03","7","Cabaña Leiva","0"));
-        partidosArray.add(new Partido("27","LA SALLE","NEWELLS","3","1","ELIZONDO","22/03","7","Cabaña Leiva","0"));*/
+
+        partidosArray.add(new Partido("12","NEWELLS DE SANTA FE","COSMOS FC","0","0","CASTRILLI","01/03","4","Miguel Franconieri","1"));
+        partidosArray.add(new Partido("13","ARGENTINO","UNION DE SANTA FE","2","1","CEBALLOS","01/03","4","12 de Enero","1"));
+        partidosArray.add(new Partido("14","LA SALLE JOBSON","COLON DE SANTA FE","1","0","CASTRILLI","01/03","4","Cabaña Leiva","1"));
+        partidosArray.add(new Partido("15","ATENEO INMACULADA","SANJUSTINO","1","1","ELIZONDO","01/03","4","Ateneo","1"));
+
+        partidosArray.add(new Partido("16","SANJUSTINO","NEWELLS DE SANTA FE","","","CASTRILLI","08/03","5","San Justo","0"));
+        partidosArray.add(new Partido("17","COLON DE SANTA FE","ATENEO INMACULADA","","","CASTRILLI","08/03","5","Brigadier Estanislao Lopez","0"));
+        partidosArray.add(new Partido("18","UNION DE SANTA FE","LA SALLE JOBSON","","","ORTIZ","08/03","5","15 de abril","0"));
+        partidosArray.add(new Partido("19","COSMOS FC","ARGENTINO","","","CEBALLOS","08/03","5","Predio Liga","0"));
+
+        partidosArray.add(new Partido("20","NEWELLS DE SANTA FE","ARGENTINO","","","CASTRILLI","15/03","6","Predio Liga","0"));
+        partidosArray.add(new Partido("21","LA SALLE JOBSON","COSMOS FC","","","ELIZONDO","15/03","6","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("22","ATENEO INMACULADA","UNION DE SANTA FE","","","CEBALLOS","15/03","6","Ateneo","0"));
+        partidosArray.add(new Partido("23","SANJUSTINO","COLON DE SANTA FE","","","CASTRILLI","15/03","6","San Justo","0"));
+
+        partidosArray.add(new Partido("24","COLON DE SANTA FE","NEWELLS DE SANTA FE","","","ORTIZ","22/03","7","Brigadier Estanislao Lopez","0"));
+        partidosArray.add(new Partido("25","UNION DE SANTA FE","SANJUSTINO","","","CEBALLOS","22/03","7","15 de abril","0"));
+        partidosArray.add(new Partido("26","COSMOS FC","ATENEO INMACULADA","","","CASTRILLI","22/03","7","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("27","ARGENTINO","LA SALLE JOBSON","","","ELIZONDO","22/03","7","12 de enero","0"));
 
         cargarPartidos(partidosArray);
     }

@@ -55,7 +55,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/ivPartidoEscudoLocal"
-            android:src="@drawable/escudo_river"/>
+            />
 
         <TextView
             android:layout_width="100dp"
@@ -87,7 +87,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/ivPartidoEscudoVisitante"
-            android:src="@drawable/escudo_boca" />
+             />
     </LinearLayout>
 
     <LinearLayout
