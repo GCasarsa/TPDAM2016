@@ -4,6 +4,7 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
  * Created by Gabriel on 16/01/2017.
  */
 public class Equipo {
+    String id;
     String nombre;
     String abreviatura;
     String escudo;
@@ -15,7 +16,8 @@ public class Equipo {
     String descripcionEstadio;
     String directorTecnico;
 
-    public Equipo(String nombre, String abreviatura, String escudo, String division, String ciudad, String foto, Double latitud, Double longitud, String descripcionEstadio, String directorTecnico) {
+    public Equipo(String id, String nombre, String abreviatura, String escudo, String division, String ciudad, String foto, Double latitud, Double longitud, String descripcionEstadio, String directorTecnico) {
+        this.id = id;
         this.nombre = nombre;
         this.abreviatura = abreviatura;
         this.escudo = escudo;
@@ -28,10 +30,19 @@ public class Equipo {
         this.directorTecnico = directorTecnico;
     }
 
-    public Equipo(String nombre, String escudo, String division) {
+    public Equipo(String id, String nombre, String escudo, String division) {
+        this.id = id;
         this.nombre = nombre;
         this.escudo = escudo;
         this.division = division;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
