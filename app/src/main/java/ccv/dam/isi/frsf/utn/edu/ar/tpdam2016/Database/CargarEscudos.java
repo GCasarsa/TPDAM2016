@@ -27,10 +27,10 @@ public class CargarEscudos {
         else if(nombre.equals("BELGRANO DE CORONDA")) return R.drawable.escudo_belgranodecoronda;
         else if(nombre.equals("PUCARA")) return R.drawable.escudo_pucara;
         else if(nombre.equals("INDEPENDIENTE DE SANTO TOME")) return R.drawable.escudo_independiente;
-        else return R.drawable.escudo_banfield;
+        else return R.drawable.escudo_vacio;
     }
     public static int cargarPortada(String nombre){
-        if(nombre.equals("ARGENTINO DE SAN CARLOS")) return R.drawable.argentinodesancarlos;
+        if(nombre.equals("ARGENTINO DE SAN CARLOS")) return R.drawable.portada_argentino;
         //else if(nombre.equals("EL CADI")) return R.drawable.escudo_elcadi;
         else if(nombre.equals("ATENEO INMACULADA")) return R.drawable.portada_ateneo;
         //else if(nombre.equals("BANCO PROVINCIAL")) return R.drawable.escudo_bancoprovincial;
@@ -45,10 +45,10 @@ public class CargarEscudos {
         else if(nombre.equals("SANJUSTINO")) return R.drawable.portada_sanjustino;
         else if(nombre.equals("UNION DE SANTA FE")) return R.drawable.portada_union;
         //else if(nombre.equals("UNL")) return R.drawable.escudo_unl;
-        else if(nombre.equals("LA SALLE")) return R.drawable.portada_lasalle;
+        else if(nombre.equals("LA SALLE JOBSON")) return R.drawable.portada_lasalle;
         //else if(nombre.equals("BELGRANO DE CORONDA")) return R.drawable.escudo_belgranodecoronda;
         //else if(nombre.equals("PUCARA")) return R.drawable.escudo_pucara;
         //else if(nombre.equals("INDEPENDIENTE DE SANTO TOME")) return R.drawable.escudo_independiente;
-        else return R.drawable.escudo_banfield;
+        else return R.drawable.escudo_vacio;
     }
 }

@@ -1,7 +1,5 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo;
 
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,10 +9,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.BusquedaFinalizadaListener;
@@ -67,7 +61,7 @@ public class EquipoTabDetalle extends Fragment implements BusquedaFinalizadaList
             listaJugadores.setAdapter(adapter);
             fotoPlantilla.setImageResource(CargarEscudos.cargarPortada(equipo.getNombre()));
         }
-        dt.setText(equipo.getDirectorTecnico());
+        dt.setText("D.T.: " + equipo.getDirectorTecnico());
     }
 
 }
