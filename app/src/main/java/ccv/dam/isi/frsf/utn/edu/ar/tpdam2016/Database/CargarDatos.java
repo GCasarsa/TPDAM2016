@@ -10,6 +10,7 @@ import java.util.Map;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.FilaPosicion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Jugador;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 
 /**
  * Created by Gabriel on 05/02/2017.
@@ -21,6 +22,7 @@ public class CargarDatos {
     private static DatabaseReference posicionBD;
 
     public static void cargarEquipos(){
+
         ArrayList<ArrayList<Jugador>> jugadores = new ArrayList<>();
         ArrayList<Jugador> jugadoresArgentino = new ArrayList<>();
         jugadoresArgentino.add(new Jugador("LEIVA","LUIS","A","ARGENTINO DE SAN CARLOS","T", 2, 1, 0, 4));
@@ -147,7 +149,6 @@ public class CargarDatos {
         jugadores.add(jugadoresUnion);
 
         cargarJugadores(jugadores);
-
         ArrayList<Equipo> listaEquipos = new ArrayList<>();
         listaEquipos.add(new Equipo("1",
                 "ARGENTINO DE SAN CARLOS",
@@ -264,7 +265,7 @@ public class CargarDatos {
             posicionBD.updateChildren(childUpdates);
         }
 
-        ArrayList<FilaPosicion> posicionesFilas = new ArrayList<>();
+        ArrayList<FilaPosicion> posicionesFilas = new ArrayList<FilaPosicion>();
         posicionesFilas.add(new FilaPosicion("La Salle","7","4","2","1","1","9","4","5","0"));
         posicionesFilas.add(new FilaPosicion("Argentino","9","4","3","0","1","6","2","4","1"));
         posicionesFilas.add(new FilaPosicion("Ateneo","4","4","1","1","2","2","6","-4","2"));
@@ -274,6 +275,39 @@ public class CargarDatos {
         posicionesFilas.add(new FilaPosicion("Colon","6","4","2","0","2","3","2","1","6"));
         posicionesFilas.add(new FilaPosicion("Union","2","4","0","2","2","4","7","-3","1"));
         cargarPosiciones(posicionesFilas);
+
+
+        ArrayList<Partido> partidosArray = new ArrayList<Partido>();
+        partidosArray.add(new Partido("0","LA SALLE JOBSON","NEWELLS DE SANTA FE","3","1","CASTRILLI","08/02","1","Cabaña Leiva","1"));
+        partidosArray.add(new Partido("1","ATENEO INMACULADA","ARGENTINO DE SAN CARLOS","0","1","ELIZONDO","08/02","1","Ateneo","1"));
+        partidosArray.add(new Partido("2","SANJUSTINO","COSMOS FC","2","0","CEBALLOS","08/02","1","Coloso del Oeste","1"));
+        partidosArray.add(new Partido("3","COLON DE SANTA FE","UNION DE SANTA FE","2","0","ORTIZ","08/02","1","Estanislao López","1"));
+        partidosArray.add(new Partido("4","NEWELLS DE SANTA FE","UNION DE SANTA FE","1","1","CASTRILLI","15/02","2","Miguel Franconieri","1"));
+        partidosArray.add(new Partido("5","COSMOS F.C.","COLON DE SANTA FE","1","0","ORTIZ","15/02","2","Liga Santafesina Predio","1"));
+        partidosArray.add(new Partido("6","ARGENTINO DE SAN CARLOS","SANJUSTINO","2","0","CASTRILLI","15/02","2","12 de Enero","1"));
+        partidosArray.add(new Partido("7","LA SALLE JOBSON","ATENEO INMACULADA","3","0","ORTIZ","22/02","3","Cabaña Leiva","1"));
+        partidosArray.add(new Partido("8","ATENEO INMACULADA","NEWELLS DE SANTA FE","1","1","CEBALLOS","15/02","2","Ateneo","1"));
+        partidosArray.add(new Partido("9","SANJUSTINO","LA SALLE JOBSON","3","2","CASTRILLI","22/02","3","San Justo","1"));
+        partidosArray.add(new Partido("10","COLON DE SANTA FE","ARGENTINO DE SAN CARLOS","1","0","ELIZONDO","22/02","3","Brigadier Estanislao Lopez","1"));
+        partidosArray.add(new Partido("11","UNION DE SANTA FE","COSMOS F.C.","2","2","CASTRILLI","22/02","3","15 de Abril","1"));
+       /* partidosArray.add(new Partido("12","LA SALLE","NEWELLS","3","1","CASTRILLI","01/03","4","Cabaña Leiva","1"));
+        partidosArray.add(new Partido("13","LA SALLE","NEWELLS","3","1","CEBALLOS","01/03","4","Cabaña Leiva","1"));
+        partidosArray.add(new Partido("14","LA SALLE","NEWELLS","3","1","CASTRILLI","01/03","4","Cabaña Leiva","1"));
+        partidosArray.add(new Partido("15","LA SALLE","NEWELLS","3","1","ELIZONDO","01/03","4","Cabaña Leiva","1"));
+        partidosArray.add(new Partido("16","LA SALLE","NEWELLS","3","1","CASTRILLI","08/03","5","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("17","LA SALLE","NEWELLS","3","1","CASTRILLI","08/03","5","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("18","LA SALLE","NEWELLS","3","1","ORTIZ","08/03","5","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("19","LA SALLE","NEWELLS","3","1","CEBALLOS","08/03","5","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("20","LA SALLE","NEWELLS","3","1","CASTRILLI","15/03","6","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("21","LA SALLE","NEWELLS","3","1","ELIZONDO","15/03","6","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("22","LA SALLE","NEWELLS","3","1","CEBALLOS","15/03","6","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("23","LA SALLE","NEWELLS","3","1","CASTRILLI","15/03","6","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("24","LA SALLE","NEWELLS","3","1","ORTIZ","22/03","7","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("25","LA SALLE","NEWELLS","3","1","CEBALLOS","22/03","7","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("26","LA SALLE","NEWELLS","3","1","CASTRILLI","22/03","7","Cabaña Leiva","0"));
+        partidosArray.add(new Partido("27","LA SALLE","NEWELLS","3","1","ELIZONDO","22/03","7","Cabaña Leiva","0"));*/
+
+
     }
 
     public static void cargarJugadores(ArrayList<ArrayList<Jugador>> jugadores){
@@ -285,6 +319,17 @@ public class CargarDatos {
                 childUpdates.put("/jugadores/" + jugadores.get(i).get(j).getId(), postValues);
                 posicionBD.updateChildren(childUpdates);
             }
+        }
+    }
+
+
+    public static void cargarPartidos(ArrayList<Partido> partidos){
+        for(int i = 0; i < partidos.size(); i++) {
+            posicionBD = database.getReference("datos");
+            Map<String, Object> postValues = toMap(partidos.get(i));
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/partidos/" + partidos.get(i), postValues);
+            posicionBD.updateChildren(childUpdates);
         }
     }
 
@@ -348,6 +393,22 @@ public class CargarDatos {
         result.put("amarillas", jugador.getAmarillas());
         result.put("rojas", jugador.getRojas());
         result.put("partidosJugados", jugador.getPartidosJugados());
+        return result;
+    }
+
+
+    public static Map<String, Object> toMap(Partido partidos) {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("arbitro", partidos.getArbitro());
+        result.put("dia", partidos.getDia());
+        result.put("equipoLocal", partidos.getEquipoLocal());
+        result.put("equipoVisitante", partidos.getEquipoVisitante());
+        result.put("estadio", partidos.getLugar());
+        result.put("fecha", partidos.getFecha());
+        result.put("resultadoLocal", partidos.getResultadoLocal());
+        result.put("resultadoVisitante", partidos.getResultadoVisitante());
+        result.put("id", partidos.getIdPartido());
+        result.put("partidoDisputado",partidos.getPartidoDisputado());
         return result;
     }
 
