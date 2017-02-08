@@ -15,6 +15,9 @@ public class Partido {
     String dia;
     String fecha;
     String lugar;
+    //boolean partidoDisputado;
+    //String competencia;
+    //String descripcion; //apertura 17 o clausura 2018, etc...
 
     public Partido (String idPartido, String equipoLocal, String equipoVisitante, String resultadoLocal, String resultadoVisitante, String arbitro, String dia, String fecha, String lugar){
         this.idPartido = idPartido;
