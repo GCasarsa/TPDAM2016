@@ -25,6 +25,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.BusquedaEquipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.BusquedaFinalizadaListener;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.BusquedaPartido;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.CargarEscudos;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Partido;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Inicio;
@@ -36,11 +37,8 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 public class PartidoInicio extends FragmentActivity implements BusquedaFinalizadaListener<Partido> {
 
     private static ImageView atras, escudoL, escudoV;
-    private static TextView titulo, nombreLocal, nombreVisita, resultado;
-    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private static DatabaseReference posicionBD;
+    private static TextView nombreLocal, nombreVisita, resultado;
     private static Partido partido;
-    private static Equipo equipoLocal, equipoVisitante;
     ProgressDialog progressDialog;
 
 
@@ -58,8 +56,6 @@ public class PartidoInicio extends FragmentActivity implements BusquedaFinalizad
         nombreLocal = (TextView) findViewById(R.id.tvPartidoNombreLocal);
         nombreVisita = (TextView) findViewById(R.id.tvPartidoNombreVisitante);
         resultado = (TextView) findViewById(R.id.tvPartidoResultado);
-
-        titulo = (TextView) findViewById(R.id.tvPartidoTitulo);
         atras = (ImageView) findViewById(R.id.ivPartidoAtras);
 
         atras.setOnClickListener(new View.OnClickListener() {
@@ -77,9 +73,9 @@ public class PartidoInicio extends FragmentActivity implements BusquedaFinalizad
         progressDialog.dismiss();
         nombreLocal.setText(partido.getEquipoLocal());
         nombreVisita.setText(partido.getEquipoVisitante());
-        titulo.setText(partido.getEquipoLocal() + " - " + partido.getEquipoVisitante());
         resultado.setText(partido.getResultadoLocal() + "    "+ partido.getResultadoVisitante());
-
+        escudoL.setImageResource(CargarEscudos.cargarEscudo(partido.getEquipoLocal()));
+        escudoV.setImageResource(CargarEscudos.cargarEscudo(partido.getEquipoVisitante()));
         AdapterTabsPartido adapterTabs;
         ViewPager mViewPager;
         adapterTabs = new AdapterTabsPartido(getSupportFragmentManager(), partido);

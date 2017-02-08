@@ -8,7 +8,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
 
 public class CargarEscudos {
     public static int cargarEscudo(String nombre){
-        if(nombre.equals("ARGENTINO DE SAN CARLOS") || nombre.equals("ARGENTINO")) return R.drawable.argentinodesancarlos;
+        if(nombre.equals("ARGENTINO DE SAN CARLOS") || nombre.equals("ARGENTINO")) return R.drawable.escudo_argentinodesancarlos;
         else if(nombre.equals("EL CADI")) return R.drawable.escudo_elcadi;
         else if(nombre.equals("ATENEO INMACULADA") || nombre.equals("ATENEO")) return R.drawable.escudo_ateneo;
         else if(nombre.equals("BANCO PROVINCIAL")) return R.drawable.escudo_bancoprovincial;

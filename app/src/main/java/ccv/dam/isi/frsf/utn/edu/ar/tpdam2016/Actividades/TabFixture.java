@@ -66,9 +66,7 @@ public class TabFixture extends Fragment{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //Creo y Ejecuto la tarea asincrónica que consulta los partidos de una fecha;
                 new BuscarPorFechaAsyncTask().execute(position);
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -81,7 +79,7 @@ public class TabFixture extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(),PartidoInicio.class);
-                intent.putExtra("partido", listaPartidos.getItemIdAtPosition(position)+1);
+                intent.putExtra("partido", listaPartidos.getItemIdAtPosition(position));
                 startActivity(intent);
             }
         });

@@ -21,10 +21,10 @@
             android:layout_marginLeft="10dp"
             android:contentDescription="Volver Atrás" />
         <TextView
-            android:id="@+id/tvPartidoTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="DETALLE PARTIDO"
             android:textColor="@color/colorBlanco"
             />
         <ImageView
@@ -54,77 +54,39 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/ivPartidoEscudoLocal"
-            />
+            android:layout_gravity="center"
+            android:id="@+id/ivPartidoEscudoLocal"/>
 
         <TextView
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:text="RIVER"
-            android:layout_marginTop="10dp"
             android:textColor="@color/fuente"
             android:gravity="center"
             android:textSize="16dp"
             android:id="@+id/tvPartidoNombreLocal" />
         <TextView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
             android:text="2    1"
-            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:gravity="center"
             android:textColor="@color/fuente"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:id="@+id/tvPartidoResultado" />
         <TextView
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:text="BOCA"
             android:gravity="center"
-            android:layout_marginTop="10dp"
             android:textColor="@color/fuente"
             android:textSize="16dp"
             android:id="@+id/tvPartidoNombreVisitante" />
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/ivPartidoEscudoVisitante"
-             />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvPartidoEquipoLocalGol1"
-                android:text="11' Sebastian Driussi"
-                android:paddingStart="10dp"
-                android:textColor="@color/fuente"
-                android:textSize="14dp"/>
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvPartidoEquipoLocalGol3"
-                android:text="88' Axel Werner (P)"
-                android:gravity="end"
-                android:textColor="@color/fuente"
-                android:textSize="14dp"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvPartidoEquipoLocalGol2"
-            android:text="90'+5 Rodrigo Mora"
-            android:paddingStart="10dp"
-            android:textColor="@color/fuente"
-            android:textSize="14dp"/>
+            android:layout_gravity="center|end"
+            android:id="@+id/ivPartidoEscudoVisitante" />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
@@ -145,5 +107,6 @@
             android:paddingBottom="4dp" />
 
     </android.support.v4.view.ViewPager>
+
 
 </LinearLayout>

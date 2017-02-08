@@ -112,7 +112,7 @@ public class BusquedaPartido extends AsyncTask<String,Integer,ArrayList<Partido>
     }
 
     public ArrayList<Partido> buscarPartidoPorFecha(final String fecha){
-        posicionBD = database.getReference("bd/partidos");
+        posicionBD = database.getReference("datos/partidos");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
