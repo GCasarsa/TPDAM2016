@@ -59,8 +59,9 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         * Obtengo los equipos que fueron almacenados como favoritos en las SharedPreferences
         * */
         preferencias = new ArrayList<>();
-        for(int i = 1; i <=20; i++){
+        for(int i = 1; i <=8; i++){
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
+            System.out.println("PREFERENCIA CARGADA PAPI==???? " + preferencias.isEmpty());
         }
 
 

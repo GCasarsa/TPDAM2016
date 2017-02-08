@@ -60,9 +60,9 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
 
 
         // Obtengo las preferencias correspondientes a un equipo para ver si fue marcado como favorito
+
         Boolean esFavorito = pref.getBoolean(id,false);
         fav.setChecked(esFavorito);
-
 
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,12 +80,12 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
 
                 if(isChecked) {
                     SharedPreferences.Editor edit = pref.edit();
-                    edit.putBoolean(equipo.getNombre(), true);
+                    edit.putBoolean(id, true);
                     edit.commit();
                 }
                 else {
                     SharedPreferences.Editor edit = pref.edit();
-                    edit.putBoolean(equipo.getNombre(), false);
+                    edit.putBoolean(id, false);
                     edit.commit();
                 }
             }
