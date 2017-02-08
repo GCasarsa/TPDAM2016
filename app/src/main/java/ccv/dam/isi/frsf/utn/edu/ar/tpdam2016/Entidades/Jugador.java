@@ -18,7 +18,7 @@ public class Jugador {
         goles = amarillas = rojas = partidosJugados = 0;
     }
 
-    public Jugador(String id, String nombre, String apellido, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
+    public Jugador(String id, String apellido, String nombre, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -32,7 +32,7 @@ public class Jugador {
         this.partidosJugados = partidosJugados;
     }
 
-    public Jugador(String nombre, String apellido, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
+    public Jugador(String apellido, String nombre, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.posicion = posicion;

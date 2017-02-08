@@ -4,7 +4,7 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
  * Created by Administrador on 01/02/2017.
  */
 public class FilaPosicion {
-    String equipo,pts,pj,pg,pe,pp,gf,gc,dif,posicion;
+    String equipo,pts,pj,pg,pe,pp,gf,gc,dif,posicionId;
 
     public FilaPosicion(String equipo, String pts, String pj, String pg, String pe, String pp, String gf, String gc, String dif, String posicion) {
         this.equipo = equipo;
@@ -16,7 +16,7 @@ public class FilaPosicion {
         this.gf = gf;
         this.gc = gc;
         this.dif = dif;
-        this.posicion = posicion;
+        this.posicionId = posicion;
     }
 
     public String getEquipo() {
@@ -92,10 +92,10 @@ public class FilaPosicion {
     }
 
     public String getPosicion() {
-        return posicion;
+        return posicionId;
     }
 
     public void setPosicion(String posicion) {
-        this.posicion = posicion;
+        this.posicionId = posicion;
     }
 }

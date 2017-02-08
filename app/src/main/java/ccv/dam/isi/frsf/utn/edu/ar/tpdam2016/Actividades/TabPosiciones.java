@@ -57,7 +57,7 @@ public class TabPosiciones extends Fragment {
 
 
         //posicionBD = database.getReference("POSICIONES");
-        Query myTopPostsQuery = database.getReference("POSICIONES").orderByChild("PTS");
+        Query myTopPostsQuery = database.getReference("datos/posiciones").orderByChild("PTS");
         myTopPostsQuery.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
