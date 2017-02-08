@@ -23,7 +23,7 @@ public class CargarEscudos {
         else if(nombre.equals("SANJUSTINO")) return R.drawable.escudo_sanjustino;
         else if(nombre.equals("UNION DE SANTA FE")) return R.drawable.escudo_union;
         else if(nombre.equals("UNL")) return R.drawable.escudo_unl;
-        else if(nombre.equals("LA SALLE")) return R.drawable.escudo_lasalle;
+        else if(nombre.equals("LA SALLE JOBSON")) return R.drawable.escudo_lasalle;
         else if(nombre.equals("BELGRANO DE CORONDA")) return R.drawable.escudo_belgranodecoronda;
         else if(nombre.equals("PUCARA")) return R.drawable.escudo_pucara;
         else if(nombre.equals("INDEPENDIENTE DE SANTO TOME")) return R.drawable.escudo_independiente;
@@ -32,7 +32,7 @@ public class CargarEscudos {
     public static int cargarPortada(String nombre){
         if(nombre.equals("ARGENTINO DE SAN CARLOS")) return R.drawable.portada_argentino;
         //else if(nombre.equals("EL CADI")) return R.drawable.escudo_elcadi;
-        else if(nombre.equals("ATENEO INMACULADA")) return R.drawable.portada_ateneo;
+        //else if(nombre.equals("ATENEO INMACULADA")) return R.drawable.portada_ateneo;
         //else if(nombre.equals("BANCO PROVINCIAL")) return R.drawable.escudo_bancoprovincial;
         //else if(nombre.equals("CICLON RACING")) return R.drawable.escudo_ciclonracing;
         else if(nombre.equals("COLON DE SANTA FE")) return R.drawable.portada_colon;
