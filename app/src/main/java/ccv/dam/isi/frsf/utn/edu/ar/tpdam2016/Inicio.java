@@ -89,7 +89,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
-
         buscarEquipos();
     }
 
