@@ -43,8 +43,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     NavigationView navigationView;
     SubMenu subMenu;
     int bandera;
-    Long indice;
-    Intent intentEquipo;
+    ArrayList<Intent> intentos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +63,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         preferencias = new ArrayList<>();
         for(int i = 1; i <=8; i++){
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
-            System.out.println("PREFERENCIA CARGADA PAPI==???? " + preferencias.isEmpty());
         }
 
 
@@ -89,9 +87,10 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        buscarEquipos();
 
+        buscarEquipos();
     }
+
 
     @Override
     public void onBackPressed() {
@@ -161,7 +160,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
                     }
                 }
 
-
                 if(busqueda.size()==preferencias.size() && bandera == 0){
                     bandera = 1;
                     final Menu menu = navigationView.getMenu();
@@ -170,18 +168,13 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
                     for(int i=0; i <busqueda.size();i++){
                         subMenu.add("" + busqueda.get(i).getNombre());
 
-                        intentEquipo = new Intent(getApplicationContext(), EquipoInicio.class);
+                        Intent intentEquipo = new Intent(getApplicationContext(), EquipoInicio.class);
                         intentEquipo.putExtra("equipo", Long.parseLong(busqueda.get(i).getId()));
 
-                        subMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        intentos.add(intentEquipo);
 
-                            @Override
-                            public boolean onMenuItemClick(MenuItem menuItem) {
+                        setterListener(subMenu.getItem(i),i);
 
-                                startActivity(intentEquipo);
-                                return true;
-                            }
-                        });
                     }
 
                 }
@@ -196,6 +189,20 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
+
+    }
+
+
+    private void setterListener(MenuItem itemSubMenu, final int indice) {
+
+        itemSubMenu.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                startActivity(intentos.get(indice));
+
+                return true;
+                }
+           });
 
     }
 }
