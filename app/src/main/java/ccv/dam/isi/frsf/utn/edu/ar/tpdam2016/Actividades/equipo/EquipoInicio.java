@@ -47,6 +47,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         final String id = String.valueOf(getIntent().getExtras().getLong("equipo"));
+
         progressDialog = ProgressDialog.show(this, "Recopilando Información", "Aguarde unos instantes...");
         new BusquedaEquipo(this).execute(id);
 

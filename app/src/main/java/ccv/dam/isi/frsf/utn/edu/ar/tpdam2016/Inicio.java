@@ -30,6 +30,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabGoleadores;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabPosiciones;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabTarjetas;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.CargarDatos;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
@@ -42,6 +43,8 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     NavigationView navigationView;
     SubMenu subMenu;
     int bandera;
+    Long indice;
+    Intent intentEquipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,16 +160,32 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
                         busqueda.add(equipo);
                     }
                 }
+
+
                 if(busqueda.size()==preferencias.size() && bandera == 0){
                     bandera = 1;
                     final Menu menu = navigationView.getMenu();
-
                     subMenu = menu.addSubMenu("Equipos favoritos");
 
                     for(int i=0; i <busqueda.size();i++){
                         subMenu.add("" + busqueda.get(i).getNombre());
+
+                        intentEquipo = new Intent(getApplicationContext(), EquipoInicio.class);
+                        intentEquipo.putExtra("equipo", Long.parseLong(busqueda.get(i).getId()));
+
+                        subMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+                            @Override
+                            public boolean onMenuItemClick(MenuItem menuItem) {
+
+                                startActivity(intentEquipo);
+                                return true;
+                            }
+                        });
                     }
+
                 }
+
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
