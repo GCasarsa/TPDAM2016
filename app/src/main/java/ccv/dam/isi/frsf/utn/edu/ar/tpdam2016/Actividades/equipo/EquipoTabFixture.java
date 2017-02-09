@@ -43,7 +43,7 @@ public class EquipoTabFixture  extends Fragment {
         listViewPartidos = (ListView) rootView.findViewById(R.id.lvEquipoResultado);
         listaPartidos = new ArrayList<>();
 
-        buscarPartidos(listaPartidos,equipo.getNombre());
+        buscarPartidos(listaPartidos,equipo.getAbreviatura());
 
 
         return rootView;
@@ -67,8 +67,9 @@ public class EquipoTabFixture  extends Fragment {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
                 if(newPost.get("equipoLocal").toString().equals(nombre) || newPost.get("equipoVisitante").toString().equals(nombre)) {
                     Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString(),newPost.get("partidoDisputado").toString());
-                    listaPartidos.add(partido);
-                    adapter = new AdapterFixture(getActivity(), listaPartidos, equipo);
+                    if(partido.getPartidoDisputado().equals("0"));
+                            listaPartidos.add(partido);
+                    adapter = new AdapterFixture(getActivity(), listaPartidos/*, equipo*/);
                     listViewPartidos.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }

@@ -191,7 +191,7 @@ public class CargarDatos {
 
         listaEquipos.add(new Equipo("4",
                 "COSMOS FC",
-                "COSMOS",
+                "COSMOS FC",
                 "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fclubcosmos.png?alt=media&token=35f0361b-a12a-407f-ae28-bfa6c5f09a21",
                 "PRIMERA A",
                 "SANTA FE",
@@ -266,12 +266,12 @@ public class CargarDatos {
         }
 
         ArrayList<FilaPosicion> posicionesFilas = new ArrayList<FilaPosicion>();
-        posicionesFilas.add(new FilaPosicion("La Salle","7","4","2","1","1","9","4","5","0"));
+        posicionesFilas.add(new FilaPosicion("La Salle","7","4","2","1","1","9","4","5",""));
         posicionesFilas.add(new FilaPosicion("Argentino","9","4","3","0","1","6","2","4","1"));
         posicionesFilas.add(new FilaPosicion("Ateneo","4","4","1","1","2","2","6","-4","2"));
         posicionesFilas.add(new FilaPosicion("Newells","3","4","0","3","1","3","5","-2","3"));
         posicionesFilas.add(new FilaPosicion("Cosmos F.C.","5","4","1","2","1","3","4","-1","4"));
-        posicionesFilas.add(new FilaPosicion("Sanjustino","7","4","2","1","1","9","6","5","1"));
+        posicionesFilas.add(new FilaPosicion("Sanjustino","7","4","2","1","1","9","6","3","1"));
         posicionesFilas.add(new FilaPosicion("Colon","6","4","2","0","2","3","2","1","6"));
         posicionesFilas.add(new FilaPosicion("Union","2","4","0","2","2","4","7","-3","1"));
         cargarPosiciones(posicionesFilas);
@@ -281,14 +281,14 @@ public class CargarDatos {
         partidosArray.add(new Partido("0","LA SALLE","NEWELLS","3","1","CASTRILLI","08/02","1","Cabaña Leiva","1"));
         partidosArray.add(new Partido("1","ATENEO","ARGENTINO","0","1","ELIZONDO","08/02","1","Ateneo","1"));
         partidosArray.add(new Partido("2","SANJUSTINO","COSMOS FC","2","0","CEBALLOS","08/02","1","Coloso del Oeste","1"));
-        partidosArray.add(new Partido("3","COLON","UNION","2","0","ORTIZ","08/02","1","Estanislao López","1"));
+        partidosArray.add(new Partido("3","COLON","UNION","2","0","ORTIZ","08/02","1","Brigadier Estanislao López","1"));
 
         partidosArray.add(new Partido("4","NEWELLS","UNION","1","1","CASTRILLI","15/02","2","Miguel Franconieri","1"));
         partidosArray.add(new Partido("5","COSMOS FC","COLON","1","0","ORTIZ","15/02","2","Liga Santafesina Predio","1"));
         partidosArray.add(new Partido("6","ARGENTINO","SANJUSTINO","2","0","CASTRILLI","15/02","2","12 de Enero","1"));
-        partidosArray.add(new Partido("7","LA SALLE","ATENEO","3","0","ORTIZ","22/02","3","Cabaña Leiva","1"));
+        partidosArray.add(new Partido("7","LA SALLE","ATENEO","3","0","ORTIZ","22/02","2","Cabaña Leiva","1"));
 
-        partidosArray.add(new Partido("8","ATENEO","NEWELLS","1","1","CEBALLOS","15/02","2","Ateneo","1"));
+        partidosArray.add(new Partido("8","ATENEO","NEWELLS","1","1","CEBALLOS","15/02","3","Ateneo","1"));
         partidosArray.add(new Partido("9","SANJUSTINO","LA SALLE","3","2","CASTRILLI","22/02","3","San Justo","1"));
         partidosArray.add(new Partido("10","COLON","ARGENTINO","1","0","ELIZONDO","22/02","3","Brigadier Estanislao Lopez","1"));
         partidosArray.add(new Partido("11","UNION","COSMOS FC","2","2","CASTRILLI","22/02","3","15 de Abril","1"));
