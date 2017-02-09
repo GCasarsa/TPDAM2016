@@ -43,10 +43,11 @@ public class TabTarjetas extends Fragment  implements BusquedaFinalizadaListener
         listaTarjetas = (ListView) rootView.findViewById(R.id.listViewTarjetas);
         progressDialog = ProgressDialog.show(rootView.getContext(), "Recopilando Información", "Aguarde unos instantes...");
         tipo = "amarillas";
-        new BusquedaJugador(this).execute("amarillas");
+        buscar();
         botonSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (botonSwitch.isChecked()) {
+                    progressDialog.dismiss();
                     tipo = "rojas";
                     progressDialog = ProgressDialog.show(rootView.getContext(), "Recopilando Información", "Aguarde unos instantes...");
                     buscar();

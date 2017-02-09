@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:weightSum="1">
     <TextView
-        android:layout_width="40dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquiposResultadoFecha"
         android:paddingStart="7dp"
         android:textColor="@color/fuente"
-        android:text="23.01"
-        android:textSize="11dp"/>
+        android:text="23/01"
+        android:textSize="15dp"
+        android:layout_weight="0.30"
+        android:layout_marginRight="7dp"/>
     <TextView
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -17,7 +20,7 @@
         android:paddingStart="2dp"
         android:textColor="@color/fuente"
         android:text="GIMNASIA DE LA PLATA"
-        android:textSize="11dp"/>
+        android:textSize="15dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +29,7 @@
         android:textColor="@color/fuente"
         android:textStyle="bold"
         android:text="10:"
-        android:textSize="11dp"/>
+        android:textSize="15dp" />
     <TextView
         android:layout_width="20dp"
         android:layout_height="wrap_content"
@@ -34,7 +37,7 @@
         android:textColor="@color/fuente"
         android:textStyle="bold"
         android:text="20"
-        android:textSize="11dp"/>
+        android:textSize="15dp" />
     <TextView
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -42,5 +45,5 @@
         android:paddingStart="10dp"
         android:textColor="@color/fuente"
         android:text="GIMNASIA DE LA PLATA"
-        android:textSize="11dp"/>
+        android:textSize="15dp" />
 </LinearLayout>
