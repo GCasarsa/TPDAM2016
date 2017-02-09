@@ -1,6 +1,7 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
@@ -44,8 +45,11 @@ public class AdapterGoleador extends ArrayAdapter<Jugador> {
         goles.setText(""+getItem(position).getGoles());
         escudo =(ImageView) row.findViewById(R.id.imageViewGoleadores);
 
-
         escudo.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipo()));
+
+        goles.setTypeface(null, Typeface.BOLD);
+        goleador.setTypeface(null, Typeface.BOLD);
+
         return(row);
     }
 }

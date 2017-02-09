@@ -15,7 +15,7 @@
             android:id="@+id/textViewDia"
             android:layout_marginLeft="20dp"
             android:textColor="@color/fuente"
-            android:textSize="11dp"/>
+            android:textSize="12dp" />
 
     </LinearLayout>
 
@@ -40,10 +40,10 @@
             android:textColor="@color/fuente"
             android:gravity="end"
             android:text="GIMNASIA DE LA PLATA"
-            android:textSize="11dp"/>
+            android:textSize="15dp" />
 
         <TextView
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewResultado"
             android:textColor="@color/fuente"
@@ -52,7 +52,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:text="10:20"
-            android:textSize="11dp"/>
+            android:textSize="15dp" />
 
         <TextView
             android:layout_width="105dp"
@@ -62,7 +62,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/fuente"
             android:text="GIMNASIA DE LA PLATA"
-            android:textSize="11dp" />
+            android:textSize="15dp" />
 
         <ImageView
             android:layout_width="30dp"
@@ -83,7 +83,7 @@
             android:id="@+id/textViewArbitro"
             android:layout_marginLeft="10dp"
             android:textColor="@color/fuente"
-            android:textSize="11dp"/>
+            android:textSize="12dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,6 +92,6 @@
             android:id="@+id/textViewLugar"
             android:layout_marginLeft="2dp"
             android:textColor="@color/fuente"
-            android:textSize="11dp"/>
+            android:textSize="12dp" />
     </LinearLayout>
 </LinearLayout>

@@ -1,6 +1,7 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,9 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
         escudoL.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipoLocal().toString()));
         escudoV = (ImageView) row.findViewById(R.id.imageViewEscudoVisita);
         escudoV.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipoVisitante().toString()));
+
+        nombreLocal.setTypeface(null, Typeface.BOLD);
+        nombreVisita.setTypeface(null, Typeface.BOLD);
 
         return(row);
     }

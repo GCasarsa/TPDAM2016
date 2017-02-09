@@ -1,6 +1,7 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,10 @@ public class AdapterTarjetaA extends ArrayAdapter<Jugador> {
         imagenAmarilla.setImageResource(R.drawable.tarjetaamarilla);
         escudo =(ImageView) row.findViewById(R.id.TAR_A_imageViewJugador);
         escudo.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipo()));
+
+        jugador.setTypeface(null, Typeface.BOLD);
+        numTarjetas.setTypeface(null, Typeface.BOLD);
+
         return(row);
     }
 }

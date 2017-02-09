@@ -55,34 +55,10 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
         final ImageView escudo =(ImageView) row.findViewById(R.id.POSimageView);
         escudo.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipo().toUpperCase()));
 
-        //pts.setTextAppearance(R.color.colorNegro);
 
-        //esto seria para resaltar la primer fila del ListView de posiciones
-        if(getItem(0).getPosicion().equals("#")) {
-            equipo.setTypeface(null, Typeface.BOLD);
-            posicion.setTypeface(null, Typeface.BOLD);
-            pts.setTypeface(null, Typeface.BOLD);
-            //etc... pero no anda
-        }
-
-
-
-
-        /////////////////
-
-            //Funcionens para resaltar, pero tira excepcion
-
-            //Spannable spanText = Spannable.Factory.getInstance().newSpannable(posicion.getText());
-            //spanText.setSpan(new BackgroundColorSpan(0xFFFFFF00), 14, 19, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            //posicion.setText(spanText);
-
-            //Spannable spanText2 = Spannable.Factory.getInstance().newSpannable(equipo.getText());
-            //spanText2.setSpan(new BackgroundColorSpan(0xFFFFFF00), 14, 19, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            //posicion.setText(spanText2);
-        //}
-
-        //    int negro= R.color.colorNegro;
-        //   posicion.setHighlightColor(negro);
+        equipo.setTypeface(null, Typeface.BOLD);
+        posicion.setTypeface(null, Typeface.BOLD);
+        pts.setTypeface(null, Typeface.BOLD);
 
         return(row);
     }

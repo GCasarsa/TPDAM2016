@@ -3,6 +3,7 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -60,6 +61,7 @@ public class Adapter extends ArrayAdapter<Equipo> {
         imageView = (ImageView) row.findViewById(R.id.ivVerEquiposEscudo);
 
         nombreDelEquipo.setText(getItem(position).getNombre());
+        nombreDelEquipo.setTypeface(null, Typeface.BOLD);
         division.setText(getItem(position).getDivision());
         imageView.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getNombre()));
 

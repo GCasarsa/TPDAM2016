@@ -166,7 +166,7 @@ public class CargarDatos {
         listaEquipos.add(new Equipo("2",
                 "ATENEO INMACULADA",
                 "ATENEO",
-                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fnewells.png?alt=media&token=23b8edc9-85a4-45eb-ad1d-8c72e8bfe8e5",
+                "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Fescudos%2Fateneo.png?alt=media&token=8069f740-8137-400b-89ca-bf006c7a4013",
                 "PRIMERA A",
                 "SANTA FE",
                 "https://firebasestorage.googleapis.com/v0/b/tpdam2016.appspot.com/o/recursos%2Fprimeradivision%2Ffoto%2Fargentino.png",
