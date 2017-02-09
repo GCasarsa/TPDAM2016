@@ -32,6 +32,7 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.TabTarjetas;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.CargarDatos;
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.CargarEscudos;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Database.Conexion;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 
@@ -86,6 +87,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
 
 
         buscarEquipos();
@@ -173,7 +175,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
                         intentos.add(intentEquipo);
 
-                        setterListener(subMenu.getItem(i),i);
+                        setterListener(subMenu.getItem(i),i,busqueda.get(i));
 
                     }
 
@@ -193,8 +195,10 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     }
 
 
-    private void setterListener(MenuItem itemSubMenu, final int indice) {
+    private void setterListener(MenuItem itemSubMenu, final int indice, Equipo e) {
 
+        int escudo = CargarEscudos.cargarEscudo(e.getNombre());
+        itemSubMenu.setIcon(escudo);
         itemSubMenu.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
