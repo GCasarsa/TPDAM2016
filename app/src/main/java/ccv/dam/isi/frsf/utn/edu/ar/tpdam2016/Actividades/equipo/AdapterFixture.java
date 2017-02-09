@@ -19,9 +19,9 @@ import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
  */
 public class AdapterFixture extends ArrayAdapter<Partido> {
     LayoutInflater inflater;
-    Equipo equipo;
+    String equipo;
 
-    public AdapterFixture(Context context, List<Partido> items/*, Equipo equipo*/) {
+    public AdapterFixture(Context context, List<Partido> items, String equipo) {
         super(context, R.layout.layout_fila_fixture, items);
         inflater= LayoutInflater.from(context);
         this.equipo = equipo;
@@ -34,14 +34,14 @@ public class AdapterFixture extends ArrayAdapter<Partido> {
         fecha.setText(getItem(position).getDia().toString());
         TextView nombreLocal = (TextView) row.findViewById(R.id.tvEquiposResultadoNombreLocal);
         nombreLocal.setText(getItem(position).getEquipoLocal().toString());
-        /*if(equipo.getAbreviatura().equals(getItem(position).getEquipoLocal().toString())){
+        if(equipo.equals(getItem(position).getEquipoLocal().toString())){
             nombreLocal.setTypeface(null, Typeface.BOLD);
-        }*/
+        }
         TextView nombreVisita = (TextView) row.findViewById(R.id.tvEquiposResultadoNombreVisitante);
         nombreVisita.setText(getItem(position).getEquipoVisitante().toString());
-        /*if(equipo.getAbreviatura().equals(getItem(position).getEquipoVisitante().toString())){
+        if(equipo.equals(getItem(position).getEquipoVisitante().toString())){
             nombreVisita.setTypeface(null, Typeface.BOLD);
-        }*/
+        }
         return(row);
     }
 }

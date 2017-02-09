@@ -69,7 +69,7 @@ public class EquipoTabResultados  extends Fragment {
                     Partido partido = new Partido(newPost.get("id").toString(),newPost.get("equipoLocal").toString(), newPost.get("equipoVisitante").toString(), newPost.get("resultadoLocal").toString(), newPost.get("resultadoVisitante").toString(), newPost.get("arbitro").toString(), newPost.get("dia").toString(), newPost.get("fecha").toString(), newPost.get("estadio").toString(),newPost.get("partidoDisputado").toString());
                     if(partido.getPartidoDisputado().equals("1"))
                             listaPartidos.add(partido);
-                    adapter = new AdapterResultado(getActivity(), listaPartidos);
+                    adapter = new AdapterResultado(getActivity(), listaPartidos, equipo.getAbreviatura());
                     listViewPartidos.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }

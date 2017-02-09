@@ -1,6 +1,7 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.style.BackgroundColorSpan;
 import android.view.LayoutInflater;
@@ -55,9 +56,17 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
         escudo.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipo().toUpperCase()));
 
         //pts.setTextAppearance(R.color.colorNegro);
-        //if(getItem(0).getPosicion().equals("#")){
-        //    int negro= R.color.colorNegro;
-         //   posicion.setHighlightColor(negro);
+
+        //esto seria para resaltar la primer fila del ListView de posiciones
+        if(getItem(0).getPosicion().equals("#")) {
+            equipo.setTypeface(null, Typeface.BOLD);
+            posicion.setTypeface(null, Typeface.BOLD);
+            pts.setTypeface(null, Typeface.BOLD);
+            //etc... pero no anda
+        }
+
+
+
 
         /////////////////
 
@@ -71,6 +80,9 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
             //spanText2.setSpan(new BackgroundColorSpan(0xFFFFFF00), 14, 19, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             //posicion.setText(spanText2);
         //}
+
+        //    int negro= R.color.colorNegro;
+        //   posicion.setHighlightColor(negro);
 
         return(row);
     }
