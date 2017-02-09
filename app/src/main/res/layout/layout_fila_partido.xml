@@ -6,16 +6,18 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Día: "
             android:id="@+id/textViewDia"
-            android:layout_marginLeft="20dp"
             android:textColor="@color/fuente"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:layout_weight="0.95"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
@@ -74,16 +76,19 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <TextView
-            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:text="Árbitro: Javier Castrilli"
             android:id="@+id/textViewArbitro"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="30dp"
             android:textColor="@color/fuente"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:layout_weight="0.42"
+            android:textAlignment="textStart"
+            android:layout_width="60dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,6 +97,8 @@
             android:id="@+id/textViewLugar"
             android:layout_marginLeft="2dp"
             android:textColor="@color/fuente"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:layout_weight="0.28"
+            android:textAlignment="textEnd" />
     </LinearLayout>
 </LinearLayout>

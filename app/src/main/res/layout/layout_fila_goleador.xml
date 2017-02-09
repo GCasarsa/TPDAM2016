@@ -18,7 +18,7 @@
 
     <TextView
         android:text="Jugador"
-        android:layout_width="150dp"
+        android:layout_width="180dp"
         android:layout_height="40dp"
         android:id="@+id/GOLjugadorTV"
         android:layout_weight="1"
@@ -32,7 +32,7 @@
         android:id="@+id/GOLgoles"
         android:layout_weight="1"
         android:gravity="center_vertical"
-         />
+        android:textAlignment="textEnd" />
 
 
 </LinearLayout>

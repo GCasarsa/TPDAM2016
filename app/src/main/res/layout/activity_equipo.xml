@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -80,17 +81,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre de Equipo"
-            android:layout_marginTop="10dp"
+
             android:layout_marginLeft="10dp"
             android:textColor="@color/fuente"
             android:textSize="18dp"
-            android:id="@+id/tvEquipoNombre" />
+            android:id="@+id/tvEquipoNombre"
+            android:textStyle="normal|bold"
+            android:layout_gravity="center_vertical"/>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBoxFav"
-            android:checked="false" />
+            android:checked="false"
+            android:layout_marginLeft="12dp"
+            android:layout_gravity="center_vertical"
+            style="?android:attr/starStyle" />
     </LinearLayout>
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
