@@ -38,7 +38,7 @@ public class AdapterPartido extends ArrayAdapter<Partido> {
             resultado.setText("-");
         }
         else{
-            resultado.setText(getItem(position).getResultadoLocal().toString()+":"+getItem(position).getResultadoVisitante().toString());
+            resultado.setText(getItem(position).getResultadoLocal().toString()+" : "+getItem(position).getResultadoVisitante().toString());
         }
 
         final ImageView verDetalle =(ImageView) row.findViewById(R.id.imageViewEscudoLocal);
