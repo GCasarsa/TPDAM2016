@@ -1,7 +1,9 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
@@ -10,10 +12,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -93,12 +97,38 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     }
 
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            super.onBackPressed();
+        }
+    }*/
+
+   /* @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Usted está saliendo de la aplicación ", Toast.LENGTH_LONG).show();
+        SystemClock.sleep(2000);
+        finish();
+        System.exit(0);
+
+    }*/
+
+    private Toast toast;
+    private long lastBackPressTime = 0;
+
+    @Override
+    public void onBackPressed() {
+        if (this.lastBackPressTime < System.currentTimeMillis() - 3000) {
+            toast = Toast.makeText(this, "Presione nuevamente para salir", Toast.LENGTH_LONG);
+            toast.show();
+            this.lastBackPressTime = System.currentTimeMillis();
+        } else {
+            if (toast != null) {
+                toast.cancel();
+            }
             super.onBackPressed();
         }
     }
@@ -192,6 +222,9 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         });
 
     }
+
+
+
 
 
     private void setterListener(MenuItem itemSubMenu, final int indice, Equipo e) {
