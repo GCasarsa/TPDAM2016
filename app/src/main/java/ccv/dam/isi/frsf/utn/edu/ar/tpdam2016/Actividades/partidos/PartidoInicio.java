@@ -46,7 +46,13 @@ public class PartidoInicio extends FragmentActivity implements BusquedaFinalizad
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String id = String.valueOf(getIntent().getExtras().getLong("partido"));
+        long partido = getIntent().getExtras().getLong("partido");
+        long fecha = getIntent().getExtras().getLong("fecha");
+        fecha=fecha*4;
+        long idPartido = fecha+partido;
+        String id = String.valueOf(idPartido);
+
+
         progressDialog = ProgressDialog.show(this, "Recopilando Información", "Aguarde unos instantes...");
         new BusquedaPartido(this).execute(id);
 

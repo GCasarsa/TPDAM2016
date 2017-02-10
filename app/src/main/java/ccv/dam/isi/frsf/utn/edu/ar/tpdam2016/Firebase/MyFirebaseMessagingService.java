@@ -80,9 +80,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     }
                 }
 
-                String etiqueta = mensaje.getNotification().getTag();
+                String etiqueta = mensaje.getNotification().getBody();
+                System.out.println("MENSAJE BODYYYYYYY: "+mensaje.getNotification().getBody());
+                System.out.println("MENSAJE BODYYYYYYY: "+mensaje.getNotification().getBody());
+                System.out.println("MENSAJE tag: "+mensaje.getNotification().getTag());
+                System.out.println("MENSAJE sound: "+mensaje.getNotification().getSound());
+
                 for (int i=0;i<busqueda.size();i++){
-                    if(busqueda.get(i).contains(etiqueta)){
+                    if(busqueda.get(i).equals(etiqueta)){
                         sendNotification(mensaje.getNotification().getBody());
                         break;
                     }

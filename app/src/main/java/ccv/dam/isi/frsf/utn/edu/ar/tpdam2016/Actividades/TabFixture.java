@@ -37,6 +37,7 @@ public class TabFixture extends Fragment{
     AdapterPartido adapter;
     ArrayList<Partido> partidos;
     ProgressDialog progressDialog;
+    long fechaSeleccionada=0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class TabFixture extends Fragment{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //Creo y Ejecuto la tarea asincrónica que consulta los partidos de una fecha;
                 new BuscarPorFechaAsyncTask().execute(position);
+                fechaSeleccionada = spinnerFechas.getSelectedItemPosition();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -80,6 +82,7 @@ public class TabFixture extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(),PartidoInicio.class);
                 intent.putExtra("partido", listaPartidos.getItemIdAtPosition(position));
+                intent.putExtra("fecha",fechaSeleccionada);
                 startActivity(intent);
             }
         });
