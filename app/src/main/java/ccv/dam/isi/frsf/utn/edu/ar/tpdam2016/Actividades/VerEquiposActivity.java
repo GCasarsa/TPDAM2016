@@ -42,8 +42,9 @@ public class VerEquiposActivity extends AppCompatActivity  implements BusquedaFi
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Inicio.class);
-                startActivity(intent);
+                onBackPressed();
+                //Intent intent = new Intent(getApplicationContext(), Inicio.class);
+                //startActivity(intent);
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

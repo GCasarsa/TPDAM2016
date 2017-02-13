@@ -36,7 +36,6 @@ public class EquipoTabUbicacion  extends Fragment implements OnMapReadyCallback 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         try{
             final View rootView = inflater.inflate(R.layout.activity_equipo_tab_ubicacion, container, false);
             ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMapAsync(this);
@@ -70,6 +69,8 @@ public class EquipoTabUbicacion  extends Fragment implements OnMapReadyCallback 
 
             mapa= googleMap;
             mapa.setMyLocationEnabled(true);
+            //mapa.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
             Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
             float[] resultado = new float[1];
             MarkerOptions marcador = new MarkerOptions().position(new LatLng(equipo.getLatitud(), equipo.getLongitud())).title(equipo.getDescripcionEstadio());

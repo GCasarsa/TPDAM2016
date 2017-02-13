@@ -68,8 +68,9 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), VerEquiposActivity.class);
-                startActivity(intent);
+                onBackPressed();
+                //Intent intent = new Intent(getApplicationContext(), VerEquiposActivity.class);
+                //startActivity(intent);
             }
         });
 
@@ -80,6 +81,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked) {
+                   Toast.makeText(getApplicationContext(), "Se ha agregado como equipo favorito", Toast.LENGTH_LONG).show();
                     SharedPreferences.Editor edit = pref.edit();
                     edit.putBoolean(id, true);
                     edit.commit();
@@ -122,6 +124,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
         protected void onPostExecute(Drawable imagen) {
             escudo.setImageDrawable(imagen);
             progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), "Deslice la pantalla para navegar en el menú", Toast.LENGTH_LONG).show();
         }
         private Drawable downloadImage(String imageUrl) {
             try {
