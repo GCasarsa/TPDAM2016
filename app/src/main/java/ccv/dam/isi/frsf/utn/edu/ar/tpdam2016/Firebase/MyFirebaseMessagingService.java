@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.SubMenu;
 import android.widget.Toast;
@@ -38,43 +39,33 @@ import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
  */
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "MyFirebaseMsgService";
-    SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-    ArrayList<String> preferencias = new ArrayList<>();
+
+    ArrayList<String> preferencias;
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static DatabaseReference posicionBD;
     ArrayList<String> busqueda;
-    int bandera;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        /*for(int i = 1; i <=8; i++){
+        Context ctx = getApplicationContext();
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(ctx);
+        preferencias = new ArrayList<>();
+
+        Log.d(TAG, "¡Mensaje recibido::::::::!" + remoteMessage.getNotification().getBody());
+
+        for(int i = 1; i <=8; i++){
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
-        }*/
-        Toast.makeText(getApplicationContext(),"ENTRO POR ONMESSAGE RECEIVED", Toast.LENGTH_SHORT).show();;
-        sendNotification(remoteMessage.getNotification());
-        //buscarEquipos(remoteMessage);
+        }
+        //sendNotification(remoteMessage.getNotification(),pref);
+        buscarEquipos(remoteMessage, pref);
 
     }
 
-
-    private void sendNotification(RemoteMessage.Notification  notificacion) {
-        Intent intent= new Intent(this, VerEquiposActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        String alarms = pref.getString("ringtone", null);
-        Uri uri = Uri.parse(alarms);
-        PendingIntent pendingIntent= PendingIntent.getActivity(this, 0, intent, FLAG_CANCEL_CURRENT);
-        NotificationCompat.Builder notificationBuilder= new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.logo)
-                .setContentTitle(notificacion.getTitle()).setContentText(notificacion.getBody()).setAutoCancel(true).setSound(uri).setContentIntent(pendingIntent);
-        NotificationManager notificationManager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notificationBuilder.build());
-    }
-
-
-    /*public void buscarEquipos(final RemoteMessage mensaje){
-        posicionBD = database.getReference("datos/equipos/primeradivision");
-        posicionBD.addChildEventListener(new ChildEventListener() {
+       public void buscarEquipos(final RemoteMessage mensaje, final SharedPreferences p){
+            busqueda=new ArrayList<>();
+            posicionBD = database.getReference("datos/equipos/primeradivision");
+            posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
@@ -85,11 +76,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     }
                 }
 
-                String cuerpoMensaje = mensaje.getNotification().getBody();
-                System.out.println("EL VALOR DEL CUERPO:::::::::." + cuerpoMensaje);
+                String cuerpoMensaje = mensaje.getNotification().getBody().toUpperCase();
                 for (int i=0;i<busqueda.size();i++){
-                    if(busqueda.get(i).contains(cuerpoMensaje)){
-                        sendNotification(mensaje.getNotification().getBody());
+                    if(cuerpoMensaje.contains(busqueda.get(i).toUpperCase())){
+                        sendNotification(mensaje.getNotification(),p);
                         break;
                     }
                 }
@@ -106,5 +96,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         });
 
     }
-*/
+
+    private void sendNotification(RemoteMessage.Notification  notificacion, SharedPreferences prefRingtone) {
+        Intent intent= new Intent(this, VerEquiposActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        String alarms = prefRingtone.getString("ringtone", null);
+        Uri uri = Uri.parse(alarms);
+        PendingIntent pendingIntent= PendingIntent.getActivity(this, 0, intent, FLAG_CANCEL_CURRENT);
+        NotificationCompat.Builder notificationBuilder= new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle(notificacion.getTitle()).setContentText(notificacion.getBody()).setAutoCancel(true).setSound(uri).setContentIntent(pendingIntent);
+        NotificationManager notificationManager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0, notificationBuilder.build());
+    }
 }

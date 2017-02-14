@@ -142,7 +142,8 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
         } else if (id == R.id.menuCargarDatos) {
 
-            CargarDatos.cargarEquipos();
+            //CargarDatos.cargarEquipos();
+            item.setEnabled(false);
             return true;
         }
         else{
