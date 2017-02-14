@@ -39,9 +39,15 @@ public class AdapterTarjetaR extends ArrayAdapter<Jugador> {
         escudo=(ImageView) row.findViewById(R.id.TAR_A_imageViewJugador);
         escudo.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipo()));
 
+        isEnabled(position);
+
         jugador.setTypeface(null, Typeface.BOLD);
         numTarjetas.setTypeface(null, Typeface.BOLD);
 
         return(row);
+    }
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
     }
 }

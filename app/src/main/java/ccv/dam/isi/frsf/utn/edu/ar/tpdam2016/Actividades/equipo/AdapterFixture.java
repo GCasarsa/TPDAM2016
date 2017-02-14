@@ -34,6 +34,7 @@ public class AdapterFixture extends ArrayAdapter<Partido> {
         fecha.setText(getItem(position).getDia().toString());
         TextView nombreLocal = (TextView) row.findViewById(R.id.tvEquiposResultadoNombreLocal);
         nombreLocal.setText(getItem(position).getEquipoLocal().toString());
+        isEnabled(position);
         if(equipo.equals(getItem(position).getEquipoLocal().toString())){
             nombreLocal.setTypeface(null, Typeface.BOLD);
         }
@@ -43,5 +44,10 @@ public class AdapterFixture extends ArrayAdapter<Partido> {
             nombreVisita.setTypeface(null, Typeface.BOLD);
         }
         return(row);
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
     }
 }

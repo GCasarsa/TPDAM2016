@@ -55,12 +55,17 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
         final ImageView escudo =(ImageView) row.findViewById(R.id.POSimageView);
         escudo.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipo().toUpperCase()));
 
+        isEnabled(position);
 
         equipo.setTypeface(null, Typeface.BOLD);
         posicion.setTypeface(null, Typeface.BOLD);
         pts.setTypeface(null, Typeface.BOLD);
 
         return(row);
+    }
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
     }
 
 

@@ -44,12 +44,17 @@ public class AdapterGoleador extends ArrayAdapter<Jugador> {
         TextView goles = (TextView) row.findViewById(R.id.GOLgoles);
         goles.setText(""+getItem(position).getGoles());
         escudo =(ImageView) row.findViewById(R.id.imageViewGoleadores);
-
         escudo.setImageResource(CargarEscudos.cargarEscudo(getItem(position).getEquipo()));
+        isEnabled(position);
 
         goles.setTypeface(null, Typeface.BOLD);
         goleador.setTypeface(null, Typeface.BOLD);
 
         return(row);
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
     }
 }

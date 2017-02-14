@@ -45,7 +45,13 @@ public class AdapterResultado extends ArrayAdapter<Partido> {
         golesLocal.setText(getItem(position).getResultadoLocal().toString()+":");
         TextView golesVisitante = (TextView) row.findViewById(R.id.tvEquiposResultadoGolesVisitante);
         golesVisitante.setText(getItem(position).getResultadoVisitante().toString());
+        isEnabled(position);
 
         return(row);
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
     }
 }

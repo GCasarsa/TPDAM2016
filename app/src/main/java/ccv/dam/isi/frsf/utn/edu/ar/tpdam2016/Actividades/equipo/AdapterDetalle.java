@@ -31,6 +31,14 @@ public class AdapterDetalle extends ArrayAdapter<Jugador> {
         posicion.setText(getItem(position).getPosicion());
         TextView apellido = (TextView) row.findViewById(R.id.tvEquipoDetalleApellido);
         apellido.setText(getItem(position).getApellido() + " " + getItem(position).getNombre());
+        isEnabled(position);
         return(row);
+    }
+
+
+    //Metodo para que no sea cliqueable cada item del listView
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
     }
 }

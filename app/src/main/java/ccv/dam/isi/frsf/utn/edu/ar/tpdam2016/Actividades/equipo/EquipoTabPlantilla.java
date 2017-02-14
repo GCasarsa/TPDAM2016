@@ -35,8 +35,11 @@ public class EquipoTabPlantilla extends Fragment implements BusquedaFinalizadaLi
         final View rootView = inflater.inflate(R.layout.activity_equipo_tab_plantilla, container, false);
         listaJugadores = (ListView) rootView.findViewById(R.id.listViewPlantilla);
         busqueda(equipo.getNombre());
+
+
         return rootView;
     }
+
 
     public static EquipoTabPlantilla newInstance(int pagina, String titulo, Equipo equipoRecibido) {
         EquipoTabPlantilla fragmentFirst = new EquipoTabPlantilla();
@@ -57,6 +60,7 @@ public class EquipoTabPlantilla extends Fragment implements BusquedaFinalizadaLi
         if(!lista.isEmpty()){
             jugadores = lista;
             adapter= new AdapterDetalle(getActivity(), jugadores);
+            listaJugadores.setOnItemClickListener(null);
             listaJugadores.setAdapter(adapter);
         }
     }
