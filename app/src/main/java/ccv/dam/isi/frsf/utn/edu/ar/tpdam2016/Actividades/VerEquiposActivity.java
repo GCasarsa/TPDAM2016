@@ -43,8 +43,7 @@ public class VerEquiposActivity extends AppCompatActivity  implements BusquedaFi
             @Override
             public void onClick(View v) {
                 onBackPressed();
-                //Intent intent = new Intent(getApplicationContext(), Inicio.class);
-                //startActivity(intent);
+
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,6 +52,7 @@ public class VerEquiposActivity extends AppCompatActivity  implements BusquedaFi
                 Intent intent = new Intent(getApplicationContext(),EquipoInicio.class);
                 intent.putExtra("equipo", listView.getItemIdAtPosition(position)+1);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -62,6 +62,15 @@ public class VerEquiposActivity extends AppCompatActivity  implements BusquedaFi
         progressDialog.dismiss();
         adapter= new Adapter(getApplicationContext(), listaEquipos);
         listView.setAdapter(adapter);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+                Intent intent = new Intent(getApplicationContext(), Inicio.class);
+                startActivity(intent);
+                finish();
     }
 
 }

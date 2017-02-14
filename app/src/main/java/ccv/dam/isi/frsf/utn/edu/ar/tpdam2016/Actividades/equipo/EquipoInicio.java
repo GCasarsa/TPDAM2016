@@ -69,8 +69,6 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
             @Override
             public void onClick(View v) {
                 onBackPressed();
-                //Intent intent = new Intent(getApplicationContext(), VerEquiposActivity.class);
-                //startActivity(intent);
             }
         });
 
@@ -124,7 +122,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
         protected void onPostExecute(Drawable imagen) {
             escudo.setImageDrawable(imagen);
             progressDialog.dismiss();
-            Toast.makeText(getApplicationContext(), "Deslice la pantalla para navegar en el menú", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Deslice la pantalla para navegar en el menú", Toast.LENGTH_SHORT).show();
         }
         private Drawable downloadImage(String imageUrl) {
             try {
@@ -141,6 +139,14 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
                 return null;
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(getApplicationContext(), VerEquiposActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 

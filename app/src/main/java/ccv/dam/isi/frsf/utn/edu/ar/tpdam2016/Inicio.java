@@ -100,19 +100,23 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     private Toast toast;
     private long lastBackPressTime = 0;
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         if (this.lastBackPressTime < System.currentTimeMillis() - 3000) {
             toast = Toast.makeText(this, "Presione nuevamente para salir", Toast.LENGTH_LONG);
             toast.show();
             this.lastBackPressTime = System.currentTimeMillis();
+            System.exit(0);
         } else {
             if (toast != null) {
                 toast.cancel();
             }
-            super.onBackPressed();
+
         }
-    }
+
+    }*/
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -133,7 +137,9 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         else if (id == R.id.menuOpcionEquipos) {
             Intent intent = new Intent(this, VerEquiposActivity.class);
             startActivity(intent);
+            finish();
             return true;
+
 
         } else if (id == R.id.nav_manage) {
             Intent intent = new Intent(this, SettingsActivity.class);
@@ -213,7 +219,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             public boolean onMenuItemClick(MenuItem menuItem) {
                 startActivity(intentos.get(indice));
                 //listener seteado a cada equipo favorito
-
+                finish();
                 return true;
                 }
            });
