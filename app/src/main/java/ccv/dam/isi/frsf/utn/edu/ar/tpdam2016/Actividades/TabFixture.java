@@ -54,7 +54,7 @@ public class TabFixture extends Fragment{
         listaPartidos.setAdapter(adapter);
 
         final Spinner spinnerFechas = (Spinner) rootView.findViewById(R.id.spinnerFechas);
-        final String[] fechas = new String[]{"1", "2", "3", "4", "5", "6", "7"};
+        final String[] fechas = new String[]{"FECHA Nº 1", "FECHA Nº 2", "FECHA Nº 3", "FECHA Nº 4", "FECHA Nº 5", "FECHA Nº 6", "FECHA Nº 7"};
         ArrayList<String> arregloFechas = new ArrayList<>();
         ArrayAdapter<String> listAdapter1;
         arregloFechas.addAll(Arrays.asList(fechas));

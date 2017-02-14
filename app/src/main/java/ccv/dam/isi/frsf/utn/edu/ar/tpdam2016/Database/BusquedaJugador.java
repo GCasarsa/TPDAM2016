@@ -50,7 +50,7 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
             listaJugadores = buscarJugadores(database.getReference("datos/jugadores").orderByChild("amarillas"));
         else if(tipoConsulta[0].equals("rojas"))
             listaJugadores = buscarJugadores(database.getReference("datos/jugadores").orderByChild("rojas"));
-        else listaJugadores = buscarJugadores(tipoConsulta[0], database.getReference("datos/jugadores").orderByChild("posicion"));
+        else listaJugadores = buscarJugadores(tipoConsulta[0], database.getReference("datos/jugadores").orderByChild("ordenadorPorPosicion"));
         return listaJugadores;
     }
 
@@ -64,6 +64,7 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
                         newPost.get("nombre").toString(),
                         newPost.get("apellido").toString(),
                         newPost.get("posicion").toString(),
+                        newPost.get("ordenadorPorPosicion").toString(),
                         newPost.get("equipo").toString(),
                         newPost.get("titular").toString(),
                         Integer.parseInt(newPost.get("goles").toString()),
@@ -96,6 +97,7 @@ public class BusquedaJugador  extends AsyncTask<String,Integer,ArrayList<Jugador
                             newPost.get("nombre").toString(),
                             newPost.get("apellido").toString(),
                             newPost.get("posicion").toString(),
+                            newPost.get("ordenadorPorPosicion").toString(),
                             newPost.get("equipo").toString(),
                             newPost.get("titular").toString(),
                             Integer.parseInt(newPost.get("goles").toString()),

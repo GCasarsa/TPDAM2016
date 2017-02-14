@@ -97,25 +97,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     }
 
 
-    /*@Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }*/
-
-   /* @Override
-    public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "Usted está saliendo de la aplicación ", Toast.LENGTH_LONG).show();
-        SystemClock.sleep(2000);
-        finish();
-        System.exit(0);
-
-    }*/
-
     private Toast toast;
     private long lastBackPressTime = 0;
 
@@ -160,17 +141,12 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             return true;
 
         } else if (id == R.id.menuCargarDatos) {
-            /*Conexion.cargarEquipos();
-            Conexion.cargarPartidos();
-            Conexion.cargarFixture();*/
+
             CargarDatos.cargarEquipos();
             return true;
         }
         else{
             System.out.println("Id: " + id);
-            /*Intent intent = new Intent(getApplicationContext(),EquipoInicio.class);
-            intent.putExtra("equipo", 18);
-            startActivity(intent);*/
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -235,6 +211,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 startActivity(intentos.get(indice));
+                //listener seteado a cada equipo favorito
 
                 return true;
                 }

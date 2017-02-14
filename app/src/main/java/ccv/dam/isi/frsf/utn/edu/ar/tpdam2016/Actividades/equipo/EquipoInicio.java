@@ -81,7 +81,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked) {
-                   Toast.makeText(getApplicationContext(), "Se ha agregado como equipo favorito", Toast.LENGTH_LONG).show();
+                   Toast.makeText(getApplicationContext(), "Se ha agregado como equipo favorito", Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor edit = pref.edit();
                     edit.putBoolean(id, true);
                     edit.commit();

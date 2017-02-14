@@ -4,21 +4,28 @@ package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades;
  * Created by Gabriel on 16/01/2017.
  */
 public class Jugador {
-    String id, nombre, apellido, posicion ,equipo, titular;
+    String id;
+    String nombre;
+    String apellido;
+    String posicion;
+    String equipo;
+    String titular;
+    String ordenadorPorPosicion;
     int goles, amarillas, rojas, partidosJugados;
 
 
-    public Jugador(String apellido, String nombre, String posicion, String equipo, String titular) {
+    public Jugador(String apellido, String nombre, String posicion, String ordenador, String equipo, String titular) {
         this.id = equipo + " " + apellido + nombre;
         this.nombre = nombre;
         this.apellido = apellido;
         this.posicion = posicion;
         this.equipo = equipo;
         this.titular = titular;
+        this.ordenadorPorPosicion=ordenador;
         goles = amarillas = rojas = partidosJugados = 0;
     }
 
-    public Jugador(String id, String apellido, String nombre, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
+    public Jugador(String id, String apellido, String nombre, String posicion, String ordenador, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -26,13 +33,14 @@ public class Jugador {
         this.equipo = equipo;
         this.titular = titular;
         this.id = id;
+        this.ordenadorPorPosicion=ordenador;
         this.goles = goles;
         this.amarillas = amarillas;
         this.rojas = rojas;
         this.partidosJugados = partidosJugados;
     }
 
-    public Jugador(String apellido, String nombre, String posicion, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
+    public Jugador(String apellido, String nombre, String posicion, String ordenador, String equipo, String titular, int goles, int amarillas, int rojas, int partidosJugados) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.posicion = posicion;
@@ -41,6 +49,7 @@ public class Jugador {
         this.id = equipo + " " + apellido + nombre;
         this.goles = goles;
         this.amarillas = amarillas;
+        this.ordenadorPorPosicion=ordenador;
         this.rojas = rojas;
         this.partidosJugados = partidosJugados;
     }
@@ -83,6 +92,10 @@ public class Jugador {
 
     public void setEquipo(String equipo) {
         this.equipo = equipo;
+    }
+
+    public String getOrdenadorPorPosicion() {
+        return ordenadorPorPosicion;
     }
 
     public String getTitular() {

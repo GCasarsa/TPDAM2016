@@ -12,6 +12,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.SubMenu;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -24,10 +25,13 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.ArrayList;
 import java.util.Map;
 
+import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.VerEquiposActivity;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Actividades.equipo.EquipoInicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Entidades.Equipo;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.Inicio;
 import ccv.dam.isi.frsf.utn.edu.ar.tpdam2016.R;
+
+import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
 /**
  * Created by Gabriel on 15/01/2017.
@@ -44,30 +48,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        for(int i = 1; i <=8; i++){
+        /*for(int i = 1; i <=8; i++){
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
-        }
-
-        buscarEquipos(remoteMessage);
+        }*/
+        Toast.makeText(getApplicationContext(),"ENTRO POR ONMESSAGE RECEIVED", Toast.LENGTH_SHORT).show();;
+        sendNotification(remoteMessage.getNotification());
+        //buscarEquipos(remoteMessage);
 
     }
 
 
-    private void sendNotification(String messageBody) {
-        Intent intent= new Intent(this, Inicio.class);
+    private void sendNotification(RemoteMessage.Notification  notificacion) {
+        Intent intent= new Intent(this, VerEquiposActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         String alarms = pref.getString("ringtone", null);
         Uri uri = Uri.parse(alarms);
-        PendingIntent pendingIntent= PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent= PendingIntent.getActivity(this, 0, intent, FLAG_CANCEL_CURRENT);
         NotificationCompat.Builder notificationBuilder= new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Fútbol de Santa Fe").setContentText(messageBody).setAutoCancel(true).setSound(uri).setContentIntent(pendingIntent);
+                .setContentTitle(notificacion.getTitle()).setContentText(notificacion.getBody()).setAutoCancel(true).setSound(uri).setContentIntent(pendingIntent);
         NotificationManager notificationManager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notificationBuilder.build());
     }
 
 
-    public void buscarEquipos(final RemoteMessage mensaje){
+    /*public void buscarEquipos(final RemoteMessage mensaje){
         posicionBD = database.getReference("datos/equipos/primeradivision");
         posicionBD.addChildEventListener(new ChildEventListener() {
             @Override
@@ -80,14 +85,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     }
                 }
 
-                String etiqueta = mensaje.getNotification().getBody();
-                System.out.println("MENSAJE BODYYYYYYY: "+mensaje.getNotification().getBody());
-                System.out.println("MENSAJE BODYYYYYYY: "+mensaje.getNotification().getBody());
-                System.out.println("MENSAJE tag: "+mensaje.getNotification().getTag());
-                System.out.println("MENSAJE sound: "+mensaje.getNotification().getSound());
-
+                String cuerpoMensaje = mensaje.getNotification().getBody();
+                System.out.println("EL VALOR DEL CUERPO:::::::::." + cuerpoMensaje);
                 for (int i=0;i<busqueda.size();i++){
-                    if(busqueda.get(i).equals(etiqueta)){
+                    if(busqueda.get(i).contains(cuerpoMensaje)){
                         sendNotification(mensaje.getNotification().getBody());
                         break;
                     }
@@ -105,5 +106,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         });
 
     }
-
+*/
 }

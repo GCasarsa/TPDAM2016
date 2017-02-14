@@ -11,18 +11,19 @@
         android:layout_height="200dp"
         android:gravity="center_horizontal"
         android:id="@+id/ivEquipoDetalleFoto"/>
-    <ListView
-        android:layout_marginLeft="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lvEquipoDetalle"
-        android:textColor="@color/colorPrimary"
-        />
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvEquipoDetalleDT"
         android:layout_marginLeft="15dp"
-        android:text="D.T.: "/>
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewEstadio"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>

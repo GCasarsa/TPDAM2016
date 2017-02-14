@@ -28,22 +28,6 @@
             android:layout_gravity="center"
             android:textColor="@color/colorBlanco"
             />
-        <ImageView
-            android:id="@+id/ivEquipoBuscar"
-            android:src="@drawable/ic_search_white_24dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:layout_marginRight="10dp"
-            android:contentDescription="buscar" />
-        <ImageView
-            android:id="@+id/ivEquipoCompartir"
-            android:src="@drawable/ic_share_white_24dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:layout_marginRight="10dp"
-            android:contentDescription="buscar" />
 
     </android.support.v7.widget.Toolbar>
     <LinearLayout
