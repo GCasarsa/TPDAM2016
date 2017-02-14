@@ -57,7 +57,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         for(int i = 1; i <=8; i++){
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
         }
-        //sendNotification(remoteMessage.getNotification(),pref);
+
+        /**
+         * Accedo a buscar equipos para cargar los nombres de los equipos marcados como favoritos en las sharedPreferences
+         */
         buscarEquipos(remoteMessage, pref);
 
     }
@@ -79,6 +82,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 String cuerpoMensaje = mensaje.getNotification().getBody().toUpperCase();
                 for (int i=0;i<busqueda.size();i++){
                     if(cuerpoMensaje.contains(busqueda.get(i).toUpperCase())){
+
+                        /**
+                         * Si en el cuerpo del mensaje se encuentra el nombre de alguno de los equipos favoritos,
+                         * lanza la notificación y detiene el for.
+                         */
                         sendNotification(mensaje.getNotification(),p);
                         break;
                     }
@@ -98,7 +106,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(RemoteMessage.Notification  notificacion, SharedPreferences prefRingtone) {
-        Intent intent= new Intent(this, VerEquiposActivity.class);
+        Intent intent= new Intent(this, Inicio.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         String alarms = prefRingtone.getString("ringtone", null);
         Uri uri = Uri.parse(alarms);
