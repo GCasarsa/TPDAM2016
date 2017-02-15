@@ -67,8 +67,7 @@ public class PartidoInicio extends FragmentActivity implements BusquedaFinalizad
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Inicio.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
