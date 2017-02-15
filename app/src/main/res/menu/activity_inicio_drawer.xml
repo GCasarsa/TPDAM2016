@@ -4,16 +4,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menuOpcionInicio"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_inicio_menu_icono"
             android:title="Inicio" />
         <item
             android:id="@+id/menuOpcionEquipos"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_equipos_imagen_menu2"
             android:title="Equipos" />
 
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_ringtone_imagen"
             android:title="Preferencias" />
     </group>
 
