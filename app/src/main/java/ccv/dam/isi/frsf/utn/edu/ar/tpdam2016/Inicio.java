@@ -100,21 +100,21 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
     private Toast toast;
     private long lastBackPressTime = 0;
 
-    /*@Override
+    @Override
     public void onBackPressed() {
         if (this.lastBackPressTime < System.currentTimeMillis() - 3000) {
             toast = Toast.makeText(this, "Presione nuevamente para salir", Toast.LENGTH_LONG);
             toast.show();
             this.lastBackPressTime = System.currentTimeMillis();
-            System.exit(0);
         } else {
             if (toast != null) {
                 toast.cancel();
+                System.exit(0);
             }
 
         }
 
-    }*/
+    }
 
 
 
@@ -132,7 +132,7 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         int id = item.getItemId();
 
         if (id == R.id.menuOpcionInicio) {
-            // Handle the camera action
+            // Handle the botonInicio
         }
         else if (id == R.id.menuOpcionEquipos) {
             Intent intent = new Intent(this, VerEquiposActivity.class);
@@ -149,7 +149,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
         } else if (id == R.id.menuCargarDatos) {
 
             //CargarDatos.cargarEquipos();
-            item.setEnabled(false);
             return true;
         }
         else{

@@ -23,7 +23,8 @@
                 <item
                     android:id="@+id/menuCargarDatos"
                     android:icon="@drawable/ic_menu_gallery"
-                    android:title="Cargar Datos" />
+                    android:title="Cargar Datos"
+                    android:enabled="false" />
             </menu>
         </item>
     </group>
