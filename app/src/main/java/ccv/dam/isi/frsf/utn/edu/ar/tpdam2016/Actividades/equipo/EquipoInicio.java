@@ -40,6 +40,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
     private static CheckBox fav;
     ProgressDialog progressDialog;
     SharedPreferences pref;
+    Toast toast1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
 
                 if(isChecked) {
                    Toast.makeText(getApplicationContext(), "Se ha agregado como equipo favorito", Toast.LENGTH_SHORT).show();
+                    toast1.cancel();
                     SharedPreferences.Editor edit = pref.edit();
                     edit.putBoolean(id, true);
                     edit.commit();
@@ -122,7 +124,8 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
         protected void onPostExecute(Drawable imagen) {
             escudo.setImageDrawable(imagen);
             progressDialog.dismiss();
-            Toast.makeText(getApplicationContext(), "Deslice la pantalla para navegar en el menú", Toast.LENGTH_SHORT).show();
+            toast1 = Toast.makeText(getApplicationContext(), "Deslice la pantalla para navegar en el menú", Toast.LENGTH_SHORT);
+            toast1.show();
         }
         private Drawable downloadImage(String imageUrl) {
             try {
@@ -146,6 +149,7 @@ public class EquipoInicio extends FragmentActivity  implements BusquedaFinalizad
 
         Intent intent = new Intent(getApplicationContext(), VerEquiposActivity.class);
         startActivity(intent);
+        toast1.cancel();
         finish();
     }
 
