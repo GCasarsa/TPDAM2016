@@ -34,7 +34,7 @@ public class AdapterPosicion extends ArrayAdapter<FilaPosicion> {
         View row = inflater.inflate(R.layout.layout_fila_posicion, parent, false);
         TextView posicion = (TextView) row.findViewById(R.id.POSnumeroOrden);
         TextView equipo = (TextView) row.findViewById(R.id.POSnombreEquipo);
-        equipo.setText(getItem(position).getEquipo());
+        equipo.setText(getItem(position).getEquipo().toUpperCase());
         posicion.setText(getItem(position).getPosicion().toString());
         TextView pj = (TextView) row.findViewById(R.id.POSpj);
         pj.setText(getItem(position).getPj());

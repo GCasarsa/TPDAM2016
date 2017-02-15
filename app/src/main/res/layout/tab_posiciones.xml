@@ -10,6 +10,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listViewPosiciones" />
+        android:id="@+id/listViewPosiciones"
+        android:layout_marginTop="5dp" />
     </HorizontalScrollView>
 </LinearLayout>

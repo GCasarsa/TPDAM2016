@@ -1,10 +1,14 @@
 package ccv.dam.isi.frsf.utn.edu.ar.tpdam2016;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.provider.SyncStateContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
@@ -14,6 +18,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -70,30 +75,52 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
             if(pref.getBoolean(""+i,false)) preferencias.add(""+i);
         }
 
+        System.out.println("ESTA ONLINEEE::::::" + isOnline());
 
-        tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
-        tabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
-        tabHost.addTab(tabHost.newTabSpec("tab_fixture").setIndicator("", getResources().getDrawable(R.drawable.calendario)),
-                TabFixture.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab_posiciones").setIndicator("", getResources().getDrawable(R.drawable.podio)),
-                TabPosiciones.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab_goleadores").setIndicator("", getResources().getDrawable(R.drawable.pelota)),
-                TabGoleadores.class, null);
-        tabHost.addTab(tabHost.newTabSpec("tab_tarjetas").setIndicator("", getResources().getDrawable(R.drawable.tarjetasfutbol)),
-                TabTarjetas.class, null);
+        if (isOnline()){
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+            tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+            tabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
+            tabHost.addTab(tabHost.newTabSpec("tab_fixture").setIndicator("", getResources().getDrawable(R.drawable.calendario)),
+                    TabFixture.class, null);
+            tabHost.addTab(tabHost.newTabSpec("tab_posiciones").setIndicator("", getResources().getDrawable(R.drawable.podio)),
+                    TabPosiciones.class, null);
+            tabHost.addTab(tabHost.newTabSpec("tab_goleadores").setIndicator("", getResources().getDrawable(R.drawable.pelota)),
+                    TabGoleadores.class, null);
+            tabHost.addTab(tabHost.newTabSpec("tab_tarjetas").setIndicator("", getResources().getDrawable(R.drawable.tarjetasfutbol)),
+                    TabTarjetas.class, null);
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setItemIconTintList(null);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        buscarEquipos();
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
+
+            navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            navigationView.setItemIconTintList(null);
+
+            buscarEquipos();
+        }
+        else
+        {
+                AlertDialog alertDialog = new AlertDialog.Builder(Inicio.this).create();
+
+                alertDialog.setTitle("Internet");
+                alertDialog.setMessage("Internet no disponible. Active internet y vuelva a intentarlo");
+                alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE,"OK",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });;
+
+                alertDialog.show();
+
+        }
+
     }
 
 
@@ -205,10 +232,6 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
 
     }
 
-
-
-
-
     private void setterListener(MenuItem itemSubMenu, final int indice, Equipo e) {
 
         int escudo = CargarEscudos.cargarEscudo(e.getNombre());
@@ -223,5 +246,15 @@ public class Inicio extends FragmentActivity implements NavigationView.OnNavigat
                 }
            });
 
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            return false;
+        }
+        return true;
     }
 }
